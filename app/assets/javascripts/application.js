@@ -15,3 +15,7 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$('.tree-toggle').click(function () {
+  $(this).parent().children('ul.tree').toggle(200);
+});

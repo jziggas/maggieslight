@@ -8,18 +8,16 @@
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)
-  %body{:class => "#{controller_name} #{action_name}"}
-    .navbar.navbar-fixed-top
-      %nav.navbar-inner
-        .container
-          = render 'layouts/navigation'
+  %body#maggiebeige{:class => "#{controller_name} #{action_name}"}
+    = image_tag "maggies_light_logo.png", class: "logo"
+    = render 'layouts/navigation'
     #main{:role => "main"}
-      .container
-        /.content
+      .content
+        .container
         .row
-          .span12
-            = render 'layouts/messages'
-            = yield
-        %footer
-    / ! end of .container
+          = render 'layouts/messages'
+          = render 'layouts/sidebar'
+          = yield
+      %footer
+  / ! end of .container
   / ! end of #main

@@ -1,9 +1,8 @@
-%h1 Home#index
-%p
-  Sort By
-  %ul
-    %li= link_to "Recent", "#"
-    %li= link_to "Age", "#"
-    %li= link_to "Location", "#"
-- @all_profiles.each do |profile|
-  %p= link_to "#{profile.name} from #{profile.location} has #{profile.disabilities}", edit_care_receiver_profile_path(profile)
+.span8
+  %h1 People in Need of Care
+  - @all_profiles.each do |profile|
+    .well
+      %p
+        = image_tag profile.profile_picture.url(:thumb)
+        = link_to "#{profile.name} from #{profile.location} has #{profile.disabilities}", edit_care_receiver_profile_path(profile)
+        = "Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor."

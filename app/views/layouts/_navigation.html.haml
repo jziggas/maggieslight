@@ -1,19 +1,21 @@
-= link_to "Maggieslight", root_path, :class => 'brand'
-%ul.nav.pull-right
-  - if user_signed_in?
-    %li
-      = link_to 'Logout', destroy_user_session_path, :method=>'delete'
-      %li.dropdown
-        %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-          Account
-          %b.caret
-        %ul.dropdown-menu
-          %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path
-          %li= link_to "Create a New Care Provider Profile", new_care_provider_profile_path
-          %li= link_to "Edit Account", edit_user_registration_path
-      - if current_user.has_role? :admin
-        %li= link_to 'Admin', users_path
-  - else
-    %li
-      = link_to 'Login', new_user_session_path
-      = link_to 'Sign up', new_user_registration_path
+.navbar.navbar-fixed-top
+  %nav.navbar-inner
+    .container
+      = link_to "Community Works", root_path, :class => 'brand'
+      %ul.nav.pull-right
+        - if user_signed_in?
+          %li
+            = link_to 'Logout', destroy_user_session_path, :method=>'delete'
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                Account
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path
+                %li= link_to "Create a New Care Provider Profile", new_care_provider_profile_path
+                %li= link_to "Edit Account", edit_user_registration_path
+            - if current_user.has_role? :admin
+              %li= link_to 'Admin', users_path
+        - else
+          %li= link_to 'Login', new_user_session_path
+          %li= link_to 'Sign up', new_user_registration_path
