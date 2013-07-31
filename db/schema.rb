@@ -11,7 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130726195138) do
+ActiveRecord::Schema.define(version: 20130731002320) do
+
+  create_table "care_provider_profiles", force: true do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "field_of_study"
+    t.string   "school"
+    t.string   "skills"
+    t.string   "misc"
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "profile_picture_file_name"
+    t.string   "profile_picture_content_type"
+    t.integer  "profile_picture_file_size"
+    t.datetime "profile_picture_updated_at"
+  end
+
+  create_table "care_receiver_profiles", force: true do |t|
+    t.string   "name"
+    t.date     "birthday"
+    t.string   "gender"
+    t.string   "disabilities"
+    t.string   "hobbies"
+    t.string   "services_needed"
+    t.string   "misc"
+    t.string   "hours_needed"
+    t.string   "days_needed"
+    t.string   "location"
+    t.string   "transportation"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.string   "contact_phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "profile_picture_file_name"
+    t.string   "profile_picture_content_type"
+    t.integer  "profile_picture_file_size"
+    t.datetime "profile_picture_updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"

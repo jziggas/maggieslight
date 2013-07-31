@@ -1,0 +1,16 @@
+= simple_form_for @care_provider_profile, :html => {:multipart => true } do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.file_field :profile_picture
+    = f.input :name
+    = f.input :location
+    = f.input :field_of_study
+    = f.input :school
+    = f.input :skills
+    = f.input :misc
+    = f.input :contact_email
+    = f.input :contact_phone
+
+  .form-actions
+    = f.button :submit

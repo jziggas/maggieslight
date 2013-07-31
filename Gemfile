@@ -15,6 +15,8 @@ gem 'figaro'
 gem 'haml-rails'
 gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+# gem 'rails_admin' # check for rails 4 compatibility
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

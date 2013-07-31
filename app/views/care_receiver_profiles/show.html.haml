@@ -1,0 +1,49 @@
+%p#notice= notice
+
+%p= image_tag @care_receiver_profile.profile_picture.url(:medium)
+%p
+  %b Name:
+  = @care_receiver_profile.name
+%p
+  %b Birthday:
+  = @care_receiver_profile.birthday
+%p
+  %b Gender:
+  = @care_receiver_profile.gender
+%p
+  %b Disabilities:
+  = @care_receiver_profile.disabilities
+%p
+  %b Hobbies:
+  = @care_receiver_profile.hobbies
+%p
+  %b Services needed:
+  = @care_receiver_profile.services_needed
+%p
+  %b Misc:
+  = @care_receiver_profile.misc
+%p
+  %b Hours needed:
+  = @care_receiver_profile.hours_needed
+%p
+  %b Days needed:
+  = @care_receiver_profile.days_needed
+%p
+  %b Location:
+  = @care_receiver_profile.location
+%p
+  %b Transportation:
+  = @care_receiver_profile.transportation
+%p
+  %b Contact name:
+  = @care_receiver_profile.contact_name
+%p
+  %b Contact email:
+  = @care_receiver_profile.contact_email
+%p
+  %b Contact phone:
+  = @care_receiver_profile.contact_phone
+
+= link_to 'Edit', edit_care_receiver_profile_path(@care_receiver_profile)
+\|
+= link_to 'Back', care_receiver_profiles_path

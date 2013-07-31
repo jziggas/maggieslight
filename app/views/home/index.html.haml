@@ -1,2 +1,9 @@
 %h1 Home#index
-%p Find me in app/views/home/index.html.haml
+%p
+  Sort By
+  %ul
+    %li= link_to "Recent", "#"
+    %li= link_to "Age", "#"
+    %li= link_to "Location", "#"
+- @all_profiles.each do |profile|
+  %p= link_to "#{profile.name} from #{profile.location} has #{profile.disabilities}", edit_care_receiver_profile_path(profile)
