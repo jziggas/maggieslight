@@ -9,4 +9,6 @@ class CareProviderProfile < ActiveRecord::Base
   validates_attachment_presence :profile_picture
   validates_attachment_size :profile_picture, :less_than => 5.megabytes
   validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
+
+  self.per_page = 3
 end

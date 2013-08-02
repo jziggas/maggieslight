@@ -26,7 +26,61 @@
   background-color: #F2F0DA;
 }
 
+
 .content {
   padding: 0px 10px 10px 10px;
   color:  #4B466B;
+}
+
+h1 {
+  color: #4B466B;
+  font: normal 2.5em Arial, Helvetica, sans-serif;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font: normal 2.5em Arial, Helvetica, sans-serif;
+  letter-spacing: -1px;
+}
+.content p {
+  color: #4B466B;
+  display: block;
+  float: none;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+.content a { color: #EB008B; }
+.content a:link {color:#EB008B;}      /* unvisited link */
+.content a:hover {color:#8077B7;}  /* mouse over link */
+
+.box01 {
+  display: block;
+  max-width: 881px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#sidebar {
+  margin-left: 10px;
+}
+@import "bootstrap";
+@import "bootstrap-responsive";
+
+.navbar-inner {
+  background-color: #4B466B; /* background color will be black for all browsers */
+  background-image: none;
+  background-repeat: no-repeat;
+  filter: none;
+}
+
+.navbar .brand {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+  color: white;
+  text-shadow: none;
+}
+
+.navbar .nav > li > a {
+    color: white;
+    text-shadow: 0 0px 0 #ffffff;
 }

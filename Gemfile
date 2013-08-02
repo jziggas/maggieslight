@@ -16,6 +16,8 @@ gem 'haml-rails'
 gem 'rolify'
 gem 'simple_form', '>= 3.0.0.rc'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'sorted', '~> 0.4.3'
+gem 'will_paginate', '~> 3.0'
 # gem 'rails_admin' # check for rails 4 compatibility
 group :development do
   gem 'better_errors'

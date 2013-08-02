@@ -1,8 +1,16 @@
 .span8
   %h1 People in Need of Care
-  - @all_profiles.each do |profile|
+  = form_tag root_path, :method => 'get', :id => "profile_search" do
+    %p
+      = text_field_tag :search, params[:search]
+      = submit_tag "Search", :name => nil, class: "btn"
+    #profiles
+      = hidden_field_tag :direction, params[:direction]
+      = hidden_field_tag :sort, params[:sort]
+  = will_paginate @profiles
+  - @profiles.each do |profile|
     .well
-      %p
-        = image_tag profile.profile_picture.url(:thumb)
-        = link_to "#{profile.name} from #{profile.location} has #{profile.disabilities}", edit_care_receiver_profile_path(profile)
-        = "Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor."
+      = image_tag profile.profile_picture.url(:thumb)
+      = link_to "#{profile.name} from #{profile.location} has #{profile.disabilities}", edit_care_receiver_profile_path(profile)
+      = "Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. Lorem ipsum dolor amir hodor. His/her birthday is #{profile.birthdate.to_date} and of #{profile.birthdate.class} class. They are #{profile.age} years old."
+= will_paginate @profiles
