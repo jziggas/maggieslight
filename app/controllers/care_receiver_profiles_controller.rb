@@ -77,6 +77,6 @@ class CareReceiverProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def care_receiver_profile_params
-      params.require(:care_receiver_profile).permit(:name, :birthday, :gender, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :location, :transportation, :contact_name, :contact_email, :contact_phone, :profile_picture)
+      params.require(:care_receiver_profile).permit(:name, :birthdate, :gender, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :location, :transportation, :contact_name, :contact_email, :contact_phone, :profile_picture)
     end
 end
