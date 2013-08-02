@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
-gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
@@ -18,6 +17,7 @@ gem 'simple_form', '>= 3.0.0.rc'
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'sorted', '~> 0.4.3'
 gem 'will_paginate', '~> 3.0'
+gem 'rmagick'
 # gem 'rails_admin' # check for rails 4 compatibility
 group :development do
   gem 'better_errors'
@@ -28,9 +28,14 @@ end
 group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails'
+  gem 'sqlite3'
 end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'email_spec'
+end
+
+group :production do
+  gem 'pg'
 end
