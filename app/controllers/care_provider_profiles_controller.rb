@@ -5,7 +5,9 @@ class CareProviderProfilesController < ApplicationController
   # GET /care_provider_profiles
   # GET /care_provider_profiles.json
   def index
-    @care_provider_profiles = CareProviderProfile.all
+    @page = params[:page] || 1
+    @profiles = CareProviderProfile.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
+    @prof = CareProviderProfile.search(params[:search]).class
   end
 
   # GET /care_provider_profiles/1
@@ -74,5 +76,14 @@ class CareProviderProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def care_provider_profile_params
       params.require(:care_provider_profile).permit(:name, :location, :field_of_study, :school, :skills, :misc, :contact_email, :contact_phone, :profile_picture)
+    end
+
+  private
+    def sort_column
+      CareProviderProfile.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

@@ -1,45 +1,21 @@
-%h1 Listing care_receiver_profiles
-
-%table
-  %tr
-    %th Name
-    %th Birthday
-    %th Gender
-    %th Disabilities
-    %th Hobbies
-    %th Services needed
-    %th Misc
-    %th Hours needed
-    %th Days needed
-    %th Location
-    %th Transportation
-    %th Contact name
-    %th Contact email
-    %th Contact phone
-    %th
-    %th
-    %th
-
-  - @care_receiver_profiles.each do |care_receiver_profile|
-    %tr
-      %td= care_receiver_profile.name
-      %td= care_receiver_profile.birthday
-      %td= care_receiver_profile.gender
-      %td= care_receiver_profile.disabilities
-      %td= care_receiver_profile.hobbies
-      %td= care_receiver_profile.services_needed
-      %td= care_receiver_profile.misc
-      %td= care_receiver_profile.hours_needed
-      %td= care_receiver_profile.days_needed
-      %td= care_receiver_profile.location
-      %td= care_receiver_profile.transportation
-      %td= care_receiver_profile.contact_name
-      %td= care_receiver_profile.contact_email
-      %td= care_receiver_profile.contact_phone
-      %td= link_to 'Show', care_receiver_profile
-      %td= link_to 'Edit', edit_care_receiver_profile_path(care_receiver_profile)
-      %td= link_to 'Destroy', care_receiver_profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Care receiver profile', new_care_receiver_profile_path
+= render "sidebar"
+.span8
+  %h1 People in Need of Care
+  = form_tag root_path, :method => 'get', :id => "profile_search" do
+    %p
+      = text_field_tag :search, params[:search]
+      = submit_tag "Search", :name => nil, class: "btn"
+    #profiles
+      = hidden_field_tag :direction, params[:direction]
+      = hidden_field_tag :sort, params[:sort]
+  = will_paginate @profiles
+  - @profiles.each do |profile|
+    .well
+      %table
+        %tr
+          %td
+            %h5= link_to "#{profile.name} is #{profile.age} old and lives in #{profile.location}.", profile
+            %p= "\nDisabilities: #{profile.disabilities}"
+            %p= "\nLikes: #{profile.hobbies}"
+          %td= image_tag profile.profile_picture.url(:thumb), class: "img-circle"
+  = will_paginate @profiles

@@ -1,33 +1,21 @@
-%h1 Listing care_provider_profiles
-
-%table
-  %tr
-    %th Name
-    %th Location
-    %th Field of study
-    %th School
-    %th Skills
-    %th Misc
-    %th Contact email
-    %th Contact phone
-    %th
-    %th
-    %th
-
-  - @care_provider_profiles.each do |care_provider_profile|
-    %tr
-      %td= care_provider_profile.name
-      %td= care_provider_profile.location
-      %td= care_provider_profile.field_of_study
-      %td= care_provider_profile.school
-      %td= care_provider_profile.skills
-      %td= care_provider_profile.misc
-      %td= care_provider_profile.contact_email
-      %td= care_provider_profile.contact_phone
-      %td= link_to 'Show', care_provider_profile
-      %td= link_to 'Edit', edit_care_provider_profile_path(care_provider_profile)
-      %td= link_to 'Destroy', care_provider_profile, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Care provider profile', new_care_provider_profile_path
+= render "sidebar"
+.span8
+  %h1 Care Providers
+  = form_tag root_path, :method => 'get', :id => "profile_search" do
+    %p
+      = text_field_tag :search, params[:search]
+      = submit_tag "Search", :name => nil, class: "btn"
+    #profiles
+      = hidden_field_tag :direction, params[:direction]
+      = hidden_field_tag :sort, params[:sort]
+  = will_paginate @profiles
+  - @profiles.each do |profile|
+    .well
+      %table
+        %tr
+          %td
+            %h5= "#{profile.name} studies #{profile.field_of_study} and lives in #{profile.location}."
+            %p= "\nSchool: #{profile.school}"
+            %p= "\nSkills: #{profile.skils}"
+          %td= image_tag profile.profile_picture.url(:thumb), class: "img-circle"
+  = will_paginate @profiles

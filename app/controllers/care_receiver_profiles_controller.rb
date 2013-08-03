@@ -5,7 +5,9 @@ class CareReceiverProfilesController < ApplicationController
   # GET /care_receiver_profiles
   # GET /care_receiver_profiles.json
   def index
-    @care_receiver_profiles = CareReceiverProfile.all
+    @page = params[:page] || 1
+    @profiles = CareReceiverProfile.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
+    @prof = CareReceiverProfile.search(params[:search]).class
   end
 
   # GET /care_receiver_profiles/1
@@ -78,5 +80,14 @@ class CareReceiverProfilesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def care_receiver_profile_params
       params.require(:care_receiver_profile).permit(:name, :birthdate, :gender, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :location, :transportation, :contact_name, :contact_email, :contact_phone, :profile_picture)
+    end
+
+  private
+    def sort_column
+      CareReceiverProfile.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    end
+
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end

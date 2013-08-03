@@ -9,7 +9,7 @@ class CareReceiverProfile < ActiveRecord::Base
   has_attached_file :profile_picture, :styles => { :large => "350x350", :medium => "250x250>", :thumb => "150x150>" }, :default_url => "assets/images/missing.png"
 
   validates_attachment_presence :profile_picture
-  validates_attachment_size :profile_picture, :less_than => 5.megabytes
+  validates_attachment_size :profile_picture, :less_than => 1.megabytes
   validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
 
   self.per_page = 3
@@ -17,7 +17,13 @@ class CareReceiverProfile < ActiveRecord::Base
   def age
     dob = self.birthdate
     now = Time.now.utc.to_date
-    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+    years = now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+    if years > 0
+      years.to_s + " years"
+    else
+      months = now.month - dob.month
+      months > 1 ? months.to_s + " months" : months.to_s + " month"
+    end
   end
 
   def self.search(search)

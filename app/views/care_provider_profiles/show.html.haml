@@ -1,5 +1,5 @@
 %p#notice= notice
-%p= image_tag @care_provider_profile.profile_picture.url(:medium)
+%p= image_tag @care_provider_profile.profile_picture.url(:large)
 %p
   %b Name:
   = @care_provider_profile.name
@@ -25,6 +25,6 @@
   %b Contact phone:
   = @care_provider_profile.contact_phone
 
-= link_to 'Edit', edit_care_provider_profile_path(@care_provider_profile)
-\|
+- if can? :update, @care_provider_profile
+  = link_to 'Edit | ', edit_care_provider_profile_path(@care_provider_profile)
 = link_to 'Back', care_provider_profiles_path

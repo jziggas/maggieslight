@@ -14,9 +14,13 @@
       %label.tree-toggle.nav-header Sort By
       %ul.nav.nav-list.tree
         %li
+          = link_to "Recent", root_path(params.merge(sort: "created_at"))
+        %li
           = link_to "Name", root_path(params.merge(sort: "name"))
         %li
-          = link_to "Age", root_path(params.merge(sort: "birthday"))
+          = link_to "Field of Study", root_path(params.merge(sort: "field_of_study"))
+        %li
+          = link_to "Location", root_path(params.merge(sort: "location"))
 
 -#
         %li

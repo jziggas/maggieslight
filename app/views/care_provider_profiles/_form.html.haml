@@ -3,14 +3,14 @@
 
   .form-inputs
     = f.file_field :profile_picture
-    = f.input :name
-    = f.input :location
-    = f.input :field_of_study
-    = f.input :school
-    = f.input :skills
-    = f.input :misc
-    = f.input :contact_email
-    = f.input :contact_phone
+    = f.input :name, placeholder: "Mary Smith"
+    = f.input :location, placeholder: "Towson"
+    = f.input :field_of_study, placeholder: "Social Sciences"
+    = f.input :school, placeholder: "University of Maryland"
+    = f.input :skills, placeholder: ""
+    = f.input :misc, placeholder: "Fellow at the Kennedy Kreiger Institute"
+    = f.input :contact_email, placeholder: "555-123-4567"
+    = f.input :contact_phone, placeholder: "mary.smith@email.com"
 
   .form-actions
     = f.button :submit
