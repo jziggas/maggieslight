@@ -15,6 +15,12 @@ class Ability
          can :update, CareReceiverProfile do |p|
             p.try(:user) == user
          end
+         can :destroy, CareProviderProfile do |p|
+            p.try(:user) == user
+         end
+         can :destroy, CareReceiverProfile do |p|
+            p.try(:user) == user
+         end
          can :update, User do |p|
             p.try(:user) == user
          end

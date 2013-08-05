@@ -7,9 +7,12 @@
       %table
         %tr
           %td
+            %h4= "#{profile.class.to_s.underscore.titleize}"
+        %tr
+          %td
             %h5= "#{profile.name} and lives in #{profile.location}."
           %td= image_tag profile.profile_picture.url(:thumb), class: "img-circle"
-      = link_to "Edit", "#", class: "btn"
-      = link_to "Show", "#", class: "btn"
-      = link_to "Delete", "#", class: "btn btn-danger"
-  =# will_paginate @profiles
+      = link_to "Show", "/#{profile.class.to_s.underscore + 's'}/#{profile.id}", class: "btn"
+      = link_to "Edit", "/#{profile.class.to_s.underscore + 's'}/#{profile.id}/edit", class: "btn"
+      = link_to "Delete", "/#{profile.class.to_s.underscore + 's'}/#{profile.id}", class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
+  =will_paginate @profiles
