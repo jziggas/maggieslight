@@ -84,3 +84,27 @@ h2 {
     color: white;
     text-shadow: 0 0px 0 #ffffff;
 }
+
+.navbar .nav > li > a:hover {
+    color: #855464;
+    text-shadow: 0 0px 0 #8077B7;
+}
+
+.profiles {
+  /* max-width: parent; */
+}
+
+hr {
+  background-color: #4B466B;
+  border-bottom-color: #4B466B;
+  border-top-color: #4B466B;
+  margin: 5px 0px 15px 0px;
+}
+
+#profile_search {
+  padding-top: 10px;
+}
+input#search {
+  max-width: 198px;
+  padding: 8px 0 0 0;
+}

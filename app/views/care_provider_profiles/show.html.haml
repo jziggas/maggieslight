@@ -1,30 +1,33 @@
 %p#notice= notice
-%p= image_tag @care_provider_profile.profile_picture.url(:large)
-%p
-  %b Name:
-  = @care_provider_profile.name
-%p
-  %b Location:
-  = @care_provider_profile.location
-%p
-  %b Field of study:
-  = @care_provider_profile.field_of_study
-%p
-  %b School:
-  = @care_provider_profile.school
-%p
-  %b Skills:
-  = @care_provider_profile.skills
-%p
-  %b Misc:
-  = @care_provider_profile.misc
-%p
-  %b Contact email:
-  = @care_provider_profile.contact_email
-%p
-  %b Contact phone:
-  = @care_provider_profile.contact_phone
+= render "sidebar"
+.span8
+  .well
+    %p= image_tag @care_provider_profile.profile_picture.url(:large)
+    %p
+      %b Name:
+      = @care_provider_profile.name
+    %p
+      %b Location:
+      = @care_provider_profile.location
+    %p
+      %b Field of study:
+      = @care_provider_profile.field_of_study
+    %p
+      %b School:
+      = @care_provider_profile.school
+    %p
+      %b Skills:
+      = @care_provider_profile.skills
+    %p
+      %b Misc:
+      = @care_provider_profile.misc
+    %p
+      %b Contact email:
+      = @care_provider_profile.contact_email
+    %p
+      %b Contact phone:
+      = @care_provider_profile.contact_phone
 
-- if can? :update, @care_provider_profile
-  = link_to 'Edit | ', edit_care_provider_profile_path(@care_provider_profile)
-= link_to 'Back', care_provider_profiles_path
+    - if can? :update, @care_provider_profile
+      = link_to 'Edit', edit_care_provider_profile_path(@care_provider_profile), class: "btn"
+    = link_to 'Back', care_provider_profiles_path, class: "btn"

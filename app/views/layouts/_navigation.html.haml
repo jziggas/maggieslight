@@ -1,7 +1,7 @@
 .navbar
   %nav.navbar-inner
     .container
-      = link_to "Community Works", root_path, :class => 'brand'
+      = link_to "Community Works Directory", root_path, :class => 'brand'
       %ul.nav.pull-right
         - if user_signed_in?
           %li
@@ -13,6 +13,7 @@
               %ul.dropdown-menu
                 %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path
                 %li= link_to "Create a New Care Provider Profile", new_care_provider_profile_path
+                %li= link_to "View Your Profiles", profiles_path
                 %li= link_to "Edit Account", edit_user_registration_path
             - if current_user.has_role? :admin
               %li= link_to 'Admin', users_path

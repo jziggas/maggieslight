@@ -1,23 +1,22 @@
-.span8
-  = simple_form_for @care_receiver_profile, :html => {:multipart => true } do |f|
-    = f.error_notification
+= simple_form_for @care_receiver_profile, :html => {:multipart => true } do |f|
+  = f.error_notification
 
-    .form-inputs
-      = f.file_field :profile_picture
-      = f.input :name, placeholder: "Maggie Breschi"
-      = f.input :birthdate, start_year: 1915, end_year: Time.now.year
-      = f.input :gender, collection: ["Male", "Female"], include_blank: false
-      = f.input :disabilities, as: :text, placeholder: "Cerebral Palsy, Cognitive Delay, G-Tube Fed, Seizures (1 or 2 per yr.) Non-verbal, but uses signs, gestures and the Dynavox / iPad (augmentative communication device) to communicate."
-      = f.input :hobbies, label: "Hobbies, Likes, Fun", as: :text, placeholder: "Hanging out with friends, arts & crafts, visiting the horse farm, reading, going to the mall, camp, parties, listening to music."
-      = f.input :services_needed, as: :text
-      = f.input :misc, label: "Miscellaneous", as: :text
-      = f.input :hours_needed, placeholder: "2 to 3 students to work 6 to 10 hrs per week."
-      = f.input :days_needed, placeholder: "Various shifts every day of the week."
-      = f.input :location, placeholder: "Baltimore"
-      = f.input :transportation, placeholder: "Yes"
-      = f.input :contact_name
-      = f.input :contact_email, as: :email, placeholder: "maggiebear@email.com"
-      = f.input :contact_phone, as: :tel, placeholder: "555-123-4567"
+  .form-inputs
+    = f.file_field :profile_picture
+    = f.input :name, placeholder: "Maggie Breschi"
+    = f.input :birthdate, start_year: 1915, end_year: Time.now.year
+    = f.input :gender, collection: ["Male", "Female"], include_blank: false
+    = f.input :disabilities, as: :text, placeholder: "Cerebral Palsy, Cognitive Delay, G-Tube Fed, Seizures (1 or 2 per yr.) Non-verbal, but uses signs, gestures and the Dynavox / iPad (augmentative communication device) to communicate."
+    = f.input :hobbies, label: "Hobbies, Likes, Fun", as: :text, placeholder: "Hanging out with friends, arts & crafts, visiting the horse farm, reading, going to the mall, camp, parties, listening to music."
+    = f.input :services_needed, as: :text
+    = f.input :misc, label: "Miscellaneous", as: :text
+    = f.input :hours_needed, placeholder: "2 to 3 students to work 6 to 10 hrs per week."
+    = f.input :days_needed, placeholder: "Various shifts every day of the week."
+    = f.input :location, placeholder: "Baltimore"
+    = f.input :transportation, placeholder: "Yes"
+    = f.input :contact_name
+    = f.input :contact_email, as: :email, placeholder: "maggiebear@email.com"
+    = f.input :contact_phone, as: :tel, placeholder: "555-123-4567"
 
-    .form-actions
-      = f.button :submit
+  .form-actions
+    = f.button :submit

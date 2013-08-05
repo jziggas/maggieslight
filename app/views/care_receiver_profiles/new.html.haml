@@ -1,5 +1,8 @@
-%h1 New care_receiver_profile
+= render "sidebar"
+.span8
+  %h1 New Profile for Someone in Need of Care
+  %hr
+  .well
+    = render 'form'
 
-= render 'form'
-
-= link_to 'Back', care_receiver_profiles_path
+    = link_to 'Back', care_receiver_profiles_path, class: "btn"

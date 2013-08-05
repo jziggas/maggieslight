@@ -21,6 +21,7 @@
           = link_to "Age", root_path(params.merge(sort: "birthday"))
         %li
           = link_to "Location", root_path(params.merge(sort: "location"))
+  = render "search"
 
 -#
         %li

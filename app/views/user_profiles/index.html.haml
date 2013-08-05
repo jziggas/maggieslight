@@ -1,0 +1,15 @@
+.span8
+  %h1 Your Profiles
+  %hr
+  = will_paginate @profiles
+  - @profiles.each do |profile|
+    .well
+      %table
+        %tr
+          %td
+            %h5= "#{profile.name} and lives in #{profile.location}."
+          %td= image_tag profile.profile_picture.url(:thumb), class: "img-circle"
+      = link_to "Edit", "#", class: "btn"
+      = link_to "Show", "#", class: "btn"
+      = link_to "Delete", "#", class: "btn btn-danger"
+  =# will_paginate @profiles

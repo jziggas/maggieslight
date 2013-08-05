@@ -1,7 +1,9 @@
-%h1 Editing care_provider_profile
+= render "sidebar"
+.span8
+  %h1= "Edit the profile of #{@care_provider_profile.name}"
+  %hr
+  .well
+    = render 'form'
 
-= render 'form'
-
-= link_to 'Show', @care_provider_profile
-\|
-= link_to 'Back', care_provider_profiles_path
+    = link_to 'Show', @care_provider_profile, class: "btn"
+    = link_to 'Back', care_provider_profiles_path, class: "btn"
