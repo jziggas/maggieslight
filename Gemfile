@@ -19,7 +19,7 @@ gem 'sorted', '~> 0.4.3'
 gem 'will_paginate', '~> 3.0'
 gem 'rmagick'
 gem 'aws-sdk'
-# gem 'rails_admin' # check for rails 4 compatibility
+gem 'rails_admin' # check for rails 4 compatibility
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

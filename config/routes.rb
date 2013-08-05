@@ -1,4 +1,5 @@
 Maggieslight::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :care_provider_profiles
 
   resources :care_receiver_profiles
