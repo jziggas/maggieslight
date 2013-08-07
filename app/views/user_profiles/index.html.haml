@@ -7,10 +7,10 @@
       %table
         %tr
           %td
-            %h4=
+            %h4
         %tr
           %td
-            %h5= "#{profile.name} lives in #{profile.city}."
+            %h5= "#{profile.name} lives in #{profile.city}"
           %td= image_tag profile.profile_picture.url(:thumb), class: "img-circle"
       = link_to "Show", "/#{profile.class.to_s.underscore + 's'}/#{profile.id}", class: "btn"
       = link_to "Edit", "/#{profile.class.to_s.underscore + 's'}/#{profile.id}/edit", class: "btn"
