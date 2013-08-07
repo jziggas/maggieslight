@@ -280,6 +280,7 @@ DEPENDENCIES
   rmagick
   rolify
   rspec-rails
+  safe_yaml
   sass-rails (~> 4.0.0)
   simple_form (>= 3.0.0.rc)
   sorted (~> 0.4.3)
