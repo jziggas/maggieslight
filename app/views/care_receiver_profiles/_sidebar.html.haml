@@ -1,7 +1,18 @@
-/.container
-/.row
 .span3#sidebar
   %ul.nav.nav-list.well
+    %li
+      %label.tree-toggle.nav-header Bulletin Board
+      %ul.nav.nav-list.tree
+        - if user_signed_in?
+          %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path
+          %li= link_to "Create a New Care Provider Profile", new_care_provider_profile_path
+          %li= link_to "View Your Profiles", profiles_path
+          %li= link_to "Edit Account", edit_user_registration_path
+          %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
+        - else
+          %li= link_to "Login", new_user_session_path
+          %li= link_to "Register", new_user_registration_path
+    %li.divider
     %li
       %label.tree-toggle.nav-header Resources
       %ul.nav.nav-list.tree
@@ -22,33 +33,3 @@
         %li
           = link_to "Location", root_path(params.merge(sort: "location"))
   = render "search"
-
--#
-        %li
-          %label.tree-toggle.nav-header Media Queries
-          %ul.nav.nav-list.tree
-            %li
-              %a{:href => "#"} Text
-            %li
-              %a{:href => "#"} Images
-            %li
-              %label.tree-toggle.nav-header Mobile Devices
-              %ul.nav.nav-list.tree
-                %li
-                  %a{:href => "#"} iPhone
-                %li
-                  %a{:href => "#"} Samsung
-        %li
-          %label.tree-toggle.nav-header Coding
-          %ul.nav.nav-list.tree
-            %li
-              %a{:href => "#"} JavaScript
-            %li
-              %a{:href => "#"} jQuery
-            %li
-              %label.tree-toggle.nav-header HTML DOM
-              %ul.nav.nav-list.tree
-                %li
-                  %a{:href => "#"} DOM Elements
-                %li
-                  %a{:href => "#"} Recursive

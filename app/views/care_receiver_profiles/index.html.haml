@@ -8,9 +8,11 @@
       .container-fluid
         .row-fluid
           .span8#hideOverflow
-            %h5= link_to "#{profile.name} is #{profile.age} old and lives in #{profile.city}.", profile
+            %h4= "#{profile.name} is #{profile.age} old and lives in #{profile.city}"
             %p= "\nLikes: #{profile.hobbies}"
             %p= "\nDisabilities and Diagnoses: #{profile.disabilities}"
           .span4
             = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
+            #summary-button
+              = link_to "View Full Profile", profile, class: "btn btn-info"
   = will_paginate @profiles

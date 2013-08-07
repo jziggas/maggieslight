@@ -20,16 +20,4 @@
           = link_to "Those In Need", care_receiver_profiles_path
         %li
           = link_to "Those Who Care", care_provider_profiles_path
-    %li.divider
-    %li
-      %label.tree-toggle.nav-header Sort By
-      %ul.nav.nav-list.tree
-        %li
-          = link_to "Recent", root_path(params.merge(sort: "created_at"))
-        %li
-          = link_to "Name", root_path(params.merge(sort: "name"))
-        %li
-          = link_to "Age", root_path(params.merge(sort: "birthday"))
-        %li
-          = link_to "Location", root_path(params.merge(sort: "location"))
   = render "search"
