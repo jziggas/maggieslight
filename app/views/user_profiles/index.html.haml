@@ -4,14 +4,19 @@
   = will_paginate @profiles
   - @profiles.each do |profile|
     .well
-      %table
-        %tr
-          %td
-            %h4
-        %tr
-          %td
-            %h5= "#{profile.name} lives in #{profile.city}"
-          %td= image_tag profile.profile_picture.url(:thumb), class: "img-circle"
+      .container-fluid
+        .row-fluid
+          .span8#hideOverflow
+            %h5= profile.class.to_s.underscore.titleize
+            %p= "#{profile.name} from #{profile.city}"
+            %p
+              Contact Email:
+              %a{href: "mailto:#{profile.contact_email}"}= profile.contact_email
+            %p
+              Contact Phone:
+              %a{href: "tel:#{profile.contact_phone}"}= profile.contact_phone.phony_formatted(:spaces => '-')
+          .span4
+            = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
       = link_to "Show", "/#{profile.class.to_s.underscore + 's'}/#{profile.id}", class: "btn"
       = link_to "Edit", "/#{profile.class.to_s.underscore + 's'}/#{profile.id}/edit", class: "btn"
       = link_to "Delete", "/#{profile.class.to_s.underscore + 's'}/#{profile.id}", class: "btn btn-danger", method: :delete, confirm: "Are you sure?"

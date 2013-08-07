@@ -109,4 +109,13 @@ input#search {
   padding: 8px 0 0 0;
 }
 
+#hideOverflow {
+  overflow: hidden;
+
+  word-wrap: break-word;
+  -ms-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
 /********************************/
+
