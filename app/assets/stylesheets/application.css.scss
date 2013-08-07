@@ -35,7 +35,7 @@
 }
 
 h1 {
-  color: #4B466B;
+  color: green; /* #4B466B; */
   font: normal 2.5em Arial, Helvetica, sans-serif;
   letter-spacing: -1px;
 }
@@ -44,6 +44,7 @@ h2 {
   font: normal 2.5em Arial, Helvetica, sans-serif;
   letter-spacing: -1px;
 }
+
 .content p {
   color: #4B466B;
   display: block;
@@ -225,3 +226,17 @@ img {margin: 10px 12px 2px 0;}
 a {font-weight: bold; text-decoration: none;}
 #topbar a {position: relative; top: 2px; text-decoration: underline;}
 #footer a {font-weight: normal;text-decoration: underline;}
+
+h1, h2, h3, h4, h5, h6 {
+  color: black;
+}
+
+footer {
+  background-color: #4B466B;
+  color: white;
+  p {
+    margin: 13px 0 0 5px;
+    font-family: Verdana;
+    font-size: 12px;
+  }
+}
