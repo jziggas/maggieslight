@@ -4,13 +4,16 @@
   .form-inputs
     = f.file_field :profile_picture
     = f.input :name, placeholder: "Mary Smith"
-    = f.input :location, placeholder: "Towson"
+    = f.input :gender, collection: %w[Male Female]
+    = f.input :city, placeholder: "Towson"
+    = f.input :county, collection: BALTIMORE_COUNTIES
     = f.input :field_of_study, placeholder: "Social Sciences"
     = f.input :school, placeholder: "University of Maryland"
-    = f.input :skills, placeholder: ""
+    = f.input :skills, label: "Description of expertise or skills"
+    = f.input :transportation, collection: ["Yes", "No"], label: "Do you have transportation?"
     = f.input :misc, placeholder: "Fellow at the Kennedy Kreiger Institute"
-    = f.input :contact_email, placeholder: "555-123-4567"
-    = f.input :contact_phone, placeholder: "mary.smith@email.com"
+    = f.input :contact_email, placeholder: "example@email.com"
+    = f.input :contact_phone, placeholder: "555-123-4567"
 
   .form-actions
     = f.button :submit

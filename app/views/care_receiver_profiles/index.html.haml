@@ -8,8 +8,8 @@
       %table
         %tr
           %td
-            %h5= link_to "#{profile.name} is #{profile.age} old and lives in #{profile.location}.", profile
-            %p= "\nDisabilities: #{profile.disabilities}"
+            %h5= link_to "#{profile.name} is #{profile.age} old and lives in #{profile.city}.", profile
             %p= "\nLikes: #{profile.hobbies}"
+            %p= "\nDisabilities and Diagnoses: #{profile.disabilities}"
           %td= image_tag profile.profile_picture.url(:thumb), class: "img-circle"
   = will_paginate @profiles

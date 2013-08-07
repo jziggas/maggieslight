@@ -2,19 +2,30 @@
 = render "sidebar"
 .span8
   .well
+    %h1= "Student Caregiver Profile for #{@care_provider_profile.name}"
+    %hr
     %p= image_tag @care_provider_profile.profile_picture.url(:large)
     %p
       %b Name:
       = @care_provider_profile.name
     %p
-      %b Location:
-      = @care_provider_profile.location
+      %b Gender:
+      = @care_provider_profile.gender
+    %p
+      %b City:
+      = @care_provider_profile.city
+    %p
+      %b County:
+      = @care_provider_profile.county
     %p
       %b Field of study:
       = @care_provider_profile.field_of_study
     %p
       %b School:
       = @care_provider_profile.school
+    %p
+      %b Has Transportation:
+      = @care_provider_profile.transportation
     %p
       %b Skills:
       = @care_provider_profile.skills
@@ -26,7 +37,7 @@
       = @care_provider_profile.contact_email
     %p
       %b Contact phone:
-      = @care_provider_profile.contact_phone
+      %a{href: "tel:#{@care_provider_profile.contact_phone}"}= @care_provider_profile.contact_phone.phony_formatted(:spaces => '-')
 
     - if can? :update, @care_provider_profile
       = link_to 'Edit', edit_care_provider_profile_path(@care_provider_profile), class: "btn"

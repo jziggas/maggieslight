@@ -8,7 +8,7 @@
       %table
         %tr
           %td
-            %h5= link_to "#{profile.name} studies #{profile.field_of_study} and lives in #{profile.location}.", care_provider_profile_path(profile)
+            %h5= link_to "#{profile.name} studies #{profile.field_of_study} and lives in #{profile.city}.", care_provider_profile_path(profile)
             %p= "\nSchool: #{profile.school}"
             %p= "\nSkills: #{profile.skills}"
           %td= image_tag profile.profile_picture.url(:thumb), class: "img-circle"

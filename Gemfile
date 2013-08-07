@@ -20,6 +20,8 @@ gem 'will_paginate', '~> 3.0'
 gem 'rmagick'
 gem 'aws-sdk'
 gem 'rails_admin' # check for rails 4 compatibility
+gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_email_format_of.git'
+gem 'phony_rails'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130805040507) do
+ActiveRecord::Schema.define(version: 20130806204639) do
 
   create_table "care_provider_profiles", force: true do |t|
     t.string   "name"
-    t.string   "location"
+    t.string   "city"
     t.string   "field_of_study"
     t.string   "school"
     t.string   "skills"
@@ -29,6 +29,9 @@ ActiveRecord::Schema.define(version: 20130805040507) do
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
+    t.string   "county"
+    t.string   "transportation"
+    t.string   "gender"
   end
 
   create_table "care_receiver_profiles", force: true do |t|
@@ -41,7 +44,7 @@ ActiveRecord::Schema.define(version: 20130805040507) do
     t.string   "misc"
     t.string   "hours_needed"
     t.string   "days_needed"
-    t.string   "location"
+    t.string   "city"
     t.string   "transportation"
     t.string   "contact_name"
     t.string   "contact_email"
@@ -53,6 +56,7 @@ ActiveRecord::Schema.define(version: 20130805040507) do
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
+    t.string   "county"
   end
 
   create_table "rails_admin_histories", force: true do |t|
