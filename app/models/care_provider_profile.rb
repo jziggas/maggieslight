@@ -1,3 +1,5 @@
+require 'obscenity/active_model'
+
 class CareProviderProfile < ActiveRecord::Base
   belongs_to :user
 
@@ -12,9 +14,21 @@ class CareProviderProfile < ActiveRecord::Base
   validates :contact_email, :email_format => {:message => 'is not looking good'}
   validates :county, inclusion: { in: BALTIMORE_COUNTIES, message: "%{value} is not a valid county"}
   validates :gender, inclusion: { in: %w(Male Female), message: "%{value} is an invalid gender"}
-  validates :transportation, inclusion: { in: %w(Yes No), message: "%{value} is an invalid gender"}
+  validates :transportation, inclusion: { in: %w(Yes No), message: "%{value} is an invalid option"}
   validates :name, :city, :county, :field_of_study, :school, :contact_email, :contact_phone, :gender, :transportation, presence: true
   validates :contact_phone, phony_plausible: true
+  validates :name, :city, :field_of_study, :school, :skills, :misc, :contact_email, obscenity: {message: "One of your words has been marked as profane"}
+
+  validates :name, length: { in: 3..35 }
+  validates :city, length: { in: 3..30 }
+  validates :county, length: { in: 3..30 }
+  validates :field_of_study, length: { in: 3..30 }
+  validates :school, length: { in: 3..30 }
+  validates :city, length: { in: 3..30 }
+  validates :skills, length: { in: 3..250 }, allow_blank: true
+  validates :misc, length: { in: 3..250 }, allow_blank: true
+  validates :contact_email, length: { in: 3..50 }
+
 
   self.per_page = 3
 

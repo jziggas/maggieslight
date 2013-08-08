@@ -1,3 +1,5 @@
+require 'obscenity/active_model'
+
 class CareReceiverProfile < ActiveRecord::Base
   #attr_accessible :name, :birthday, :gender, :disabilities, :hobbies,
   #                :services_needed, :misc, :hours_needed, :days_needed,
@@ -20,6 +22,20 @@ class CareReceiverProfile < ActiveRecord::Base
   validates :transportation, inclusion: { in: %w(Yes No), message: "%{value} is an invalid option"}
   validates :name, :birthdate, :gender, :disabilities, :hobbies, :services_needed, :days_needed, :city, :county, :transportation, :contact_name, :contact_email, :contact_phone, presence: true
   validates :contact_phone, phony_plausible: true
+
+  validates :name, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :city, :contact_name, :contact_email, obscenity: {message: "One of your words has been marked as profane"}
+
+  validates :name, length: { in: 3..35 }
+  validates :disabilities, length: { in: 3..250 }
+  validates :hobbies, length: { in: 3..250 }
+  validates :services_needed, length: { in: 3..250 }
+  validates :misc, length: { in: 3..250 }
+  validates :hours_needed, length: { in: 3..250 }, allow_blank: true
+  validates :days_needed, length: { in: 3..250 }
+  validates :city, length: { in: 3..20 }
+  validates :county, length: { in: 3..30 }
+  validates :contact_name, length: { in: 3..35 }
+  validates :contact_email, length: { in: 3..50 }
 
   self.per_page = 3
 

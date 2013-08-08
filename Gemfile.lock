@@ -14,6 +14,12 @@ GIT
       cocaine (~> 0.5.0)
       mime-types
 
+GIT
+  remote: https://github.com/jziggas/obscenity.git
+  revision: 894ff44ed9838d7c86168d0c2640266c5b77bed2
+  specs:
+    obscenity (1.0.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -270,6 +276,7 @@ DEPENDENCIES
   html2haml
   jbuilder (~> 1.2)
   jquery-rails
+  obscenity!
   paperclip!
   pg
   phony_rails
