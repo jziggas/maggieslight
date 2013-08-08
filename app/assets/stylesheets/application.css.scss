@@ -108,7 +108,7 @@ h2 {
 }
 
 .navbar .nav > li > a:hover {
-    color: #855464;
+    color: #EB008B;
     text-shadow: 0 0px 0 #8077B7;
 }
 
@@ -144,20 +144,10 @@ input#search {
   text-overflow: ellipsis;
 }
 
-a.btn.btn-info {
-  color: white;
-}
-
-a.btn {
-  color: black;
-}
-#summary-button {
-  padding: 20px  0 0 10px;
-}
 /********************************/
 /* links */
 a {color: #FFF;}
-a:hover {color: #8077B7;}
+.nav a:hover {color: #8077B7;}
 #topbar a, #footer a, #nav a{color: #fff;}
 #nav a:hover{color: #fff;}
 
@@ -240,5 +230,31 @@ footer {
     margin: 13px 0 0 5px;
     font-family: Verdana;
     font-size: 12px;
+  }
+}
+
+a.btn.btn-danger {
+  color: white;
+}
+
+a.btn {
+  color: black;
+}
+
+.content a.btn {
+  color: black;
+}
+
+.content a.btn.btn-info {
+  color: white;
+}
+#summary-button {
+  padding: 20px  0 0 10px;
+}
+
+li.dropdown:hover {
+  background-color: #8077B7;
+  a.dropdown-toggle {
+    color: white;
   }
 }
