@@ -2,15 +2,19 @@
 .span8.profiles
   %h1 People in Need of Care
   %hr
+  %p.lead
+    = "Searching for '#{params[:search]}'. " if params[:search]
+    = "Sorted by '#{humanize_sort_type(params[:sort])}' in #{humanize_sort_direction(params[:direction])} order." if params[:sort]
   = will_paginate @profiles
+  %h6.lead= "Nothing Found" if @profiles[0].nil?
   - @profiles.each do |profile|
     .well
       .container-fluid
         .row-fluid
           .span8#hideOverflow
             %h6.lead= "#{profile.name} is #{profile.age} old and lives in #{profile.city}"
-            %p= "\nLikes: #{profile.hobbies}"
-            %p= "\nDisabilities and Diagnoses: #{profile.disabilities}"
+            %p= "Likes: #{profile.hobbies}"
+            %p= "Disabilities and Diagnoses: #{profile.disabilities}"
           .span4
             = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
             #summary-button

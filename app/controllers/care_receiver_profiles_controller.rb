@@ -7,7 +7,6 @@ class CareReceiverProfilesController < ApplicationController
   def index
     @page = params[:page] || 1
     @profiles = CareReceiverProfile.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
-    @prof = CareReceiverProfile.search(params[:search]).class
   end
 
   # GET /care_receiver_profiles/1

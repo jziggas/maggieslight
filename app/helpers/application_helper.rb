@@ -11,6 +11,19 @@ module ApplicationHelper
     HTML
     html.html_safe
   end
+
+  def humanize_sort_direction(direction)
+    direction == 'desc' ? 'descending' : 'ascending'
+  end
+
+  def humanize_sort_type(sort)
+    if sort != 'created_at'
+      sort.humanize
+    else
+      'Recent'
+    end
+  end
+
 =begin
 
 http://railscasts.com/episodes/228-sortable-table-columns

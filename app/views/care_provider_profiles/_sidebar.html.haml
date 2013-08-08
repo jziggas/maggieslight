@@ -1,7 +1,7 @@
 .span3#sidebar
   %ul.nav.nav-list.well
     %li
-      %label.tree-toggle.nav-header Bulletin Board
+      %label.tree-toggle.nav-header Your Account
       %ul.nav.nav-list.tree
         - if user_signed_in?
           %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path
@@ -25,11 +25,11 @@
       %label.tree-toggle.nav-header Sort By
       %ul.nav.nav-list.tree
         %li
-          = link_to "Recent", root_path(params.merge(sort: "created_at"))
+          = link_to "Recent", care_provider_profiles_path(params.merge(sort: "created_at"))
         %li
-          = link_to "Name", root_path(params.merge(sort: "name"))
+          = link_to "Name", care_provider_profiles_path(params.merge(sort: "name"))
         %li
-          = link_to "Age", root_path(params.merge(sort: "birthday"))
+          = link_to "Age", care_provider_profiles_path(params.merge(sort: "birthday"))
         %li
-          = link_to "Location", root_path(params.merge(sort: "location"))
+          = link_to "Location", care_provider_profiles_path(params.merge(sort: "location"))
   = render "search"

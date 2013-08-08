@@ -47,7 +47,16 @@ class CareReceiverProfile < ActiveRecord::Base
       years.to_s + " years"
     else
       months = now.month - dob.month
-      months > 1 ? months.to_s + " months" : months.to_s + " month"
+      if months > 0
+        months > 1 ? months.to_s + " months" : months.to_s + " month"
+      else
+        days = now.day - dob.day
+        if days > 0
+          days > 1 ? days.to_s + " days" : days.to_s + " day"
+        else
+          "1 day"
+        end
+      end
     end
   end
 
