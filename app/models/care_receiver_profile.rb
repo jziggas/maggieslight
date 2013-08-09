@@ -7,6 +7,8 @@ class CareReceiverProfile < ActiveRecord::Base
   #                :contact_phone
 
   belongs_to :user
+  before_save { self.name.titleize! }
+  before_save { self.city.titleize! }
 
   # Normalizes the attribute itself before validation
   phony_normalize :contact_phone, :default_country_code => 'US'
@@ -29,7 +31,7 @@ class CareReceiverProfile < ActiveRecord::Base
   validates :disabilities, length: { in: 3..250 }
   validates :hobbies, length: { in: 3..250 }
   validates :services_needed, length: { in: 3..250 }
-  validates :misc, length: { in: 3..250 }
+  validates :misc, length: { in: 3..250 }, allow_blank: true
   validates :hours_needed, length: { in: 3..250 }, allow_blank: true
   validates :days_needed, length: { in: 3..250 }
   validates :city, length: { in: 3..20 }

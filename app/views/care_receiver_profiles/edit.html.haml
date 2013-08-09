@@ -1,10 +1,10 @@
 = render "sidebar"
 .span8
-  %h1= "Editing the profile of #{@care_receiver_profile.name}"
+  %h1#header= "Editing the profile of #{@care_receiver_profile.name}"
   %hr
   .well
     = render 'form'
 
-    = link_to 'Back', care_receiver_profiles_path, class: "btn"
-    = link_to 'Show', @care_receiver_profile, class: "btn"
-    = link_to "Delete", care_receiver_profile_path(@care_receiver_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
+    = link_to raw("<i class='icon-arrow-left'></i> Back"), care_receiver_profiles_path, class: "btn"
+    = link_to raw("View Profile <i class='icon-user icon-white'></i>"), @care_receiver_profile, class: "btn btn-info"
+    = link_to raw("Delete <i class='icon-trash icon-white'></i>"), care_receiver_profile_path(@care_receiver_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"

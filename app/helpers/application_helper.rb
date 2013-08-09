@@ -17,13 +17,44 @@ module ApplicationHelper
   end
 
   def humanize_sort_type(sort)
-    if sort != 'created_at'
-      sort.humanize
-    else
+    if sort == 'birthdate'
+      'Age'
+    elsif sort == 'created_at'
       'Recent'
+    else
+      sort.humanize
     end
   end
 
+  def flip_direction(direction)
+    if direction.nil? || direction == 'asc'
+      'desc'
+    else
+      'asc'
+    end
+  end
+
+  def direction_icon(text, sort, direction)
+    if text == 'Recent'
+        nav = 'created_at'
+    elsif  text == 'Age'
+      nav = 'birthdate'
+    else
+      nav = text
+    end
+
+    if nav.downcase == sort
+      if direction == 'asc'
+        text + " <i class='icon-arrow-up'></i>"
+      else
+        text + " <i class='icon-arrow-down'></i>"
+      end
+    elsif nav == 'created_at' && !sort
+      "Recent <i class='icon-arrow-up'></i>"
+    else
+      text + ' '
+    end
+  end
 =begin
 
 http://railscasts.com/episodes/228-sortable-table-columns

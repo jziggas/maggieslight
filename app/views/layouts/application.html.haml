@@ -12,10 +12,10 @@
     %body#maggiebeige{:class => "#{controller_name} #{action_name}"}
       = image_tag "maggies_light_logo.png"
       = render 'layouts/navigation'
-      #main{:role => "main"}
-        .content
-          .container-fluid
-          .row-fluid
-            = render 'layouts/messages'
-            = yield
-  = render 'layouts/footer'
+      .content
+        -#       #main{:role => "main"}
+        .container-fluid
+        .row-fluid
+          = render 'layouts/messages'
+          = yield
+= render 'layouts/footer'

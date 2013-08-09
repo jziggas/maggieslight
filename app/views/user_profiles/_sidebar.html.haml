@@ -4,20 +4,20 @@
       %label.tree-toggle.nav-header Your Account
       %ul.nav.nav-list.tree
         - if user_signed_in?
-          %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path
-          %li= link_to "Create a New Care Provider Profile", new_care_provider_profile_path
-          %li= link_to "View Your Profiles", profiles_path
-          %li= link_to "Edit Account", edit_user_registration_path
+          %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path, id: "header"
+          %li= link_to "Create a New Care Provider Profile", new_care_provider_profile_path, id: "header"
+          %li= link_to "View Your Profiles", profiles_path, id: "header"
+          %li= link_to "Edit Account", edit_user_registration_path, id: "header"
           %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
         - else
-          %li= link_to "Login", new_user_session_path
-          %li= link_to "Register", new_user_registration_path
+          %li= link_to "Login", new_user_session_path, id: "header"
+          %li= link_to "Register", new_user_registration_path, id: "header"
     %li.divider
     %li
       %label.tree-toggle.nav-header Resources
       %ul.nav.nav-list.tree
         %li
-          = link_to "Those In Need", care_receiver_profiles_path
+          = link_to "Those In Need", care_receiver_profiles_path, id: "header"
         %li
-          = link_to "Those Who Care", care_provider_profiles_path
+          = link_to "Those Who Care", care_provider_profiles_path, id: "header"
   = render "search"

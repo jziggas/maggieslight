@@ -2,6 +2,8 @@ require 'obscenity/active_model'
 
 class CareProviderProfile < ActiveRecord::Base
   belongs_to :user
+  before_save { self.name.titleize! }
+  before_save { self.city.titleize! }
 
   # Normalizes the attribute itself before validation
   phony_normalize :contact_phone, :default_country_code => 'US'

@@ -1,7 +1,7 @@
 = render "sidebar"
 .span8#hideOverflow
   .well
-    %h1= "Student Caregiver Profile for #{@care_provider_profile.name}"
+    %h1#header= "Student Caregiver Profile for #{@care_provider_profile.name}"
     %hr
     %p= image_tag @care_provider_profile.profile_picture.url(:large)
     %p
@@ -37,7 +37,7 @@
     %p
       %b Contact phone:
       %a{href: "tel:#{@care_provider_profile.contact_phone}"}= @care_provider_profile.contact_phone.phony_formatted(:spaces => '-')
-
+    = link_to raw("<i class='icon-arrow-left'></i> Back"), care_receiver_profiles_path, class: "btn"
     - if can? :update, @care_provider_profile
-      = link_to 'Edit', edit_care_provider_profile_path(@care_provider_profile), class: "btn"
-    = link_to 'Back', care_provider_profiles_path, class: "btn"
+      = link_to raw("Edit <i class='icon-edit'></i>"), edit_care_receiver_profile_path(@care_receiver_profile), class: "btn btn-warning"
+      = link_to raw("Delete <i class='icon-trash icon-white'></i>"), care_receiver_profile_path(@care_receiver_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"

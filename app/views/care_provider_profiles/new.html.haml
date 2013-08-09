@@ -1,7 +1,7 @@
 = render "sidebar"
 .span8
-  %h1 Student Caregiver Profile
+  %h1#header Student Caregiver Profile
   %hr
   .well
     = render 'form'
-    = link_to 'Back', care_provider_profiles_path, class: "btn"
+    = link_to raw("<i class='icon-arrow-left'></i> Back"), care_receiver_profiles_path, class: "btn"
