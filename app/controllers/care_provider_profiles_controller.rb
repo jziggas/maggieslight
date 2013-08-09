@@ -5,6 +5,8 @@ class CareProviderProfilesController < ApplicationController
   # GET /care_provider_profiles
   # GET /care_provider_profiles.json
   def index
+    @sort_column = sort_column
+    @sort_direction = sort_direction
     @page = params[:page] || 1
     @profiles = CareProviderProfile.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
     @prof = CareProviderProfile.search(params[:search]).class

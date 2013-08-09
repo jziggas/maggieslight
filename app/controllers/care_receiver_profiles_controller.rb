@@ -5,8 +5,10 @@ class CareReceiverProfilesController < ApplicationController
   # GET /care_receiver_profiles
   # GET /care_receiver_profiles.json
   def index
+    @sort_column = sort_column
+    @sort_direction = sort_direction
     @page = params[:page] || 1
-    @profiles = CareReceiverProfile.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
+    @profiles = CareReceiverProfile.search(params[:search]).order(@sort_column + " " + @sort_direction).paginate(page: params[:page])
   end
 
   # GET /care_receiver_profiles/1
