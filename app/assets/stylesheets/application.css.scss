@@ -68,8 +68,8 @@ h2 {
   margin-left: 10px;
 }
 
-$iconSpritePath: asset-path("/assets/images/glyphicons-halflings.png");
-$iconWhiteSpritePath: asset-path("/assets/images/glyphicons-halflings-white.png");
+$iconSpritePath: asset-path("public/assets/glyphicons-halflings.png");
+$iconWhiteSpritePath: asset-path("public/assets/glyphicons-halflings-white.png");
 @import "bootstrap";
 @import "bootstrap-responsive";
 
