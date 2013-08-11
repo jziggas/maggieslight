@@ -14,6 +14,7 @@
             %h6.lead= "#{profile.name} studies #{profile.field_of_study} and lives in #{profile.city}"
             %p= "School: #{profile.school}"
             %p= "Skills and Experience: #{profile.skills}"
+            %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
           .span4
             = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
             #summary-button
