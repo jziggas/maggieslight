@@ -55,6 +55,14 @@ module ApplicationHelper
       text + ' '
     end
   end
+
+  def status_label(status)
+    if status == "Looking For Care" || status == "Looking To Care"
+      "success"
+    else
+      "inverse"
+    end
+  end
 =begin
 
 http://railscasts.com/episodes/228-sortable-table-columns

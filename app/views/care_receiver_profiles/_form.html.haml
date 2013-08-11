@@ -14,10 +14,11 @@
     = f.input :days_needed, placeholder: "Various shifts every day of the week."
     = f.input :city, placeholder: "Baltimore"
     = f.input :county, collection: BALTIMORE_COUNTIES # Found in initializers/constants.rb
-    = f.input :transportation, collection: ["Yes", "No"], label: "Do you have transportation?"
+    = f.input :transportation, collection: %w(Yes No), label: "Do you have transportation?"
     = f.input :contact_name
     = f.input :contact_email, as: :email, placeholder: "example@email.com"
     = f.input :contact_phone, as: :tel, placeholder: "555-123-4567"
+    = f.input :status, collection: ["Looking For Care", "Currently Cared For"], include_blank: false
 
   .form-actions
     = f.button :submit, class: "btn btn-primary"

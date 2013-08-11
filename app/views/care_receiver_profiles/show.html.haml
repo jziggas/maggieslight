@@ -5,6 +5,8 @@
     %hr
     %p= image_tag @care_receiver_profile.profile_picture.url(:thumb)
     %p
+      %b Status:
+      %span.label{:class => "label-#{status_label(@care_receiver_profile.status)}"}= @care_receiver_profile.status
     %p
       %b Birthday:
       = @care_receiver_profile.birthdate.strftime('%B %-d, %Y')

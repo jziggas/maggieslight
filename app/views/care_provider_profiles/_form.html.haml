@@ -14,6 +14,7 @@
     = f.input :misc, placeholder: "Fellow at the Kennedy Kreiger Institute"
     = f.input :contact_email, placeholder: "example@email.com"
     = f.input :contact_phone, placeholder: "555-123-4567"
+    = f.input :status, collection: ["Looking To Care", "Currently Busy"], include_blank: false
 
   .form-actions
     = f.button :submit, class: "btn btn-primary"

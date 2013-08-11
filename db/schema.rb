@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808214147) do
+ActiveRecord::Schema.define(version: 20130811032547) do
 
   create_table "care_provider_profiles", force: true do |t|
     t.string   "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20130808214147) do
     t.string   "county"
     t.string   "transportation"
     t.string   "gender"
+    t.string   "status"
   end
 
   add_index "care_provider_profiles", ["user_id"], name: "index_care_provider_profiles_on_user_id"
@@ -59,9 +60,23 @@ ActiveRecord::Schema.define(version: 20130808214147) do
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
     t.string   "county"
+    t.string   "status"
   end
 
   add_index "care_receiver_profiles", ["user_id"], name: "index_care_receiver_profiles_on_user_id"
+
+  create_table "flaggings", force: true do |t|
+    t.string   "flaggable_type"
+    t.integer  "flaggable_id"
+    t.string   "flagger_type"
+    t.integer  "flagger_id"
+    t.text     "reason"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "flaggings", ["flaggable_type", "flaggable_id"], name: "index_flaggings_on_flaggable_type_and_flaggable_id"
+  add_index "flaggings", ["flagger_type", "flagger_id", "flaggable_type", "flaggable_id"], name: "access_flaggings"
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"

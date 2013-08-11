@@ -19,9 +19,11 @@ class CareProviderProfile < ActiveRecord::Base
   validates :county, inclusion: { in: BALTIMORE_COUNTIES, message: "%{value} is not a valid county"}
   validates :gender, inclusion: { in: %w(Male Female), message: "%{value} is an invalid gender"}
   validates :transportation, inclusion: { in: %w(Yes No), message: "%{value} is an invalid option"}
-  validates :name, :city, :county, :field_of_study, :school, :contact_email, :contact_phone, :gender, :transportation, presence: true
+  validates :name, :city, :county, :field_of_study, :school, :contact_email, :contact_phone, :gender, :transportation, :status,  presence: true
   validates :contact_phone, phony_plausible: true
-  validates :name, :city, :field_of_study, :school, :skills, :misc, :contact_email, obscenity: {message: "One of your words has been marked as profane"}
+  validates :status, inclusion: { in: ["Looking To Care", "Currently Busy"]}
+
+  validates :name, :city, :field_of_study, :school, :skills, :misc, :contact_email, obscenity: {message: "One of your words appears profane to our system. Please revise."}
 
   validates :name, length: { in: 3..35 }
   validates :city, length: { in: 3..30 }

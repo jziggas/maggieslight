@@ -77,7 +77,7 @@ class CareProviderProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def care_provider_profile_params
-      params.require(:care_provider_profile).permit(:name, :city, :county, :gender, :transportation, :field_of_study, :school, :skills, :misc, :contact_email, :contact_phone, :profile_picture)
+      params.require(:care_provider_profile).permit(:name, :city, :county, :gender, :transportation, :field_of_study, :school, :skills, :misc, :contact_email, :contact_phone, :profile_picture, :status)
     end
 
   private
