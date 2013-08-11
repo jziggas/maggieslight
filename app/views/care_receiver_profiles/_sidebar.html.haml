@@ -32,4 +32,6 @@
           = link_to raw(direction_icon("Age", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "birthdate", direction: flip_direction(params[:direction]))), id: "header"
         %li
           = link_to raw(direction_icon("City", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "city", direction: flip_direction(params[:direction]))), id: "header"
+        %li
+          = link_to raw(direction_icon("County", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "county", direction: flip_direction(params[:direction]))), id: "header"
   = render "search"
