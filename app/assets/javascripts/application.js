@@ -16,6 +16,12 @@
 //= require turbolinks
 //= require_tree .
 
-$('.tree-toggle').click(function () {
-  $(this).parent().children('ul.tree').toggle(200);
+//$(".tree-toggle").click(function() {
+//  $(this).parent().children("ul.tree").toggle(200);
+//});
+
+$(document).ready(function() {
+  $(".tree-toggle").on('click', function() {
+    $(this).parent().children("ul.tree").toggle(200);
+  });
 });

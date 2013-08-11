@@ -1,6 +1,6 @@
 = render "sidebar"
 .span8
-  %h1#header Care Providers
+  %h1#header Caregivers
   %hr
   %p.lead
     = "Searching for '#{params[:search]}'. " if params[:search]
@@ -15,6 +15,7 @@
             %p= "School: #{profile.school}"
             %p= "Skills and Experience: #{profile.skills}"
             %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
+            %p
           .span4
             = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
             #summary-button
