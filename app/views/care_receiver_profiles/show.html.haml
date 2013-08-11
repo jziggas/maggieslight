@@ -10,6 +10,7 @@
     %p
       %b Birthday:
       = @care_receiver_profile.birthdate.strftime('%B %-d, %Y')
+      = "(Age: #{@care_receiver_profile.age})"
     %p
       %b Gender:
       = @care_receiver_profile.gender
