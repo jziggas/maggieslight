@@ -7,8 +7,10 @@ class CareReceiverProfile < ActiveRecord::Base
   #                :contact_phone
 
   belongs_to :user
-  before_save { self.name.titleize! }
-  before_save { self.city.titleize! }
+  before_save { self.name = self.name.titleize }
+  before_save { self.city = self.city.titleize }
+  before_save { self.contact_name = self.contact_name.titleize }
+
 
   # Normalizes the attribute itself before validation
   phony_normalize :contact_phone, :default_country_code => 'US'

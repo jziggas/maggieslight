@@ -2,8 +2,10 @@ require 'obscenity/active_model'
 
 class CareProviderProfile < ActiveRecord::Base
   belongs_to :user
-  before_save { self.name.titleize! }
-  before_save { self.city.titleize! }
+  before_save { self.name = self.name.titleize }
+  before_save { self.city = self.city.titleize }
+  before_save { self.field_of_study = self.field_of_study.titleize }
+  before_save { self.school = self.school.titleize }
 
   # Normalizes the attribute itself before validation
   phony_normalize :contact_phone, :default_country_code => 'US'
