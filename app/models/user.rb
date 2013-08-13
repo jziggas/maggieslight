@@ -9,5 +9,7 @@ class User < ActiveRecord::Base
   has_many :care_receiver_profiles
   has_many :care_provider_profiles
 
+  make_flagger
+
   self.per_page = 10
 end
