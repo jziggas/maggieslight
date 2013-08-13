@@ -7,6 +7,8 @@ class CareProviderProfile < ActiveRecord::Base
   before_save { self.field_of_study = self.field_of_study.titleize }
   before_save { self.school = self.school.titleize }
 
+  make_flaggable
+
   # Normalizes the attribute itself before validation
   phony_normalize :contact_phone, :default_country_code => 'US'
 

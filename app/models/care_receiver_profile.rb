@@ -6,6 +6,8 @@ class CareReceiverProfile < ActiveRecord::Base
   #                :location, :transportation, :contact_name, :contact_email,
   #                :contact_phone
 
+  make_flaggable
+
   belongs_to :user
   before_save { self.name = self.name.titleize }
   before_save { self.city = self.city.titleize }
