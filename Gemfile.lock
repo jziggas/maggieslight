@@ -15,6 +15,13 @@ GIT
       mime-types
 
 GIT
+  remote: https://github.com/jziggas/make_flaggable
+  revision: 3f6d631ad5ea9f5a9964d6c054414568f450bf12
+  specs:
+    make_flaggable (0.0.3)
+      activerecord (>= 3.0, <= 4.0)
+
+GIT
   remote: https://github.com/jziggas/obscenity.git
   revision: 894ff44ed9838d7c86168d0c2640266c5b77bed2
   specs:
@@ -276,6 +283,7 @@ DEPENDENCIES
   html2haml
   jbuilder (~> 1.2)
   jquery-rails
+  make_flaggable!
   obscenity!
   paperclip!
   pg

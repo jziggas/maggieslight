@@ -25,6 +25,7 @@ gem 'validates_email_format_of', :git => 'git://github.com/alexdunae/validates_e
 gem 'phony_rails'
 gem "safe_yaml"
 gem "obscenity", git: "https://github.com/jziggas/obscenity.git"
+gem "make_flaggable", git: "https://github.com/jziggas/make_flaggable"
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]
