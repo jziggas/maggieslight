@@ -26,6 +26,7 @@ gem 'phony_rails'
 gem "safe_yaml"
 gem "obscenity", git: "https://github.com/jziggas/obscenity.git"
 gem "make_flaggable", git: "https://github.com/jziggas/make_flaggable"
+gem 'jquery-turbolinks'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :rbx]

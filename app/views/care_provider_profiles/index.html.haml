@@ -6,6 +6,7 @@
     = "Searching for '#{params[:search]}'. " if params[:search]
     = "Sorted by '#{humanize_sort_type(@sort_column)}' in #{humanize_sort_direction(@sort_direction)} order."
   = will_paginate @profiles
+  %h6.lead= "Nothing Found" if @profiles[0].nil?
   - @profiles.each do |profile|
     .well
       .container-fluid
@@ -20,4 +21,9 @@
             = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
             #summary-button
               = link_to raw("View Profile <i class='icon-user icon-white'></i>"), profile, class: "btn btn-info"
+              - if user_signed_in?
+                - if !current_user.flagged?(profile)
+                  = link_to raw("<i class=icon-flag></i>"), flag_care_provider_profile_path(profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
+                - else
+                  = link_to raw("<i class='icon-remove-sign'></i>"), flag_care_provider_profile_path(profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"
   = will_paginate @profiles

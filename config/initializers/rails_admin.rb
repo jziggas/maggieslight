@@ -15,19 +15,19 @@ RailsAdmin.config do |config|
   config.current_user_method { current_user } # auto-generated
 
   # If you want to track changes on your models:
-  # config.audit_with :history, 'User'
+  config.audit_with :history, 'User'
 
   # Or with a PaperTrail: (you need to install it first)
   # config.audit_with :paper_trail, 'User'
 
   # Display empty fields in show views:
-  # config.compact_show_view = false
+  config.compact_show_view = false
 
   # Number of default rows per-page:
   # config.default_items_per_page = 20
 
   # Exclude specific models (keep the others):
-  # config.excluded_models = ['CareProviderProfile', 'CareReceiverProfile', 'Role', 'User']
+  config.excluded_models = ['Role']
 
   # Include specific models (exclude the others):
   # config.included_models = ['CareProviderProfile', 'CareReceiverProfile', 'Role', 'User']
@@ -60,27 +60,27 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :user, :belongs_to_association 
+  #     configure :user, :belongs_to_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :name, :string 
-  #     configure :location, :string 
-  #     configure :field_of_study, :string 
-  #     configure :school, :string 
-  #     configure :skills, :string 
-  #     configure :misc, :string 
-  #     configure :contact_email, :string 
-  #     configure :contact_phone, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :user_id, :integer         # Hidden 
-  #     configure :profile_picture_file_name, :string         # Hidden 
-  #     configure :profile_picture_content_type, :string         # Hidden 
-  #     configure :profile_picture_file_size, :integer         # Hidden 
-  #     configure :profile_picture_updated_at, :datetime         # Hidden 
-  #     configure :profile_picture, :paperclip 
+  #     configure :id, :integer
+  #     configure :name, :string
+  #     configure :location, :string
+  #     configure :field_of_study, :string
+  #     configure :school, :string
+  #     configure :skills, :string
+  #     configure :misc, :string
+  #     configure :contact_email, :string
+  #     configure :contact_phone, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :user_id, :integer         # Hidden
+  #     configure :profile_picture_file_name, :string         # Hidden
+  #     configure :profile_picture_content_type, :string         # Hidden
+  #     configure :profile_picture_file_size, :integer         # Hidden
+  #     configure :profile_picture_updated_at, :datetime         # Hidden
+  #     configure :profile_picture, :paperclip
 
   #   # Cross-section configuration:
 
@@ -116,33 +116,33 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :user, :belongs_to_association 
+  #     configure :user, :belongs_to_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :name, :string 
-  #     configure :birthdate, :date 
-  #     configure :gender, :string 
-  #     configure :disabilities, :string 
-  #     configure :hobbies, :string 
-  #     configure :services_needed, :string 
-  #     configure :misc, :string 
-  #     configure :hours_needed, :string 
-  #     configure :days_needed, :string 
-  #     configure :location, :string 
-  #     configure :transportation, :string 
-  #     configure :contact_name, :string 
-  #     configure :contact_email, :string 
-  #     configure :contact_phone, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :user_id, :integer         # Hidden 
-  #     configure :profile_picture_file_name, :string         # Hidden 
-  #     configure :profile_picture_content_type, :string         # Hidden 
-  #     configure :profile_picture_file_size, :integer         # Hidden 
-  #     configure :profile_picture_updated_at, :datetime         # Hidden 
-  #     configure :profile_picture, :paperclip 
+  #     configure :id, :integer
+  #     configure :name, :string
+  #     configure :birthdate, :date
+  #     configure :gender, :string
+  #     configure :disabilities, :string
+  #     configure :hobbies, :string
+  #     configure :services_needed, :string
+  #     configure :misc, :string
+  #     configure :hours_needed, :string
+  #     configure :days_needed, :string
+  #     configure :location, :string
+  #     configure :transportation, :string
+  #     configure :contact_name, :string
+  #     configure :contact_email, :string
+  #     configure :contact_phone, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :user_id, :integer         # Hidden
+  #     configure :profile_picture_file_name, :string         # Hidden
+  #     configure :profile_picture_content_type, :string         # Hidden
+  #     configure :profile_picture_file_size, :integer         # Hidden
+  #     configure :profile_picture_updated_at, :datetime         # Hidden
+  #     configure :profile_picture, :paperclip
 
   #   # Cross-section configuration:
 
@@ -178,17 +178,17 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :resource, :polymorphic_association         # Hidden 
-  #     configure :users, :has_and_belongs_to_many_association 
+  #     configure :resource, :polymorphic_association         # Hidden
+  #     configure :users, :has_and_belongs_to_many_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :name, :string 
-  #     configure :resource_id, :integer         # Hidden 
-  #     configure :resource_type, :string         # Hidden 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
+  #     configure :id, :integer
+  #     configure :name, :string
+  #     configure :resource_id, :integer         # Hidden
+  #     configure :resource_type, :string         # Hidden
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
 
   #   # Cross-section configuration:
 
@@ -224,27 +224,27 @@ RailsAdmin.config do |config|
 
   #   # Found associations:
 
-  #     configure :roles, :has_and_belongs_to_many_association 
-  #     configure :care_receiver_profiles, :has_many_association 
-  #     configure :care_provider_profiles, :has_many_association 
+  #     configure :roles, :has_and_belongs_to_many_association
+  #     configure :care_receiver_profiles, :has_many_association
+  #     configure :care_provider_profiles, :has_many_association
 
   #   # Found columns:
 
-  #     configure :id, :integer 
-  #     configure :email, :string 
-  #     configure :password, :password         # Hidden 
-  #     configure :password_confirmation, :password         # Hidden 
-  #     configure :reset_password_token, :string         # Hidden 
-  #     configure :reset_password_sent_at, :datetime 
-  #     configure :remember_created_at, :datetime 
-  #     configure :sign_in_count, :integer 
-  #     configure :current_sign_in_at, :datetime 
-  #     configure :last_sign_in_at, :datetime 
-  #     configure :current_sign_in_ip, :string 
-  #     configure :last_sign_in_ip, :string 
-  #     configure :created_at, :datetime 
-  #     configure :updated_at, :datetime 
-  #     configure :name, :string 
+  #     configure :id, :integer
+  #     configure :email, :string
+  #     configure :password, :password         # Hidden
+  #     configure :password_confirmation, :password         # Hidden
+  #     configure :reset_password_token, :string         # Hidden
+  #     configure :reset_password_sent_at, :datetime
+  #     configure :remember_created_at, :datetime
+  #     configure :sign_in_count, :integer
+  #     configure :current_sign_in_at, :datetime
+  #     configure :last_sign_in_at, :datetime
+  #     configure :current_sign_in_ip, :string
+  #     configure :last_sign_in_ip, :string
+  #     configure :created_at, :datetime
+  #     configure :updated_at, :datetime
+  #     configure :name, :string
 
   #   # Cross-section configuration:
 

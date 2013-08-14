@@ -2,6 +2,20 @@ class CareProviderProfilesController < ApplicationController
   load_and_authorize_resource
   #before_action :set_care_provider_profile, only: [:show, :edit, :update, :destroy]
 
+
+  def flag
+    @profile  = CareProviderProfile.find_by id: params[:id]
+    @current_user = current_user
+    if @current_user.flagged?(@profile)
+      @current_user.unflag(@profile)
+      msg = "You have unflagged the profile."
+    else
+      @current_user.flag(@profile, :inappropriate)
+      msg = "You have flagged the profile as inappropriate. Thank you for letting us know."
+    end
+    redirect_to care_provider_profiles_path, notice: msg
+  end
+
   # GET /care_provider_profiles
   # GET /care_provider_profiles.json
   def index
