@@ -24,8 +24,12 @@ class Ability
          can :update, User do |p|
             p.try(:user) == user
          end
-         can :flag, CareProviderProfile
-         can :flag, CareReceiverProfile
+         can :flag, CareProviderProfile do |p|
+            p.try(:user) != user
+         end
+         can :flag, CareReceiverProfile do |p|
+            p.try(:user) != user
+         end
          can :create, [CareProviderProfile, CareReceiverProfile]
       #end
     #
