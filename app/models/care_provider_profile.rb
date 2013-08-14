@@ -2,12 +2,13 @@ require 'obscenity/active_model'
 
 class CareProviderProfile < ActiveRecord::Base
   belongs_to :user
+  make_flaggable
+  has_many :flaggings, as: :flaggable
+
   before_save { self.name = self.name.titleize }
   before_save { self.city = self.city.titleize }
   before_save { self.field_of_study = self.field_of_study.titleize }
   before_save { self.school = self.school.titleize }
-
-  make_flaggable
 
   # Normalizes the attribute itself before validation
   phony_normalize :contact_phone, :default_country_code => 'US'

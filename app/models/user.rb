@@ -11,5 +11,7 @@ class User < ActiveRecord::Base
 
   make_flagger
 
+  has_many :flaggings, as: :flagger
+
   self.per_page = 10
 end

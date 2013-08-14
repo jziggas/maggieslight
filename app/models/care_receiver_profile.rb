@@ -1,18 +1,13 @@
 require 'obscenity/active_model'
 
 class CareReceiverProfile < ActiveRecord::Base
-  #attr_accessible :name, :birthday, :gender, :disabilities, :hobbies,
-  #                :services_needed, :misc, :hours_needed, :days_needed,
-  #                :location, :transportation, :contact_name, :contact_email,
-  #                :contact_phone
-
-  make_flaggable
-
   belongs_to :user
+  make_flaggable
+  has_many :flaggings, as: :flaggable
+
   before_save { self.name = self.name.titleize }
   before_save { self.city = self.city.titleize }
   before_save { self.contact_name = self.contact_name.titleize }
-
 
   # Normalizes the attribute itself before validation
   phony_normalize :contact_phone, :default_country_code => 'US'

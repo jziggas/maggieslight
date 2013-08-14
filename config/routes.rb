@@ -3,9 +3,17 @@ Maggieslight::Application.routes.draw do
   #resources :care_provider_profiles
 
   #resources :care_receiver_profiles
-  resources 'those-who-care', as: :care_provider_profiles, controller: :care_provider_profiles
+  resources 'those-who-care', as: :care_provider_profiles, controller: :care_provider_profiles do
+      member do
+        get 'flag'
+      end
+    end
 
-  resources 'those-in-need', as: :care_receiver_profiles, controller: :care_receiver_profiles
+  resources 'those-in-need', as: :care_receiver_profiles, controller: :care_receiver_profiles do
+      member do
+        get 'flag'
+      end
+    end
 
   devise_for :users
 
