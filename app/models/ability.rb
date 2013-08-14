@@ -4,34 +4,50 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
-       user ||= User.new # guest user (not logged in)
-       #if user.admin?
-       #  can :manage, :all
-       #else
-         can :read, :all
-         can :update, CareProviderProfile do |p|
-            p.try(:user) == user
-         end
-         can :update, CareReceiverProfile do |p|
-            p.try(:user) == user
-         end
-         can :destroy, CareProviderProfile do |p|
-            p.try(:user) == user
-         end
-         can :destroy, CareReceiverProfile do |p|
-            p.try(:user) == user
-         end
-         can :update, User do |p|
-            p.try(:user) == user
-         end
-         can :flag, CareProviderProfile do |p|
-            p.try(:user) != user
-         end
-         can :flag, CareReceiverProfile do |p|
-            p.try(:user) != user
-         end
-         can :create, [CareProviderProfile, CareReceiverProfile]
-      #end
+    user ||= User.new # guest user (not logged in)
+    #if user.admin?
+    #  can :manage, :all
+    #else
+
+    # Users
+    can :update, User do |p|
+      p.try(:user) == user
+    end
+
+    # Profiles
+    if User.exists?(user)
+      can :create, [CareProviderProfile, CareReceiverProfile]
+    end
+
+    can :read, :all
+
+    can :update, CareProviderProfile do |p|
+      p.try(:user) == user
+    end
+    can :update, CareReceiverProfile do |p|
+      p.try(:user) == user
+    end
+
+    can :destroy, CareProviderProfile do |p|
+      p.try(:user) == user
+    end
+    can :destroy, CareReceiverProfile do |p|
+      p.try(:user) == user
+    end
+
+    can :flag, CareProviderProfile do |p|
+      p.try(:user) != user
+    end
+    can :flag, CareReceiverProfile do |p|
+      p.try(:user) != user
+    end
+
+    # Connections
+    can :request, Connection
+    can :approve, Connection do |p|
+      p.try(:requested) == user
+    end
+    #end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.
