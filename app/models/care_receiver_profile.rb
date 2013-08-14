@@ -4,6 +4,8 @@ class CareReceiverProfile < ActiveRecord::Base
   belongs_to :user
   make_flaggable
   has_many :flaggings, as: :flaggable
+  has_many :connections, as: :requestor_profile
+  has_many :connections, as: :requested_profile
 
   before_save { self.name = self.name.titleize }
   before_save { self.city = self.city.titleize }
@@ -26,7 +28,7 @@ class CareReceiverProfile < ActiveRecord::Base
 
   validates :status, inclusion: { in: ["Looking For Care", "Currently Cared For"]}
 
-  validates :name, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :city, :contact_name, :contact_email, obscenity: {message: "One of your words appears profane to our system. Please revise."}
+  validates :name, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :city, :contact_name, :contact_email, obscenity: { message: "One of your words appears profane to our system. Please revise."}
 
   validates :name, length: { in: 3..35 }
   validates :disabilities, length: { in: 3..250 }

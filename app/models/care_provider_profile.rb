@@ -4,6 +4,8 @@ class CareProviderProfile < ActiveRecord::Base
   belongs_to :user
   make_flaggable
   has_many :flaggings, as: :flaggable
+  has_many :connections, as: :requestor_profile
+  has_many :connections, as: :requested_profile
 
   before_save { self.name = self.name.titleize }
   before_save { self.city = self.city.titleize }
@@ -26,7 +28,7 @@ class CareProviderProfile < ActiveRecord::Base
   validates :contact_phone, phony_plausible: true
   validates :status, inclusion: { in: ["Looking To Care", "Currently Busy"]}
 
-  validates :name, :city, :field_of_study, :school, :skills, :misc, :contact_email, obscenity: {message: "One of your words appears profane to our system. Please revise."}
+  validates :name, :city, :field_of_study, :school, :skills, :misc, :contact_email, obscenity: { message: "One of your words appears profane to our system. Please revise."}
 
   validates :name, length: { in: 3..35 }
   validates :city, length: { in: 3..30 }
