@@ -31,17 +31,14 @@
     %p
       %b Misc:
       = @care_provider_profile.misc
-    %p
-      %b Contact email:
-      %a{href: "mailto:#{@care_provider_profile.contact_email}"}= @care_provider_profile.contact_email
-    %p
-      %b Contact phone:
-      %a{href: "tel:#{@care_provider_profile.contact_phone}"}= @care_provider_profile.contact_phone.phony_formatted(:spaces => '-')
     = link_to raw("<i class='icon-arrow-left'></i> Back"), care_provider_profiles_path, class: "btn"
+    - if user_signed_in? && current_user != @care_provider_profile.user
+      = link_to raw("Request Connection <i class='icon-envelope icon-white'></i>"), "#", class: "btn btn-primary"
     - if can? :update, @care_provider_profile
       = link_to raw("Edit <i class='icon-edit'></i>"), edit_care_provider_profile_path(@care_provider_profile), class: "btn btn-warning"
       = link_to raw("Delete <i class='icon-trash icon-white'></i>"), care_provider_profile_path(@care_provider_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
-    - if !current_user.flagged?(@care_provider_profile)
-      = link_to raw("<i class=icon-flag></i>"), flag_care_provider_profile_path(@care_provider_profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
-    - else
-      = link_to raw("<i class='icon-remove-sign'></i>"), flag_care_provider_profile_path(@care_provider_profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"
+    - if user_signed_in? && @care_provider_profile.user != current_user
+      - if !current_user.flagged?(@care_provider_profile)
+        = link_to raw("<i class=icon-flag></i>"), flag_care_provider_profile_path(@care_provider_profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
+      -  else
+        = link_to raw("<i class='icon-remove-sign'></i>"), flag_care_provider_profile_path(@care_provider_profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"

@@ -1,0 +1,13 @@
+%p
+  %b Contact email:
+  %a{href: "mailto:#{@care_provider_profile.contact_email}"}= @care_provider_profile.contact_email
+  %p
+  %b Contact phone:
+  %a{href: "tel:#{@care_provider_profile.contact_phone}"}= @care_provider_profile.contact_phone.phony_formatted(:spaces => '-')
+
+%p
+  %b Contact email:
+  %a{href: "mailto:#{@care_receiver_profile.contact_email}"}= @care_receiver_profile.contact_email
+%p
+  %b Contact phone:
+  %a{href: "tel:#{@care_receiver_profile.contact_phone}"}= @care_receiver_profile.contact_phone.phony_formatted(:spaces => '-')

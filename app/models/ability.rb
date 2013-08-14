@@ -24,15 +24,10 @@ class Ability
          can :update, User do |p|
             p.try(:user) == user
          end
-         can :flag, CareProviderProfile do |p|
-            p.try(:user) == user
-         end
-         can :flag, CareReceiverProfile do |p|
-            p.try(:user) == user
-         end
+         can :flag, CareProviderProfile
+         can :flag, CareReceiverProfile
          can :create, [CareProviderProfile, CareReceiverProfile]
-
-       #end
+      #end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

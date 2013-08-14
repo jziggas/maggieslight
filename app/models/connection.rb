@@ -8,4 +8,6 @@ class Connection < ActiveRecord::Base
   validates :requestor_id, :requestor_profile_id, :requested_id, :requested_profile_id, :approval, presence: true
 
   validates :message, obscenity: { message: "One of your words appears profane to our system. Please revise."}
+
+  self.per_page = 25
 end

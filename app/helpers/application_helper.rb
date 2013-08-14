@@ -63,6 +63,14 @@ module ApplicationHelper
       "inverse"
     end
   end
+
+  def sidebar_welcome
+    if user_signed_in?
+      "Welcome, " + current_user.name.split(" ")[0]
+    else
+      "Your Account"
+    end
+  end
 =begin
 
 http://railscasts.com/episodes/228-sortable-table-columns

@@ -1,7 +1,7 @@
 .span3#sidebar
   %ul.nav.nav-list.well
     %li
-      %label.tree-toggle.nav-header Your Account
+      %label.tree-toggle.nav-header= sidebar_welcome
       %ul.nav.nav-list.tree
         - if user_signed_in?
           %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path, id: "header"
