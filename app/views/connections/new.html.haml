@@ -1,0 +1,25 @@
+%p
+  = simple_form_for [@requested_profile, @connection] do |f|
+    = f.error_notification
+
+    .form-inputs
+    = f.hidden_field :requested_id, value: @requested_profile.user.id
+
+    = f.hidden_field :requested_profile_id, value: @requested_profile.id
+
+    = f.hidden_field :requested_type, value: @requested_profile.user.class.name
+
+    = f.hidden_field :requested_profile_type, value: @requested_profile.class.name
+
+    = f.hidden_field :requestor_profile_type, value: @requestor_profiles[0].class.name
+
+    = f.hidden_field :requestor_id, value: current_user.id
+
+    = f.hidden_field :requestor_type, value: @requestor_profiles[0].user.class.name
+
+    = f.association :requestor_profile, collection: @requestor_profiles, label: "Choose which profile you would to connect with #{@requested_profile.name}.", include_blank: false
+
+    = f.input :message, as: :text, label: "Leave a message if you would like. #{@requested_profile.name} will be notified of your request and, if approved, your contact information will be swapped!"
+
+    .form-actions
+    = f.button :submit, class: "btn"
