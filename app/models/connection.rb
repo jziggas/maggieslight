@@ -1,9 +1,13 @@
 require 'obscenity/active_model'
 
 class Connection < ActiveRecord::Base
-  belongs_to :user, polymorphic: true
-  belongs_to :care_receiver_profile, polymorphic: true
-  belongs_to :care_provider_profile, polymorphic: true
+  before_validation { self.approval = false }
+
+  belongs_to :requestor, class_name: 'User', polymorphic: true
+  belongs_to :requested, class_name: 'User', polymorphic: true
+
+  belongs_to :requestor_profile, polymorphic: true
+  belongs_to :requested_profile, polymorphic: true
 
   validates :requestor_id, :requestor_profile_id, :requested_id, :requested_profile_id, :approval, presence: true
 

@@ -10,17 +10,22 @@ class Ability
     #else
 
     # Users
+    # A user can update an account if he owns it.
     can :update, User do |p|
       p.try(:user) == user
     end
 
     # Profiles
+    # A user can create a profile if he is logged in.
     if User.exists?(user)
       can :create, [CareProviderProfile, CareReceiverProfile]
     end
 
+    # Anyone can read profiles whether logged in or not
+    # (hence User.new guest)
     can :read, :all
 
+    # A user can update a profile if he owns it.
     can :update, CareProviderProfile do |p|
       p.try(:user) == user
     end
@@ -28,6 +33,7 @@ class Ability
       p.try(:user) == user
     end
 
+    # A user can destroy a profile if he owns it.
     can :destroy, CareProviderProfile do |p|
       p.try(:user) == user
     end
@@ -35,6 +41,7 @@ class Ability
       p.try(:user) == user
     end
 
+    # A user can flag a profile as inappropriate if he does not own it.
     can :flag, CareProviderProfile do |p|
       p.try(:user) != user
     end
@@ -43,10 +50,39 @@ class Ability
     end
 
     # Connections
-    can :request, Connection
-    can :approve, Connection do |p|
+
+    # A user can view a request if he is a part of it.
+    #can :read, [ReceiverRequest, ProviderRequest] do |p|
+    #  p.try(:requestor) == user || p.try(:requested) == user
+    #end
+    can :read, Connection do |p|
+      p.try(:requestor) == user || p.try(:requested) == user
+    end
+
+    # A user can make a request if he is logged in.
+    #if User.exists?(user)
+    #  can :create, [ReceiverRequest, ProviderRequest]
+    #end
+    if User.exists?(user)
+      can :create, Connection
+    end
+
+    # A user can approve a request if he is the requested.
+    #can :update, [ReceiverRequest, ProviderRequest] do |p|
+    #  p.try(:requested) == user
+    #end
+    can :update, Connection do |p|
       p.try(:requested) == user
     end
+
+    # A user can destroy a request if he owns it (the requestor).
+    #can :destroy, [ReceiverRequest, ProviderRequest] do |p|
+    #  p.try(:requestor) == user
+    #end
+    can :destroy, Connection do |p|
+      p.try(:requestor) == user
+    end
+
     #end
     #
     # The first argument to `can` is the action you are giving the user

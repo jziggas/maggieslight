@@ -4,8 +4,8 @@ class CareProviderProfile < ActiveRecord::Base
   belongs_to :user
   make_flaggable
   has_many :flaggings, as: :flaggable
-  has_many :connections, as: :requestor_profile
-  has_many :connections, as: :requested_profile
+  has_many :connections, class_name: 'Connection', as: :requestor_profile
+  has_many :connections, class_name: 'Connection', as: :requested_profile
 
   before_save { self.name = self.name.titleize }
   before_save { self.city = self.city.titleize }

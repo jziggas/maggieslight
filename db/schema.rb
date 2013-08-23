@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130814043537) do
+ActiveRecord::Schema.define(version: 20130815200235) do
 
   create_table "care_provider_profiles", force: true do |t|
     t.string   "name"
@@ -72,6 +72,10 @@ ActiveRecord::Schema.define(version: 20130814043537) do
     t.integer "requested_profile_id"
     t.boolean "approval"
     t.text    "message"
+    t.string  "requestor_type"
+    t.string  "requested_type"
+    t.string  "requestor_profile_type"
+    t.string  "requested_profile_type"
   end
 
   create_table "flaggings", force: true do |t|
