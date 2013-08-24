@@ -4,8 +4,11 @@ class CareProviderProfile < ActiveRecord::Base
   belongs_to :user
   make_flaggable
   has_many :flaggings, as: :flaggable
-  has_many :connections, class_name: 'Connection', as: :requestor_profile
-  has_many :connections, class_name: 'Connection', as: :requested_profile
+  #has_many :connections, class_name: 'Connection', as: :requestor_profile
+  #has_many :connections, class_name: 'Connection', as: :requested_profile
+
+  has_many :connections, -> { where("(requestor_profile_id = ? AND requestor_profile_type = ?) OR ( requested_profile_id = ? AND requested_profile_type = ?)", self.id, self.class.name) }
+  has_many :connected_profiles, -> { where(approval: "approved") }, :through => :connections
 
   before_save { self.name = self.name.titleize }
   before_save { self.city = self.city.titleize }
