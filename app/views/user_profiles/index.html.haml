@@ -8,7 +8,7 @@
       .container-fluid
         .row-fluid
           .span8#hideOverflow
-            %h5= profile.class.to_s.underscore.titleize
+            %h5= humanize_profile_class_name profile.class.name
             %p= "#{profile.name} from #{profile.city}"
             %p
               Contact Email:
@@ -18,6 +18,8 @@
               %a{href: "tel:#{profile.contact_phone}"}= profile.contact_phone.phony_formatted(:spaces => '-')
             %p
               %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
+            %p
+              %span.label{:class => "label-#{status_label(profile.visibility)}"}= profile.visibility
             %p
               =link_to raw("View <i class='icon-user icon-white'></i>"), { controller: profile.class.to_s.pluralize.underscore, action: :show, id: profile.id }, class: "btn btn-info"
               =link_to raw("Edit <i class='icon-edit'></i>"), { controller: profile.class.to_s.pluralize.underscore, action: :edit, id: profile.id }, class: "btn btn-warning"

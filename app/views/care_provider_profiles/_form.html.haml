@@ -2,19 +2,23 @@
   = f.error_notification
 
   .form-inputs
-    = f.file_field :profile_picture
-    = f.input :name, placeholder: "Mary Smith"
+    %p
+      = f.label "Upload a profile picture"
+    %p
+      = f.file_field :profile_picture
+    = f.input :status, collection: ["Looking To Care", "Currently Busy"], include_blank: false
+    = f.input :visibility, collection: %w[Visible Hidden], label: "You may choose to publicly display or temporarily hide your profile.", include_blank: false
+    = f.input :name, placeholder: "Mary", label: "Name of individual in need of care"
     = f.input :gender, collection: %w[Male Female]
     = f.input :city, placeholder: "Towson"
     = f.input :county, collection: BALTIMORE_COUNTIES
     = f.input :field_of_study, placeholder: "Social Sciences"
     = f.input :school, placeholder: "University of Maryland"
-    = f.input :skills, label: "Description of expertise or skills"
+    = f.input :skills, label: "Description of expertise or skills:"
     = f.input :transportation, collection: ["Yes", "No"], label: "Do you have transportation?"
-    = f.input :misc, placeholder: "Fellow at the Kennedy Kreiger Institute"
-    = f.input :contact_email, placeholder: "example@email.com"
-    = f.input :contact_phone, placeholder: "555-123-4567"
-    = f.input :status, collection: ["Looking To Care", "Currently Busy"], include_blank: false
+    = f.input :misc, placeholder: "Background check available upon request."
+    = f.input :contact_email, placeholder: "example@email.com", label: "Contact Email. This will be publicly available when your profile is visible. This may change in the future."
+    = f.input :contact_phone, placeholder: "555-123-4567", label: "Contact Phone. This will not be publicly available when your profile is visible. This may change in the future."
 
   .form-actions
     = f.button :submit, class: "btn btn-primary"

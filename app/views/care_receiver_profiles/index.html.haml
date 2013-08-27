@@ -1,6 +1,6 @@
 = render "sidebar"
 .span8.profiles
-  %h1#header People in Need of Care
+  %h1#header Family and Individual Ads
   %hr
   %p.lead
     = "Searching for '#{params[:search]}'. " if params[:search]
@@ -8,6 +8,7 @@
   = will_paginate @profiles
   %h6.lead= "Nothing Found" if @profiles[0].nil?
   - @profiles.each do |profile|
+    - if profile.visibility == "Visible" || (profile.visibility == "Hidden" && profile.user == current_user)
     .well
       .container-fluid
         .row-fluid

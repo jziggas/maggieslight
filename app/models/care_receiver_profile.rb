@@ -19,14 +19,15 @@ class CareReceiverProfile < ActiveRecord::Base
   validates_attachment_size :profile_picture, :less_than => 1.megabytes
   validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
 
-  validates :contact_email, :email_format => {:message => 'is not looking like a real email address'}
-  validates :county, inclusion: { in: BALTIMORE_COUNTIES, message: "%{value} is not a valid county"}
-  validates :gender, inclusion: { in: %w(Male Female), message: "%{value} is not a valid gender"}
-  validates :transportation, inclusion: { in: %w(Yes No), message: "%{value} is not a valid option"}
-  validates :name, :birthdate, :gender, :disabilities, :hobbies, :services_needed, :days_needed, :city, :county, :transportation, :contact_name, :contact_email, :contact_phone, :status, presence: true
+  validates :contact_email, :email_format => {:message => 'is not a valid email address.'}
+  validates :county, inclusion: { in: BALTIMORE_COUNTIES, message: "%{value} is not a valid county."}
+  validates :gender, inclusion: { in: %w(Male Female), message: "%{value} is not a valid gender."}
+  validates :transportation, inclusion: { in: %w(Yes No), message: "%{value} is not a valid option."}
+  validates :name, :birthdate, :gender, :disabilities, :hobbies, :services_needed, :days_needed, :city, :county, :transportation, :contact_name, :contact_email, :contact_phone, :status, :visibility, presence: true
   validates :contact_phone, phony_plausible: true
 
-  validates :status, inclusion: { in: ["Looking For Care", "Currently Cared For"]}
+  validates :status, inclusion: { in: ["Looking For Care", "Currently Cared For"] }
+  validates :visibility, inclusion: { in: %w[Visible Hidden] }
 
   validates :name, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :city, :contact_name, :contact_email, obscenity: { message: "One of your words appears profane to our system. Please revise."}
 
@@ -67,7 +68,7 @@ class CareReceiverProfile < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where("name LIKE ? OR gender LIKE ? OR disabilities LIKE ? OR services_needed LIKE ? OR city LIKE ?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%")
+      where("name LIKE ? OR gender LIKE ? OR disabilities LIKE ? OR services_needed LIKE ? OR city LIKE ?", "%#{search}% OR %#{search.try(:titleize)}%","%#{search}% OR %#{search.try(:titleize)}%","%#{search}% OR %#{search.try(:titleize)}%","%#{search}% OR %#{search.try(:titleize)}%", "%#{search}% OR %#{search.try(:titleize)}%")
     else
       scoped
     end

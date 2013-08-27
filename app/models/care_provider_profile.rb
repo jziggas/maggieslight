@@ -20,13 +20,14 @@ class CareProviderProfile < ActiveRecord::Base
   validates_attachment_size :profile_picture, :less_than => 1.megabytes
   validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
 
-  validates :contact_email, :email_format => {:message => 'is not looking good'}
-  validates :county, inclusion: { in: BALTIMORE_COUNTIES, message: "%{value} is not a valid county"}
-  validates :gender, inclusion: { in: %w(Male Female), message: "%{value} is an invalid gender"}
-  validates :transportation, inclusion: { in: %w(Yes No), message: "%{value} is an invalid option"}
-  validates :name, :city, :county, :field_of_study, :school, :contact_email, :contact_phone, :gender, :transportation, :status,  presence: true
+  validates :contact_email, :email_format => {:message => 'is not a valid email address.'}
+  validates :county, inclusion: { in: BALTIMORE_COUNTIES, message: "%{value} is not a valid county."}
+  validates :gender, inclusion: { in: %w(Male Female), message: "%{value} is an invalid gender."}
+  validates :transportation, inclusion: { in: %w(Yes No), message: "%{value} is an invalid option."}
+  validates :name, :city, :county, :field_of_study, :school, :contact_email, :contact_phone, :gender, :transportation, :status, :visibility, presence: true
   validates :contact_phone, phony_plausible: true
-  validates :status, inclusion: { in: ["Looking To Care", "Currently Busy"]}
+  validates :status, inclusion: { in: ["Looking To Care", "Currently Busy"] }
+  validates :visibility, inclusion: { in: %w[Visible Hidden] }
 
   validates :name, :city, :field_of_study, :school, :skills, :misc, :contact_email, obscenity: { message: "One of your words appears profane to our system. Please revise."}
 
@@ -45,7 +46,7 @@ class CareProviderProfile < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where("name LIKE ? OR school LIKE ? OR field_of_study LIKE ? OR skills LIKE ? OR city LIKE ?", "%#{search}%","%#{search}%","%#{search}%","%#{search}%","%#{search}%")
+      where("name LIKE ? OR school LIKE ? OR field_of_study LIKE ? OR skills LIKE ? OR city LIKE ?", "%#{search}% OR %#{search.try(:titleize)}%","%#{search}% OR %#{search.try(:titleize)}%","%#{search}% OR %#{search.try(:titleize)}%","%#{search}% OR %#{search.try(:titleize)}%", "%#{search}% OR %#{search.try(:titleize)}%")
     else
       scoped
     end

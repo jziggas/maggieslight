@@ -22,7 +22,7 @@ class CareProviderProfilesController < ApplicationController
     @sort_column = sort_column
     @sort_direction = sort_direction
     @page = params[:page] || 1
-    @profiles = CareProviderProfile.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
+      @profiles = CareProviderProfile.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
     @prof = CareProviderProfile.search(params[:search]).class
   end
 
@@ -91,7 +91,7 @@ class CareProviderProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def care_provider_profile_params
-      params.require(:care_provider_profile).permit(:name, :city, :county, :gender, :transportation, :field_of_study, :school, :skills, :misc, :contact_email, :contact_phone, :profile_picture, :status)
+      params.require(:care_provider_profile).permit(:name, :city, :county, :gender, :transportation, :field_of_study, :school, :skills, :misc, :contact_email, :contact_phone, :profile_picture, :status, :visibility)
     end
 
   private

@@ -3,15 +3,18 @@
     .row-fluid
       .span8
         %p.text-center
-          Community Works Bulletin Board brought to you with the help of our friends at:
+          Community Works Caregiver Registry brought to you with the help of our friends at:
         %p.text-center
           %small
-            Maryland Center for Developmental Disabilities at Kennedy Krieger Institute
+            = link_to "Maryland Center for Developmental Disabilities", "http://mcdd.kennedykrieger.org/", class: "footerLink"
+            at
+            = link_to "Kennedy Krieger Institute", "http://www.kennedykrieger.org/", class: "footerLink"
         %p.text-center
           %small
-            Ziggas Design and Development
+            = link_to "Made with &hearts; in Baltimore".html_safe, "http://www.madewithloveinbaltimore.com", class: "footerLink"
+            = link_to "by Ziggas Design and Development", "http://goo.gl/FTF4J", class: "footerLink"
         %p.text-center
           %small
             ©2008 Maggie's Light Foundation
       .span4
-        = image_tag "MCDD_logo_small.png", alt: "Maryland Center for Developmental Disabilities at Kennedy Krieger Institute", size: "300x150", style: "padding: 10px 0 10px 0"
+        = link_to image_tag("MCDD_logo_small.png", alt: "Maryland Center for Developmental Disabilities at Kennedy Krieger Institute", size: "300x150", style: "padding: 10px 0 10px 0"), "http://mcdd.kennedykrieger.org/"

@@ -1,12 +1,15 @@
 = render "sidebar"
 .span8#hideOverflow
   .well
-    %h1#header= "Profile for #{@care_receiver_profile.name}"
+    %h1#header= "Family / Individiual Ad for #{@care_receiver_profile.name}"
     %hr
     %p= image_tag @care_receiver_profile.profile_picture.url(:thumb)
     %p
       %b Status:
       %span.label{:class => "label-#{status_label(@care_receiver_profile.status)}"}= @care_receiver_profile.status
+    %p
+      %b Visibility:
+      %span.label{:class => "label-#{status_label(@care_receiver_profile.visibility)}"}= @care_receiver_profile.visibility
     %p
       %b Birthday:
       = @care_receiver_profile.birthdate.strftime('%B %-d, %Y')
@@ -44,6 +47,9 @@
     %p
       %b Contact name:
       = @care_receiver_profile.contact_name
+    %p
+      %b Contact Email:
+      = @care_receiver_profile.contact_email
     = link_to raw("<i class='icon-arrow-left'></i> Back"), care_receiver_profiles_path, class: "btn"
     - if user_signed_in? && current_user != @care_receiver_profile.user
       = link_to raw("Request Connection <i class='icon-envelope icon-white'></i>"), "#", class: "btn btn-primary"

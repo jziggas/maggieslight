@@ -57,7 +57,7 @@ module ApplicationHelper
   end
 
   def status_label(status)
-    if status == "Looking For Care" || status == "Looking To Care"
+    if status == "Looking For Care" || status == "Looking To Care" || status == "Visible"
       "success"
     else
       "inverse"
@@ -69,6 +69,14 @@ module ApplicationHelper
       "Welcome, " + current_user.name.split(" ")[0]
     else
       "Your Account"
+    end
+  end
+
+  def humanize_profile_class_name(class_name)
+    if class_name == "CareReceiverProfile"
+      "Family / Individiual Ad"
+    else
+      "Student Caregiver"
     end
   end
 =begin
