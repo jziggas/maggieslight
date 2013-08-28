@@ -79,6 +79,14 @@ module ApplicationHelper
       "Student Caregiver"
     end
   end
+
+  def controller?(*controller)
+    controller.include?(params[:controller])
+  end
+
+  def action?(*action)
+    action.include?(params[:action])
+  end
 =begin
 
 http://railscasts.com/episodes/228-sortable-table-columns

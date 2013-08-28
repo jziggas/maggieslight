@@ -68,7 +68,7 @@ class CareReceiverProfile < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where("name LIKE ? OR gender LIKE ? OR disabilities LIKE ? OR services_needed LIKE ? OR city LIKE ?", "%#{search}% OR %#{search.try(:titleize)}%","%#{search}% OR %#{search.try(:titleize)}%","%#{search}% OR %#{search.try(:titleize)}%","%#{search}% OR %#{search.try(:titleize)}%", "%#{search}% OR %#{search.try(:titleize)}%")
+      where("lower(name) LIKE ? OR lower(gender) LIKE ? OR lower(disabilities) LIKE ? OR lower(services_needed) LIKE ? OR lower(city) LIKE ?", "%#{search.try(:downcase)}%","%#{search.try(:downcase)}%","%#{search.try(:downcase)}%","%#{search.try(:downcase)}%", "%#{search.try(:downcase)}%")
     else
       scoped
     end

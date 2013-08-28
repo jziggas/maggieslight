@@ -4,9 +4,9 @@
       %label.tree-toggle.nav-header= sidebar_welcome
       %ul.nav.nav-list.tree
         - if user_signed_in?
-          %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path, id: "header"
-          %li= link_to "Create a New Care Provider Profile", new_care_provider_profile_path, id: "header"
-          %li= link_to "View Your Profiles", profiles_path, id: "header"
+          %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path, class: ( "highlighted" if controller?("care_receiver_profiles") && action?("new") )
+          %li= link_to "Create a New Care Provider Profile", new_care_provider_profile_path, class: ( "highlighted" if controller?("care_provider_profiles") && action?("new") )
+          %li= link_to "View Your Profiles", profiles_path, id: "header", class: ( "highlighted" if controller?("user_profiles") && action?("index") )
           %li= link_to "Edit Account", edit_user_registration_path, id: "header"
           %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
         - else
@@ -17,7 +17,7 @@
       %label.tree-toggle.nav-header Resources
       %ul.nav.nav-list.tree
         %li
-          = link_to "Family / Individiual Ad", care_receiver_profiles_path, id: "header"
+          = link_to "Family / Individiual Ads", care_receiver_profiles_path, class: ( "highlighted" if controller?("care_receiver_profiles") && action?("index") )
         %li
-          = link_to "Student Caregivers", care_provider_profiles_path, id: "header"
+          = link_to "Student Caregivers", care_provider_profiles_path, class: ( "highlighted" if controller?("care_provider_profiles") && action?("index") )
   = render "search"
