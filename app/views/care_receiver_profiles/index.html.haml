@@ -18,6 +18,9 @@
               %p= "Disabilities and Diagnoses: #{profile.disabilities}"
               %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
               %p
+              %p
+                - if profile.user == current_user
+                  %em You own this profile.
             .span4
               = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
               #summary-button

@@ -31,11 +31,11 @@ class CareProviderProfile < ActiveRecord::Base
 
   validates :name, :city, :field_of_study, :school, :skills, :misc, :contact_email, obscenity: { message: "One of your words appears profane to our system. Please revise."}
 
-  validates :name, length: { in: 3..35 }
+  validates :name, length: { in: 2..35 }
   validates :city, length: { in: 3..30 }
   validates :county, length: { in: 3..30 }
-  validates :field_of_study, length: { in: 3..30 }
-  validates :school, length: { in: 3..30 }
+  validates :field_of_study, length: { in: 2..30 }
+  validates :school, length: { in: 2..30 }
   validates :city, length: { in: 3..30 }
   validates :skills, length: { in: 3..250 }, allow_blank: true
   validates :misc, length: { in: 3..250 }, allow_blank: true
