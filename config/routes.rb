@@ -1,4 +1,5 @@
 Maggieslight::Application.routes.draw do
+  devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   #resources :care_provider_profiles
 
@@ -15,7 +16,7 @@ Maggieslight::Application.routes.draw do
       end
     end
 
-  devise_for :users
+
 
   get "/profiles/", to: "user_profiles#index"
   # get "/care-givers/", to: "care_provider_profiles#index"
