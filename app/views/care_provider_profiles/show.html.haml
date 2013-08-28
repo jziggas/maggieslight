@@ -38,8 +38,8 @@
       %b Contact Email:
       = @care_provider_profile.contact_email
     = link_to raw("<i class='icon-arrow-left'></i> Back"), care_provider_profiles_path, class: "btn"
-    - if user_signed_in? && current_user != @care_provider_profile.user
-      = link_to raw("Request Connection <i class='icon-envelope icon-white'></i>"), "#", class: "btn btn-primary"
+    -#if user_signed_in? && current_user != @care_provider_profile.user
+      =# link_to raw("Request Connection <i class='icon-envelope icon-white'></i>"), "#", class: "btn btn-primary"
     - if can? :update, @care_provider_profile
       = link_to raw("Edit <i class='icon-edit'></i>"), edit_care_provider_profile_path(@care_provider_profile), class: "btn btn-warning"
       = link_to raw("Delete <i class='icon-trash icon-white'></i>"), care_provider_profile_path(@care_provider_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
