@@ -7,9 +7,10 @@
     %p
       %b Status:
       %span.label{:class => "label-#{status_label(@care_provider_profile.status)}"}= @care_provider_profile.status
-    %p
-      %b Visibility:
-      %span.label{:class => "label-#{status_label(@care_provider_profile.visibility)}"}= @care_provider_profile.visibility
+    - if current_user == @care_provider_profile.user
+      %p
+        %b Visibility:
+        %span.label{:class => "label-#{status_label(@care_provider_profile.visibility)}"}= @care_provider_profile.visibility
     %p
       %b Gender:
       = @care_provider_profile.gender
