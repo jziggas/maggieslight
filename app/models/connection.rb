@@ -1,3 +1,4 @@
+=begin
 require 'obscenity/active_model'
 
 class Connection < ActiveRecord::Base
@@ -11,3 +12,4 @@ class Connection < ActiveRecord::Base
 
   self.per_page = 25
 end
+=end

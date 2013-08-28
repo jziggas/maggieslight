@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 
   has_many :care_receiver_profiles
   has_many :care_provider_profiles
-  has_many :connections, as: :requestor
-  has_many :connections, as: :requested
+  #has_many :connections, as: :requestor
+  #has_many :connections, as: :requested
 
   make_flagger
 
