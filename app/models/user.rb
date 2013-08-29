@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
 
   self.per_page = 10
 
-  def set_user
-    self.add_role :user
-  end
+  private
+
+    def set_user
+      self.add_role :user
+    end
 end
