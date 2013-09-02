@@ -48,29 +48,6 @@ class Ability
     can :flag, CareReceiverProfile do |p|
       p.try(:user) != user
     end
-
-    # Connections
-
-    # A user can view a request if he is a part of it.
-    can :read, Connection do |p|
-      p.try(:care_receiver_profile_id) == user. || p.try(:requested) == user
-    end
-
-    # A user can make a request if he is logged in.
-    if User.exists?(user)
-      can :create, Connection
-    end
-
-    # A user can approve a request if he is the requested.
-    can :update, Connection do |p|
-      p.try(:requested) == user
-    end
-
-    # A user can destroy a request if he owns it (the requestor).
-    can :destroy, Connection do |p|
-      p.try(:requestor) == user
-    end
-
     #end
     #
     # The first argument to `can` is the action you are giving the user
