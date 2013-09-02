@@ -7,19 +7,18 @@ class Connection < ActiveRecord::Base
   #belongs_to :requested, class_name: 'User', polymorphic: true
 
   # Connection.where("approval = 'approved'")
-  scope :approved, -> { where("approval = 'approved'") }
+  scope :approved, -> { where("care_receiver_profile_approval = 'approved' AND care_provider_profile_approval = 'approved'") }
+  scope :pending, -> { where("care_receiver_profile_approval = 'pending' OR care_provider_profile_approval = 'pending'") }
+  scope :rejected, -> { where("care_receiver_profile_approval = 'rejected' OR care_provider_profile_approval = 'rejected'") }
 
-  belongs_to :requestor_profile, polymorphic: true
-  belongs_to :requested_profile, polymorphic: true
+  belongs_to :care_provider_profile
+  belongs_to :care_receiver_profile
 
   STATES = %w(pending approved rejected)
 
-  validates_inclusion_of :approval, :in => { STATES }
+  validates :care_receiver_profile_approval, :care_provider_profile_approval, inclusion: { in: STATES }
 
-  validates :requestor_id, :requestor_profile_id, :requested_id, :requested_profile_id, :approval, presence: true
-
-
-  validates :requestor_id, :requestor_profile_id, :requested_id, :requested_profile_id, :approval, presence: true
+  validates :care_receiver_profile_id, :care_provider_profile_id, :care_receiver_profile_approval, :care_provider_profile_approval, presence: true
 
   validates :message, obscenity: { message: "One of your words appears profane to our system. Please revise."}
 

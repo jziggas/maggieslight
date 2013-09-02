@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130824172854) do
+ActiveRecord::Schema.define(version: 20130830130749) do
 
   create_table "care_provider_profiles", force: true do |t|
     t.string   "name"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20130824172854) do
     t.string   "transportation"
     t.string   "gender"
     t.string   "status"
+    t.string   "visibility"
   end
 
   add_index "care_provider_profiles", ["user_id"], name: "index_care_provider_profiles_on_user_id"
@@ -61,17 +62,17 @@ ActiveRecord::Schema.define(version: 20130824172854) do
     t.datetime "profile_picture_updated_at"
     t.string   "county"
     t.string   "status"
+    t.string   "visibility"
   end
 
   add_index "care_receiver_profiles", ["user_id"], name: "index_care_receiver_profiles_on_user_id"
 
   create_table "connections", force: true do |t|
-    t.integer "requestor_profile_id"
-    t.integer "requested_profile_id"
-    t.string  "approval",               default: "pending"
-    t.string  "requestor_profile_type"
-    t.string  "requested_profile_type"
     t.string  "message"
+    t.integer "care_receiver_profile_id"
+    t.integer "care_provider_profile_id"
+    t.string  "care_receiver_profile_approval"
+    t.string  "care_provider_profile_approval"
   end
 
   create_table "flaggings", force: true do |t|

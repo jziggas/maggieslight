@@ -7,8 +7,9 @@ class CareReceiverProfile < ActiveRecord::Base
   #has_many :connections, class_name: 'Connection', as: :requestor_profile
   #has_many :connections, class_name: 'Connection', as: :requested_profile
 
-  has_many :connections, -> { where("(requestor_profile_id = ? AND requestor_profile_type = ?) OR ( requested_profile_id = ? AND requested_profile_type = ?)", self.id, self.class.name) }
-  has_many :connected_profiles, -> { where(approval: "approved") }, :through => :connections
+  #has_many :connections, -> { where("(requestor_profile_id = ? AND requestor_profile_type = ?) OR ( requested_profile_id = ? AND requested_profile_type = ?)", self.id, self.class.name) }
+  #has_many :connected_profiles, -> { where(approval: "approved") }, :through => :connections
+  has_many :connections
 
   before_save { self.name = self.name.titleize }
   before_save { self.city = self.city.titleize }

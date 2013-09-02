@@ -29,7 +29,26 @@ class ConnectionsController < ApplicationController
     #@connection = current_user.connections.build connection_params
     #@requestor_id = { :requestor_id => current_user.id }
     #@params = connection_params.merge(@requestor_id)
-    @connection = current_user.connections.build connection_params
+    @message = params[:connection][:message]
+
+    if params[:care_receiver_profile_id]
+      @care_receiver_profile_id = params[:care_receiver_profile_id]
+      @care_provider_profile_id = params[:connection][:care_provider_profile_id]
+      @care_receiver_profile_approval = "pending"
+      @care_provider_profile_approval = "approved"
+    elsif params[:care_provider_profile_id]
+      @care_receiver_profile_id = params[:connection][:care_receiver_profile_id]
+      @care_provider_profile_id = params[:care_provider_profile_id]
+      @care_receiver_profile_approval = "approved"
+      @care_provider_profile_approval = "pending"
+    end
+
+    @connection = Connection.new connection_params
+    @connection.message = @message
+    @connection.care_provider_profile_approval = @care_provider_profile_approval
+    @connection.care_receiver_profile_approval = @care_receiver_profile_approval
+    @connection.care_provider_profile_id = @care_provider_profile_id
+    @connection.care_receiver_profile_id = @care_receiver_profile_id
 
     if @connection.save
       redirect_to root_path, notice: "Thank you for your request. You will be notified of approval."
@@ -51,8 +70,12 @@ class ConnectionsController < ApplicationController
     def set_connection
     end
 
+    #def connection_params
+    #  params.require(:connection).permit(:requestor_id, :requested_id, :requestor_profile_id, :requested_profile_id, :message, :requested_type, :requested_profile_type, :requestor_profile_type, :requestor_type)
+    #end
+
     def connection_params
-      params.require(:connection).permit(:requestor_id, :requested_id, :requestor_profile_id, :requested_profile_id, :message, :requested_type, :requested_profile_type, :requestor_profile_type, :requestor_type)
+      params.require(:connection).permit(:message, :care_receiver_profile_id, :care_provider_profile_id, :care_receiver_profile_approval, :care_provider_profile_approval)
     end
 
     #def load_resource
