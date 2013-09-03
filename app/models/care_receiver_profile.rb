@@ -31,16 +31,16 @@ class CareReceiverProfile < ActiveRecord::Base
 
   validates :name, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :city, :contact_name, :contact_email, obscenity: { message: "One of your words appears profane to our system. Please revise."}
 
-  validates :name, length: { in: 3..35 }
+  validates :name, length: { in: 3..50 }
   validates :disabilities, length: { in: 3..250 }
   validates :hobbies, length: { in: 3..250 }
   validates :services_needed, length: { in: 3..250 }
   validates :misc, length: { in: 3..250 }, allow_blank: true
   validates :hours_needed, length: { in: 3..250 }, allow_blank: true
   validates :days_needed, length: { in: 3..250 }
-  validates :city, length: { in: 3..20 }
+  validates :city, length: { in: 3..50 }
   validates :county, length: { in: 3..30 }
-  validates :contact_name, length: { in: 3..35 }
+  validates :contact_name, length: { in: 3..50 }
   validates :contact_email, length: { in: 3..50 }
 
   self.per_page = 3
