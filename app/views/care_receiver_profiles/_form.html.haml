@@ -19,7 +19,7 @@
     = f.input :days_needed, placeholder: "Various shifts every day of the week."
     = f.input :city, placeholder: "Baltimore"
     = f.input :county, collection: BALTIMORE_COUNTIES # Found in initializers/constants.rb
-    = f.input :transportation, collection: %w(Yes No), label: "Do you have transportation?"
+    = f.input :transportation, collection: %w(Yes No), label: "Can you provide your own transportation?"
     = f.input :contact_name, placeholder: "Mary"
     = f.input :contact_email, as: :email, placeholder: "example@email.com", label: "Contact Email. This will be publicly available when your profile is visible. This may change in the future."
     = f.input :contact_phone, as: :tel, placeholder: "555-123-4567", label: "This will not be publicly available when your profile is visible. This may change in the future."
