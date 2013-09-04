@@ -37,8 +37,8 @@ class CareProviderProfile < ActiveRecord::Base
   validates :field_of_study, length: { in: 2..50 }
   validates :school, length: { in: 2..50 }
   validates :city, length: { in: 3..50 }
-  validates :skills, length: { in: 3..250 }, allow_blank: true
-  validates :misc, length: { in: 3..250 }, allow_blank: true
+  validates :skills, length: { in: 3..1250 }, allow_blank: true
+  validates :misc, length: { in: 3..1250 }, allow_blank: true
   validates :contact_email, length: { in: 3..50 }
 
 

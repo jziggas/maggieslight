@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130827202509) do
+ActiveRecord::Schema.define(version: 20130904202739) do
 
   create_table "care_provider_profiles", force: true do |t|
     t.string   "name"
     t.string   "city"
     t.string   "field_of_study"
     t.string   "school"
-    t.string   "skills"
-    t.string   "misc"
+    t.text     "skills",                       limit: 1255
+    t.text     "misc",                         limit: 1255
     t.string   "contact_email"
     t.string   "contact_phone"
     t.datetime "created_at"
@@ -42,10 +42,10 @@ ActiveRecord::Schema.define(version: 20130827202509) do
     t.string   "name"
     t.date     "birthdate"
     t.string   "gender"
-    t.string   "disabilities"
-    t.string   "hobbies"
-    t.string   "services_needed"
-    t.string   "misc"
+    t.text     "disabilities",                 limit: 1255
+    t.text     "hobbies",                      limit: 1255
+    t.text     "services_needed",              limit: 1255
+    t.text     "misc",                         limit: 1255
     t.string   "hours_needed"
     t.string   "days_needed"
     t.string   "city"
@@ -68,12 +68,11 @@ ActiveRecord::Schema.define(version: 20130827202509) do
   add_index "care_receiver_profiles", ["user_id"], name: "index_care_receiver_profiles_on_user_id"
 
   create_table "connections", force: true do |t|
-    t.integer "requestor_profile_id"
-    t.integer "requested_profile_id"
-    t.string  "approval",               default: "pending"
-    t.string  "requestor_profile_type"
-    t.string  "requested_profile_type"
     t.string  "message"
+    t.integer "care_receiver_profile_id"
+    t.integer "care_provider_profile_id"
+    t.string  "care_receiver_profile_approval"
+    t.string  "care_provider_profile_approval"
   end
 
   create_table "flaggings", force: true do |t|
