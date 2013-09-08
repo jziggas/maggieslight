@@ -3,14 +3,14 @@ Maggieslight::Application.routes.draw do
   devise_for :users
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
-  resources 'those-who-care', as: :care_provider_profiles,
+  resources 'student-caregivers', as: :care_provider_profiles,
     controller: :care_provider_profiles do
       member do
         get 'flag'
       end
     end
 
-  resources 'those-in-need', as: :care_receiver_profiles,
+  resources 'family-individual-ads', as: :care_receiver_profiles,
     controller: :care_receiver_profiles do
       member do
         get 'flag'

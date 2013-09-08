@@ -36,8 +36,8 @@ class CareReceiverProfile < ActiveRecord::Base
   validates :hobbies, length: { in: 3..1250 }
   validates :services_needed, length: { in: 3..1250 }
   validates :misc, length: { in: 3..1250 }, allow_blank: true
-  validates :hours_needed, length: { in: 3..250 }, allow_blank: true
-  validates :days_needed, length: { in: 3..250 }
+  validates :hours_needed, length: { in: 1..140 }, allow_blank: true
+  validates :days_needed, length: { in: 2..140 }
   validates :city, length: { in: 3..50 }
   validates :county, length: { in: 3..30 }
   validates :contact_name, length: { in: 3..50 }
