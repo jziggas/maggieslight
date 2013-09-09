@@ -1,4 +1,6 @@
 class UserProfilesController < ApplicationController
+  before_action :set_page_feedback
+
   def index
     if user_signed_in?
       @page = params[:page] || 1
@@ -9,4 +11,10 @@ class UserProfilesController < ApplicationController
       redirect_to root_path
     end
   end
+
+  private
+
+    def set_page_feedback
+      @page_feedback = PageFeedback.new
+    end
 end

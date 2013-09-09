@@ -37,7 +37,7 @@
       = @care_provider_profile.misc
     %p
       %b Contact Email:
-      = @care_provider_profile.contact_email
+      %a{href: "mailto:#{@care_provider_profile.contact_email}"}= @care_provider_profile.contact_email
     = link_to raw("<i class='icon-arrow-left'></i> Back"), care_provider_profiles_path, class: "btn"
     -#if user_signed_in? && current_user != @care_provider_profile.user
       =# link_to raw("Request Connection <i class='icon-envelope icon-white'></i>"), "#", class: "btn btn-primary"

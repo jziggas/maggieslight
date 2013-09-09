@@ -18,5 +18,6 @@ Maggieslight::Application.routes.draw do
     end
 
   get "/profiles/", to: "user_profiles#index"
+  post '/page_feedbacks', to: "page_feedbacks#create"
   root :to => "care_receiver_profiles#index"
 end

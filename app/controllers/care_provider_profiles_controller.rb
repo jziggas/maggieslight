@@ -1,5 +1,6 @@
 class CareProviderProfilesController < ApplicationController
   load_and_authorize_resource
+  before_action :set_page_feedback
   #before_action :set_care_provider_profile, only: [:show, :edit, :update, :destroy]
 
 
@@ -24,6 +25,7 @@ class CareProviderProfilesController < ApplicationController
     @page = params[:page] || 1
       @profiles = CareProviderProfile.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page])
     @prof = CareProviderProfile.search(params[:search]).class
+    @page_feedback = PageFeedback.new
   end
 
   # GET /care_provider_profiles/1
@@ -94,12 +96,15 @@ class CareProviderProfilesController < ApplicationController
       params.require(:care_provider_profile).permit(:name, :city, :county, :gender, :transportation, :field_of_study, :school, :skills, :misc, :contact_email, :contact_phone, :profile_picture, :status, :visibility)
     end
 
-  private
     def sort_column
       CareProviderProfile.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
     end
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def set_page_feedback
+      @page_feedback = PageFeedback.new
     end
 end

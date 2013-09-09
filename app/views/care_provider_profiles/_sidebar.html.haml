@@ -33,3 +33,4 @@
         %li
           = link_to raw(direction_icon("Status", params[:sort],params[:direction])), care_provider_profiles_path(params.merge(sort: "status", direction: flip_direction(params[:direction]))), id: "header"
   = render "search"
+  = render "page_feedback"

@@ -42,7 +42,7 @@ class CareProviderProfile < ActiveRecord::Base
   validates :contact_email, length: { in: 3..50 }
 
 
-  self.per_page = 3
+  self.per_page = 7
 
   def self.search(search)
     if search

@@ -1,5 +1,6 @@
 class CareReceiverProfilesController < ApplicationController
   load_and_authorize_resource
+  before_action :set_page_feedback
   #before_action :set_care_receiver_profile, only: [:show, :edit, :update, :destroy]
 
   def flag
@@ -95,12 +96,15 @@ class CareReceiverProfilesController < ApplicationController
       params.require(:care_receiver_profile).permit(:name, :birthdate, :gender, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :city, :county, :transportation, :contact_name, :contact_email, :contact_phone, :profile_picture, :status, :visibility)
     end
 
-  private
     def sort_column
       CareReceiverProfile.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
     end
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+
+    def set_page_feedback
+      @page_feedback = PageFeedback.new
     end
 end

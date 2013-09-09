@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  rolify before_add: :set_user
+  rolify
+  before_save :set_user
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -14,6 +15,7 @@ class User < ActiveRecord::Base
   make_flagger
 
   has_many :flaggings, as: :flagger
+  has_many :page_feedbacks
 
   self.per_page = 10
 

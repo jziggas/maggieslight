@@ -1,6 +1,6 @@
 = render "sidebar"
 .span8
-  %h1#header All Student Caregivers
+  %h1#header Student Caregivers
   %hr
   %p.lead
     = "Searching for '#{params[:search]}'. " if params[:search]
@@ -14,8 +14,12 @@
           .row-fluid
             .span8#hideOverflow
               %h6.lead= "#{profile.name} studies #{profile.field_of_study} and lives in #{profile.city}"
-              %p= "School: #{profile.school}"
-              %p= "Skills and Experience: #{profile.skills}"
+              %p
+                %em School:
+                = "#{profile.school}"
+              %p
+                %em Skills and Experience:
+                = "#{profile.skills}"
               %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
               %p
               %p

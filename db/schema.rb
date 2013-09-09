@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130904202739) do
+ActiveRecord::Schema.define(version: 20130909014034) do
 
   create_table "care_provider_profiles", force: true do |t|
     t.string   "name"
@@ -87,6 +87,13 @@ ActiveRecord::Schema.define(version: 20130904202739) do
 
   add_index "flaggings", ["flaggable_type", "flaggable_id"], name: "index_flaggings_on_flaggable_type_and_flaggable_id"
   add_index "flaggings", ["flagger_type", "flagger_id", "flaggable_type", "flaggable_id"], name: "access_flaggings"
+
+  create_table "page_feedbacks", force: true do |t|
+    t.string  "feedback"
+    t.string  "controller"
+    t.string  "action"
+    t.integer "user_id"
+  end
 
   create_table "rails_admin_histories", force: true do |t|
     t.text     "message"

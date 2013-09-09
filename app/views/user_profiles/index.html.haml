@@ -26,8 +26,4 @@
               =link_to raw("Delete <i class='icon-trash icon-white'></i>"), { controller: profile.class.to_s.pluralize.underscore, action: :destroy, id: profile.id }, class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
           .span4
             = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
-      = #link_to raw("View <i class='icon-user icon-white'></i>"), "/#{profile.class.to_s.underscore + 's'}/#{profile.id}", class: "btn btn-info"
-      = #link_to raw("Edit <i class='icon-edit'></i>"), "/#{profile.class.to_s.underscore + 's'}/#{profile.id}/edit", class: "btn btn-warning"
-      = #link_to raw("Delete <i class='icon-trash icon-white'></i>"), "/#{profile.class.to_s.underscore + 's'}/#{profile.id}", class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
-
   =will_paginate @profiles

@@ -14,8 +14,12 @@
           .row-fluid
             .span8#hideOverflow
               %h6.lead= "#{profile.name} is #{profile.age} old and lives in #{profile.city}"
-              %p= "Likes: #{profile.hobbies}"
-              %p= "Disabilities and Diagnoses: #{profile.disabilities}"
+              %p
+                %em Likes:
+                = "#{profile.hobbies}"
+              %p
+                %em Disabilities and Diagnoses:
+                = "#{profile.disabilities}"
               %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
               %p
               %p
