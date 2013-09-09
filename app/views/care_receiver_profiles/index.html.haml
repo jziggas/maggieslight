@@ -19,7 +19,6 @@
             %p
               %em Disabilities and Diagnoses:
               = "#{profile.disabilities}"
-            %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
             %p
             %p
               - if profile.user == current_user

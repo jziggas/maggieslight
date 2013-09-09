@@ -19,7 +19,6 @@
             %p
               %em Skills and Experience:
               = "#{profile.skills}"
-            %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
             %p
             %p
               - if profile.user == current_user
