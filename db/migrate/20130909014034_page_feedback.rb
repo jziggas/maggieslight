@@ -1,4 +1,4 @@
-class AddPageFeedbackTable < ActiveRecord::Migration
+class CreatePageFeedbacksTable < ActiveRecord::Migration
   def change
     create_table :page_feedbacks do |t|
       t.string :feedback
