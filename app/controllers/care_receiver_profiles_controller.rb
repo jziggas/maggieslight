@@ -1,7 +1,6 @@
 class CareReceiverProfilesController < ApplicationController
   load_and_authorize_resource
   before_action :set_page_feedback
-  #before_action :set_care_receiver_profile, only: [:show, :edit, :update, :destroy]
 
   def flag
     @profile  = CareReceiverProfile.find_by id: params[:id]
@@ -15,8 +14,7 @@ class CareReceiverProfilesController < ApplicationController
     end
     redirect_to care_receiver_profiles_path, notice: msg
   end
-  # GET /care_receiver_profiles
-  # GET /care_receiver_profiles.json
+
   def index
     @sort_column = sort_column
     @sort_direction = sort_direction
@@ -24,31 +22,22 @@ class CareReceiverProfilesController < ApplicationController
     @profiles = CareReceiverProfile.search(params[:search]).order(@sort_column + " " + @sort_direction).paginate(page: params[:page])
   end
 
-  # GET /care_receiver_profiles/1
-  # GET /care_receiver_profiles/1.json
   def show
   end
 
-  # GET /care_receiver_profiles/new
   def new
     @care_receiver_profile = CareReceiverProfile.new
   end
 
-  # GET /care_receiver_profiles/1/edit
   def edit
   end
 
-  # POST /care_receiver_profiles
-  # POST /care_receiver_profiles.json
   def create
-    # @care_receiver_profile = CareReceiverProfile.new(care_receiver_profile_params)
-=begin
-    build(attributes = {}, &block)
-    ActiveRecord::Associations::CollectionProxy
+    # build(attributes = {}, &block)
+    # ActiveRecord::Associations::CollectionProxy
 
-    Returns a new object of the collection type that has been instantiated with attributes and linked to this object, but have not yet been saved. You can pass an array of attributes hashes, this will return an array with the new objects.
-=end
-    @care_receiver_profile = current_user.care_receiver_profiles.build(care_receiver_profile_params)
+    # Returns a new object of the collection type that has been instantiated with attributes and linked to this object, but have not yet been saved. You can pass an array of attributes hashes, this will return an array with the new objects.
+    # @care_receiver_profile = current_user.care_receiver_profiles.build(care_receiver_profile_params)
 
     respond_to do |format|
       if @care_receiver_profile.save
@@ -61,8 +50,6 @@ class CareReceiverProfilesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /care_receiver_profiles/1
-  # PATCH/PUT /care_receiver_profiles/1.json
   def update
     respond_to do |format|
       if @care_receiver_profile.update(care_receiver_profile_params)
@@ -75,8 +62,6 @@ class CareReceiverProfilesController < ApplicationController
     end
   end
 
-  # DELETE /care_receiver_profiles/1
-  # DELETE /care_receiver_profiles/1.json
   def destroy
     @care_receiver_profile.destroy
     respond_to do |format|

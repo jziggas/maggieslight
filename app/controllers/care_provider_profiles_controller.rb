@@ -1,8 +1,6 @@
 class CareProviderProfilesController < ApplicationController
   load_and_authorize_resource
   before_action :set_page_feedback
-  #before_action :set_care_provider_profile, only: [:show, :edit, :update, :destroy]
-
 
   def flag
     @profile  = CareProviderProfile.find_by id: params[:id]
@@ -17,8 +15,6 @@ class CareProviderProfilesController < ApplicationController
     redirect_to care_provider_profiles_path, notice: msg
   end
 
-  # GET /care_provider_profiles
-  # GET /care_provider_profiles.json
   def index
     @sort_column = sort_column
     @sort_direction = sort_direction
@@ -28,25 +24,17 @@ class CareProviderProfilesController < ApplicationController
     @page_feedback = PageFeedback.new
   end
 
-  # GET /care_provider_profiles/1
-  # GET /care_provider_profiles/1.json
   def show
   end
 
-  # GET /care_provider_profiles/new
   def new
     @care_provider_profile = CareProviderProfile.new
   end
 
-  # GET /care_provider_profiles/1/edit
   def edit
   end
 
-  # POST /care_provider_profiles
-  # POST /care_provider_profiles.json
   def create
-    # @care_provider_profile = CareProviderProfile.new(care_provider_profile_params)
-    # See care_receiver_profiles#create for notes
 
     @care_provider_profile = current_user.care_provider_profiles.build(care_provider_profile_params)
 
@@ -61,8 +49,6 @@ class CareProviderProfilesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /care_provider_profiles/1
-  # PATCH/PUT /care_provider_profiles/1.json
   def update
     respond_to do |format|
       if @care_provider_profile.update(care_provider_profile_params)
@@ -75,8 +61,6 @@ class CareProviderProfilesController < ApplicationController
     end
   end
 
-  # DELETE /care_provider_profiles/1
-  # DELETE /care_provider_profiles/1.json
   def destroy
     @care_provider_profile.destroy
     respond_to do |format|
