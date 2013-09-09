@@ -5,7 +5,8 @@
   = link_to "Sign up", new_registration_path(resource_name)
   %br/
 - if devise_mapping.recoverable? && controller_name != 'passwords'
-  = link_to "Forgot your password?", new_password_path(resource_name)
+  =# link_to "Forgot your password?", new_password_path(resource_name)
+  = link_to "Forgot your password?", "mailto:maryanne@maggieslight.org?subject=Forgotten Password&body=Hi Mary, I forgot my password. Could you please reset it for me?"
   %br/
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
   = link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name)
@@ -17,3 +18,4 @@
   - resource_class.omniauth_providers.each do |provider|
     = link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider)
     %br/
+= link_to "Back", root_path
