@@ -12,6 +12,8 @@ class CareProviderProfile < ActiveRecord::Base
   before_save { self.field_of_study = self.field_of_study.titleize }
   before_save { self.school = self.school.titleize }
 
+  scope :available, -> { where(status: "Looking To Care") }
+
   # Normalizes the attribute itself before validation
   phony_normalize :contact_phone, :default_country_code => 'US'
 
@@ -24,10 +26,9 @@ class CareProviderProfile < ActiveRecord::Base
   validates :county, inclusion: { in: BALTIMORE_COUNTIES, message: "%{value} is not a valid county."}
   validates :gender, inclusion: { in: %w(Male Female), message: "%{value} is an invalid gender."}
   validates :transportation, inclusion: { in: %w(Yes No), message: "%{value} is an invalid option."}
-  validates :name, :city, :county, :field_of_study, :school, :contact_email, :contact_phone, :gender, :transportation, :status, :visibility, presence: true
+  validates :name, :city, :county, :field_of_study, :school, :contact_email, :gender, :transportation, :status, presence: true
   validates :contact_phone, phony_plausible: true
   validates :status, inclusion: { in: ["Looking To Care", "Currently Busy"] }
-  validates :visibility, inclusion: { in: %w[Visible Hidden] }
 
   validates :name, :city, :field_of_study, :school, :skills, :misc, :contact_email, obscenity: { message: "One of your words appears profane to our system. Please revise."}
 

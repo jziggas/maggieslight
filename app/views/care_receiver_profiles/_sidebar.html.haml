@@ -7,7 +7,7 @@
           %li= link_to "New Family / Individual", new_care_receiver_profile_path, class: ( "highlighted" if controller?("care_receiver_profiles") && action?("new") )
           %li= link_to "New Student Caregiver", new_care_provider_profile_path, class: ( "highlighted" if controller?("care_provider_profiles") && action?("new") )
           %li= link_to "View Your Profiles", profiles_path, id: "header", class: ( "highlighted" if controller?("user_profiles") && action?("index") )
-          %li= link_to "Edit Account", edit_user_registration_path, id: "header"
+          %li= link_to "Edit Account", edit_user_registration_path
           %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
         - else
           %li= link_to "Register", new_user_registration_path
@@ -25,17 +25,20 @@
       %label.tree-toggle.nav-header Sort By
       %ul.nav.nav-list.tree
         %li
-          = link_to raw(direction_icon("Recent", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "created_at", direction: flip_direction(params[:direction]))), id: "header"
+          = link_to raw(direction_icon("Recent", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "created_at", direction: flip_direction(params[:direction])))
         %li
-          = link_to raw(direction_icon("Name", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "name", direction: flip_direction(params[:direction]))), id: "header"
+          = link_to raw(direction_icon("Name", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "name", direction: flip_direction(params[:direction])))
         %li
-          = link_to raw(direction_icon("Age", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "birthdate", direction: flip_direction(params[:direction]))), id: "header"
+          = link_to raw(direction_icon("Age", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "birthdate", direction: flip_direction(params[:direction])))
         %li
-          = link_to raw(direction_icon("City", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "city", direction: flip_direction(params[:direction]))), id: "header"
+          = link_to raw(direction_icon("County", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "county", direction: flip_direction(params[:direction])))
         %li
-          = link_to raw(direction_icon("Status", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "status", direction: flip_direction(params[:direction]))), id: "header"
+          = link_to raw(direction_icon("Status", params[:sort],params[:direction])), care_receiver_profiles_path(params.merge(sort: "status", direction: flip_direction(params[:direction])))
   = render "search"
   %header
   = render "page_feedback"
-  - if user_signed_in? &&
-    = link_to "Please Answer Three Questions"
+  - if user_signed_in? && Time.now - current_user.created_at > 9.weeks
+    - if @employment_survey_id.nil?
+      = link_to "Please Answer Three Questions!", new_employment_survey_path
+    - else
+      = link_to "Update your survey.", edit_employment_survey_path(@employment_survey_id)

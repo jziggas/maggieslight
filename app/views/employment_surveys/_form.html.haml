@@ -1,0 +1,9 @@
+= simple_form_for @employment_survey do |f|
+  = f.error_notification
+
+  = f.input :kind_of_ad, collection: ['Family', 'Individual', 'Student Caregiver'], label: "What kind of ad did you post?", as: :radio_buttons
+  = f.input :contact, collection: ['Yes', 'No'], label: "Were you able to make contact with someone through the Maggie's Light Community Works Directory?", as: :radio_buttons
+  = f.input :employment, collection: ['Yes', 'No'], label: "If you were able to make contact with someone via the Maggie's Light Community Works Directory, did it result in employment?", as: :radio_buttons
+  = f.button :submit, class: "btn btn-primary"
+
+= link_to "Back", root_path

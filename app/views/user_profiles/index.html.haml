@@ -19,8 +19,6 @@
             %p
               %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
             %p
-              %span.label{:class => "label-#{status_label(profile.visibility)}"}= profile.visibility
-            %p
               =link_to raw("View <i class='icon-user icon-white'></i>"), { controller: profile.class.to_s.pluralize.underscore, action: :show, id: profile.id }, class: "btn btn-info"
               =link_to raw("Edit <i class='icon-edit'></i>"), { controller: profile.class.to_s.pluralize.underscore, action: :edit, id: profile.id }, class: "btn btn-warning"
               =link_to raw("Delete <i class='icon-trash icon-white'></i>"), { controller: profile.class.to_s.pluralize.underscore, action: :destroy, id: profile.id }, class: "btn btn-danger", method: :delete, confirm: "Are you sure?"

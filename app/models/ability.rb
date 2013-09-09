@@ -9,12 +9,15 @@ class Ability
          can :manage, :all
          can :access,:rails_admin
          can :dashboard
-       else
+       elsif user.is_user?
          can :read, :all
          can :update, CareProviderProfile do |p|
             p.try(:user) == user
          end
          can :update, CareReceiverProfile do |p|
+            p.try(:user) == user
+         end
+         can :update, EmploymentSurvey do |p|
             p.try(:user) == user
          end
          can :destroy, CareProviderProfile do |p|
@@ -32,8 +35,10 @@ class Ability
          can :flag, CareReceiverProfile do |p|
             p.try(:user) != user
          end
-         can :create, [CareProviderProfile, CareReceiverProfile]
-      end
+         can :create, [CareProviderProfile, CareReceiverProfile, EmploymentSurvey]
+       else
+         can :index, [CareProviderProfile, CareReceiverProfile]
+       end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

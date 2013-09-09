@@ -17,6 +17,8 @@ Maggieslight::Application.routes.draw do
       end
     end
 
+  resources :employment_surveys, only: [:new, :create, :edit, :update]
+
   get "/profiles/", to: "user_profiles#index"
   post '/page_feedbacks', to: "page_feedbacks#create"
   root :to => "care_receiver_profiles#index"

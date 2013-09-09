@@ -4,13 +4,10 @@
     %h1#header= "Family / Individiual Ad for #{@care_receiver_profile.name}"
     %hr
     %p= image_tag @care_receiver_profile.profile_picture.url(:thumb)
-    %p
-      %b Status:
-      %span.label{:class => "label-#{status_label(@care_receiver_profile.status)}"}= @care_receiver_profile.status
     - if current_user == @care_receiver_profile.user
       %p
-        %b Visibility:
-        %span.label{:class => "label-#{status_label(@care_receiver_profile.visibility)}"}= @care_receiver_profile.visibility
+        %b Status:
+        %span.label{:class => "label-#{status_label(@care_receiver_profile.status)}"}= @care_receiver_profile.status
     %p
       %b Birthday:
       = @care_receiver_profile.birthdate.strftime('%B %-d, %Y')

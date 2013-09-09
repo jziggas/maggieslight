@@ -1,6 +1,7 @@
 class CareReceiverProfilesController < ApplicationController
   load_and_authorize_resource
   before_action :set_page_feedback
+  before_action :set_employment_survey_id
 
   def flag
     @profile  = CareReceiverProfile.find_by id: params[:id]
@@ -19,7 +20,7 @@ class CareReceiverProfilesController < ApplicationController
     @sort_column = sort_column
     @sort_direction = sort_direction
     @page = params[:page] || 1
-    @profiles = CareReceiverProfile.search(params[:search]).order(@sort_column + " " + @sort_direction).paginate(page: params[:page])
+    @profiles = CareReceiverProfile.available.search(params[:search]).order(@sort_column + " " + @sort_direction).paginate(page: params[:page])
   end
 
   def show
@@ -78,7 +79,7 @@ class CareReceiverProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def care_receiver_profile_params
-      params.require(:care_receiver_profile).permit(:name, :birthdate, :gender, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :city, :county, :transportation, :contact_name, :contact_email, :contact_phone, :profile_picture, :status, :visibility)
+      params.require(:care_receiver_profile).permit(:name, :birthdate, :gender, :disabilities, :hobbies, :services_needed, :misc, :hours_needed, :days_needed, :city, :county, :transportation, :contact_name, :contact_email, :contact_phone, :profile_picture, :status)
     end
 
     def sort_column
@@ -91,5 +92,9 @@ class CareReceiverProfilesController < ApplicationController
 
     def set_page_feedback
       @page_feedback = PageFeedback.new
+    end
+
+    def set_employment_survey_id
+      @employment_survey_id = EmploymentSurvey.find_by_user_id(current_user.id)
     end
 end

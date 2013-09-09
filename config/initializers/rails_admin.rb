@@ -8,7 +8,7 @@ RailsAdmin.config do |config|
   ################  Global configuration  ################
 
   # Set the admin name here (optional second array element will appear in red). For example:
-  config.main_app_name = ['Maggieslight', 'Administrative Dashboard']
+  config.main_app_name = ['Community Works Caregiver Registry', 'Admin Dashboard']
   # or for a more dynamic name:
   # config.main_app_name = Proc.new { |controller| [Rails.application.engine_name.titleize, controller.params['action'].titleize] }
 

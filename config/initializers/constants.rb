@@ -23,3 +23,13 @@ BALTIMORE_COUNTIES = [
   "Washington County",
   "Wicomico County",
   "Worcester County"]
+
+FEEDBACK = [
+  "It had unicorns.",
+  "If you added XYZ feature.",
+  "It sliced and diced.",
+  "Sorted by cuteness.",
+  "Helped me with XYZ.",
+  "You implemented an ABC widget.",
+  "It showed me a ...",
+  "It did my taxes."]

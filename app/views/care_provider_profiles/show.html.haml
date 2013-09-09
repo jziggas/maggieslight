@@ -4,13 +4,10 @@
     %h1#header= "Student Caregiver Profile for #{@care_provider_profile.name}"
     %hr
     %p= image_tag @care_provider_profile.profile_picture.url(:large)
-    %p
-      %b Status:
-      %span.label{:class => "label-#{status_label(@care_provider_profile.status)}"}= @care_provider_profile.status
     - if current_user == @care_provider_profile.user
       %p
-        %b Visibility:
-        %span.label{:class => "label-#{status_label(@care_provider_profile.visibility)}"}= @care_provider_profile.visibility
+        %b Status:
+        %span.label{:class => "label-#{status_label(@care_provider_profile.status)}"}= @care_provider_profile.status
     %p
       %b Gender:
       = @care_provider_profile.gender

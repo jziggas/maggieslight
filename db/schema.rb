@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130909040956) do
+ActiveRecord::Schema.define(version: 20130909204525) do
 
   create_table "care_provider_profiles", force: true do |t|
     t.string   "name"
@@ -33,7 +33,6 @@ ActiveRecord::Schema.define(version: 20130909040956) do
     t.string   "transportation"
     t.string   "gender"
     t.string   "status"
-    t.string   "visibility"
   end
 
   add_index "care_provider_profiles", ["user_id"], name: "index_care_provider_profiles_on_user_id"
@@ -62,7 +61,6 @@ ActiveRecord::Schema.define(version: 20130909040956) do
     t.datetime "profile_picture_updated_at"
     t.string   "county"
     t.string   "status"
-    t.string   "visibility"
   end
 
   add_index "care_receiver_profiles", ["user_id"], name: "index_care_receiver_profiles_on_user_id"
@@ -73,6 +71,15 @@ ActiveRecord::Schema.define(version: 20130909040956) do
     t.integer "care_provider_profile_id"
     t.string  "care_receiver_profile_approval"
     t.string  "care_provider_profile_approval"
+  end
+
+  create_table "employment_surveys", force: true do |t|
+    t.integer  "user_id"
+    t.string   "kind_of_ad"
+    t.string   "contact"
+    t.string   "employment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "flaggings", force: true do |t|
