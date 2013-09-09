@@ -94,6 +94,10 @@ class CareProviderProfilesController < ApplicationController
     end
 
     def set_employment_survey_id
-      @employment_survey_id = EmploymentSurvey.find_by_user_id(current_user.id)
+      if user_signed_in?
+        @employment_survey_id = EmploymentSurvey.find_by_user_id(current_user.id)
+      else
+        @employment_survey_id = nil
+      end
     end
 end
