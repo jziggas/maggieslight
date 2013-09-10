@@ -135,8 +135,11 @@ hr {
   padding-top: 10px;
 }
 input#search {
+  max-width: 190px;
+}
+
+.search {
   max-width: 198px;
-  padding: 8px 0 0 0;
 }
 
 #hideOverflow {

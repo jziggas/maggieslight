@@ -27,9 +27,12 @@ BALTIMORE_COUNTIES = [
 FEEDBACK = [
   "It had unicorns.",
   "If you added XYZ feature.",
-  "It sliced and diced.",
-  "Sorted by cuteness.",
+  "It did my laundry.",
+  "It sorted by cuteness.",
   "Helped me with XYZ.",
-  "You implemented an ABC widget.",
-  "It showed me a ...",
-  "It did my taxes."]
+  "It showed me how to ...",
+  "It did my taxes.",
+  "It was calorie-free.",
+  "It had XYZ button.",
+  "There was an XYZ form.",
+  "It displayed a ..."]

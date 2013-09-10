@@ -1,7 +1,7 @@
-- if user_signed_in?
-  = simple_form_for @page_feedback do |f|
+-if user_signed_in?
+  = simple_form_for @page_feedback, class: 'search' do |f|
     = f.label "This page would be better if:"
-    = f.input :feedback, label: false, placeholder: FEEDBACK[rand(0..6)]
+    = f.input :feedback, label: false, placeholder: FEEDBACK[rand(0..6)], :input_html => {:style => 'width: 190px'}
     = f.hidden_field :controller, value: params[:controller]
     = f.hidden_field :action, value: params[:action]
-    = f.button :submit, "Submit!"
+    = #f.button :submit, "Submit!"
