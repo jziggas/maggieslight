@@ -18,14 +18,25 @@
         .row-fluid
           = render 'layouts/messages'
           = yield
-  :javascript
-    _glc =_glc || [];
-    _glc.push('all_ag9zfmNsaWNrZGVza2NoYXRyDgsSBXVzZXJzGNig3BIM');
-    glcpath = (('https:' == document.location.protocol) ? 'https://my.clickdesk.com/clickdesk-ui/browser/' : 'http://my.clickdesk.com/clickdesk-ui/browser/');
-    glcp = (('https:' == document.location.protocol) ? 'https://' : 'http://');
-    glcspt = document.createElement('script');
-    glcspt.type = 'text/javascript';
-    glcspt.async = true; glcspt.src = glcpath + 'livechat-new.js';
-    s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(glcspt, s);
+    :javascript
+      function zopim_chat(){
+        $('[__jx__id], embed#__zopnetworkswf').remove();
+        window.$zopim = null;
+        (function(d,s){
+          var z = $zopim = function(c){
+            z._.push(c)
+          }, $ = z.s = d.createElement(s), e = d.body.getElementsByTagName(s)[0];
+          z.set = function(o){
+            z.set._.push(o)
+          };
+          z._ = [];
+          z.set._ = [];
+          $.async = !0;
+          $.setAttribute('charset','utf-8');
+          $.src = '//cdn.zopim.com/?1WSHEDFyt9TJgGa9tNSVuP1UjSznjpcT';
+          z.t = +new Date;
+          $.type = 'text/javascript';
+          e.parentNode.insertBefore($,e)
+        })(document,'script');
+      }
 = render 'layouts/footer'

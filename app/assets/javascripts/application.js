@@ -17,9 +17,14 @@
 //= require turbolinks
 //= require_tree .
 
+// $(document).on('ready', zopim_chat);
+
 $(document).ready(function() {
   $(".tree-toggle").on('click', function() {
     $(this).parent().children("ul.tree").toggle(200);
   });
   $('.flag').tooltip();
+  zopim_chat();
 });
+
+// $(document).on('page:load', zopim_chat);
