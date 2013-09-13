@@ -1,6 +1,6 @@
 = form_tag root_path, :method => 'get', :id => "profile_search" do
   %p
-    = text_field_tag :search, params[:search]
+    = text_field_tag :search, params[:search], placeholder: "city, county, disability, skills, name"
     = submit_tag "Search", :name => nil, class: "btn"
   #profiles
     = hidden_field_tag :direction, params[:direction]

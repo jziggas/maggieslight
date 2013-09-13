@@ -20,7 +20,7 @@ class CareProviderProfile < ActiveRecord::Base
   has_attached_file :profile_picture, :styles => { :large => "350x350", :medium => "250x250>", :thumb => "150x150>" }, :default_url => "missing.jpg"
 
   validates_attachment_size :profile_picture, :less_than => 1.megabytes
-  validates_attachment_content_type :profile_picture, :content_type => ['image/jpeg', 'image/png']
+  validates_attachment_content_type :profile_picture, :content_type => ['image/jpg', 'image/jpeg', 'image/png']
 
   validates :contact_email, :email_format => {:message => 'is not a valid email address.'}
   validates :county, inclusion: { in: BALTIMORE_COUNTIES, message: "%{value} is not a valid county."}
@@ -47,7 +47,7 @@ class CareProviderProfile < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where("lower(name) LIKE ? OR lower(school) LIKE ? OR lower(field_of_study) LIKE ? OR lower(skills) LIKE ? OR lower(city) LIKE ?", "%#{search.try(:downcase)}%","%#{search.try(:downcase)}%","%#{search.try(:downcase)}%","%#{search.try(:downcase)}%", "%#{search.try(:downcase)}%")
+      where("lower(name) LIKE ? OR lower(school) LIKE ? OR lower(field_of_study) LIKE ? OR lower(skills) LIKE ? OR lower(city) LIKE ? OR lower(county) LIKE ?", "%#{search.try(:downcase)}%","%#{search.try(:downcase)}%","%#{search.try(:downcase)}%","%#{search.try(:downcase)}%", "%#{search.try(:downcase)}%", "%#{search.try(:downcase)}%")
     else
       scoped
     end
