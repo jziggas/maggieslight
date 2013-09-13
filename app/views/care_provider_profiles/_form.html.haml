@@ -3,7 +3,7 @@
 
   .form-inputs
     %p
-      = f.label "Upload a profile picture"
+      = f.label "Upload a profile picture (Only JPG and PNG files accepted):"
     %p
       = f.file_field :profile_picture
     = f.input :status, collection: ["Looking To Care", "Currently Busy"], include_blank: false, label: "Profile Status. Marking 'Currently Busy' will hide your profile from public view.", as: :radio_buttons, :item_wrapper_class => 'inline'
