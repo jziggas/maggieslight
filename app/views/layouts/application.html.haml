@@ -1,6 +1,9 @@
 !!!
 %html
   %head
+    / HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      %script{src: "http://html5shim.googlecode.com/svn/trunk/html5.js"}
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
       %title= content_for?(:title) ? yield(:title) : "Community Works Caregiver Registry"
       %meta{:content => content_for?(:description) ? yield(:description) : "Maggieslight", :name => "description"}
@@ -18,25 +21,4 @@
         .row-fluid
           = render 'layouts/messages'
           = yield
-    :javascript
-      function zopim_chat(){
-        $('[__jx__id], embed#__zopnetworkswf').remove();
-        window.$zopim = null;
-        (function(d,s){
-          var z = $zopim = function(c){
-            z._.push(c)
-          }, $ = z.s = d.createElement(s), e = d.body.getElementsByTagName(s)[0];
-          z.set = function(o){
-            z.set._.push(o)
-          };
-          z._ = [];
-          z.set._ = [];
-          $.async = !0;
-          $.setAttribute('charset','utf-8');
-          $.src = '//cdn.zopim.com/?1WSHEDFyt9TJgGa9tNSVuP1UjSznjpcT';
-          z.t = +new Date;
-          $.type = 'text/javascript';
-          e.parentNode.insertBefore($,e)
-        })(document,'script');
-      }
 = render 'layouts/footer'

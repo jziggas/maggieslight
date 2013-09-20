@@ -17,8 +17,6 @@
 //= require turbolinks
 //= require_tree .
 
-// $(document).on('ready', zopim_chat);
-
 $(document).ready(function() {
   $(".tree-toggle").on('click', function() {
     $(this).parent().children("ul.tree").toggle(200);
@@ -27,4 +25,28 @@ $(document).ready(function() {
   zopim_chat();
 });
 
-// $(document).on('page:load', zopim_chat);
+/* Place this in the application layout for zopim chat, inside .box01 under the body. Works with TurboLinks.
+
+    :javascript
+      function zopim_chat(){
+        $('[__jx__id], embed#__zopnetworkswf').remove();
+        window.$zopim = null;
+        (function(d,s){
+          var z = $zopim = function(c){
+            z._.push(c)
+          }, $ = z.s = d.createElement(s), e = d.body.getElementsByTagName(s)[0];
+          z.set = function(o){
+            z.set._.push(o)
+          };
+          z._ = [];
+          z.set._ = [];
+          $.async = !0;
+          $.setAttribute('charset','utf-8');
+          $.src = '//cdn.zopim.com/?<PUT YOUR API CODE HERE.. MINE IS IN LASTPASS>';
+          z.t = +new Date;
+          $.type = 'text/javascript';
+          e.parentNode.insertBefore($,e)
+        })(document,'script');
+      }
+
+*/
