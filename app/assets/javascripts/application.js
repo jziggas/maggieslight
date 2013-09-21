@@ -22,7 +22,7 @@ $(document).ready(function() {
     $(this).parent().children("ul.tree").toggle(200);
   });
   $('.flag').tooltip();
-  zopim_chat();
+  // zopim_chat();
 });
 
 /* Place this in the application layout for zopim chat, inside .box01 under the body. Works with TurboLinks.
