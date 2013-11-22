@@ -38,7 +38,7 @@ class CareReceiverProfilesController < ApplicationController
     # ActiveRecord::Associations::CollectionProxy
 
     # Returns a new object of the collection type that has been instantiated with attributes and linked to this object, but have not yet been saved. You can pass an array of attributes hashes, this will return an array with the new objects.
-    # @care_receiver_profile = current_user.care_receiver_profiles.build(care_receiver_profile_params)
+    @care_receiver_profile = current_user.care_receiver_profiles.build(care_receiver_profile_params)
 
     respond_to do |format|
       if @care_receiver_profile.save
