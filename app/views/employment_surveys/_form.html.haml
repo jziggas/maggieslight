@@ -1,9 +1,18 @@
+%p In an effort to measure how we have helped you connect with other individuals on this website, please take 30 seconds to answer these three questions. You will be asked to complete this survey every three months.
+
+%p
+  If you have any suggestions on how to improve the Caregiver Registry, please email
+  %a{href: "mailto:maryanne@maggieslight.org"} Mary Anne
+  or fill out the Page Feedback text box (the one that says, "This page would be better if...") found in the bottom left corner of any page on the Registry. Thanks!
+%p      -- Maggie's Light Foundation
+
 = simple_form_for @employment_survey do |f|
   = f.error_notification
 
   = f.input :kind_of_ad, collection: ['Family', 'Individual', 'Student Caregiver'], label: "What kind of ad did you post?", as: :radio_buttons
   = f.input :contact, collection: ['Yes', 'No'], label: "Were you able to make contact with someone through the Maggie's Light Community Works Directory?", as: :radio_buttons
-  = f.input :employment, collection: ['Yes', 'No'], label: "If you were able to make contact with someone via the Maggie's Light Community Works Directory, did it result in employment?", as: :radio_buttons
-  = f.button :submit, class: "btn btn-primary"
+  = f.input :employment, collection: ['Yes', 'No', 'Not applicable (Didn\'t make contact)'], label: "If you did make contact, did it result in employment?", as: :radio_buttons
+  = f.button :submit, "Submit Survey", class: "btn btn-primary"
 
 = link_to "Back", root_path
+= link_to " | Logout", destroy_user_session_path, method: :delete

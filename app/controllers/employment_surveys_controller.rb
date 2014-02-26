@@ -6,7 +6,7 @@ class EmploymentSurveysController < ApplicationController
    end
 
    def create
-    @employment_survey = current_user.create_employment_survey( employment_survey_params)
+    @employment_survey = current_user.employment_surveys.build(employment_survey_params)
     if @employment_survey.save
       redirect_to root_path, notice: "Thank you!"
     else

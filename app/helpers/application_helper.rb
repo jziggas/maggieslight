@@ -27,9 +27,11 @@ module ApplicationHelper
   end
 
   def flip_direction(direction)
-    if direction.nil? || direction == 'asc'
+    if direction.nil?
+      'asc'
+    elsif direction == 'asc'
       'desc'
-    else
+    elsif direction == 'desc'
       'asc'
     end
   end
@@ -50,7 +52,7 @@ module ApplicationHelper
         text + " <i class='icon-arrow-down'></i>"
       end
     elsif nav == 'created_at' && !sort
-      "Recent <i class='icon-arrow-up'></i>"
+      "Recent <i class='icon-arrow-down'></i>"
     else
       text + ' '
     end
@@ -86,6 +88,12 @@ module ApplicationHelper
 
   def action?(*action)
     action.include?(params[:action])
+  end
+
+  def check_survey_status()
+    if user_signed_in? && Time.now - current_user.created_at > 8.weeks && current_user.employment_survey.nil?
+      redirect_to new_employment_survey_path
+    end
   end
 =begin
 

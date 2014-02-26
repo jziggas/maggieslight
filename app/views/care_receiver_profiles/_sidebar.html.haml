@@ -37,6 +37,7 @@
   = render "search"
   %header
   = render "page_feedback"
+-#
   - if user_signed_in? && Time.now - current_user.created_at > 9.weeks
     - if @employment_survey_id.nil?
       = link_to "Please Answer Three Questions!", new_employment_survey_path

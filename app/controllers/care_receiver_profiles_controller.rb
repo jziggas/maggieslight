@@ -1,7 +1,7 @@
 class CareReceiverProfilesController < ApplicationController
   load_and_authorize_resource
   before_action :set_page_feedback
-  before_action :set_employment_survey_id
+  before_action :check_survey_status
 
   def flag
     @profile  = CareReceiverProfile.find_by id: params[:id]
@@ -87,18 +87,27 @@ class CareReceiverProfilesController < ApplicationController
     end
 
     def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
     end
 
     def set_page_feedback
       @page_feedback = PageFeedback.new
     end
 
-    def set_employment_survey_id
+    def set_employment_survey_id #deprecated
       if user_signed_in?
         @employment_survey_id = EmploymentSurvey.find_by_user_id(current_user.id)
       else
         @employment_survey_id = nil
+      end
+    end
+
+    def check_survey_status
+      if user_signed_in?
+        @employment_surveys = current_user.employment_surveys.sort_by(&:created_at)
+        if (@employment_surveys.empty? && current_user.created_at > 3.months) || ((Time.now - @employment_surveys.last.created_at)  > 3.months)
+          redirect_to new_employment_survey_path
+        end
       end
     end
 end

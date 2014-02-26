@@ -34,6 +34,7 @@
           = link_to raw(direction_icon("Status", params[:sort],params[:direction])), care_provider_profiles_path(params.merge(sort: "status", direction: flip_direction(params[:direction])))
   = render "search"
   = render "page_feedback"
+-#
   - if user_signed_in? && Time.now - current_user.created_at > 9.weeks
     - if @employment_survey_id.nil?
       = link_to "Please Answer Three Questions!", new_employment_survey_path

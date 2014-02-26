@@ -23,7 +23,7 @@
 }
 
 #maggiebeige {
-  background-color: #F2F0DA;
+  background-color: #F4F4E0; //F2F0DA;
 }
 
 #main {
@@ -57,13 +57,6 @@ h2 {
 .content a:link {color:#EB008B;}      /* unvisited link */
 .content a:hover {color:#8077B7;}  /* mouse over link */
 
-.box01 {
-  display: block;
-  max-width: 881px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 #sidebar {
   margin-left: 10px;
 }
@@ -75,8 +68,15 @@ $iconWhiteSpritePath: asset-path("/assets/images/glyphicons-halflings-white.png"
 @import "bootstrap";
 @import "bootstrap-responsive";
 
+.box01 {
+  display: block;
+  max-width: $gridRowWidth;//1024px; //881px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .navbar-inner {
-  background-color: #4B466B; /* background color will be black for all browsers */
+  background-color: whitesmoke;//4B466B; /* background color will be black for all browsers */
   background-image: none;
   background-repeat: no-repeat;
   filter: none;
@@ -92,7 +92,7 @@ $iconWhiteSpritePath: asset-path("/assets/images/glyphicons-halflings-white.png"
 
 .navbar .nav > li > a {
     font-family: Verdana, Arial, Helvetica, sans-serif;
-    color: white;
+    color: #333333; //white;
     text-shadow: 0 0px 0 #ffffff;
     padding-left: 8px;
     padding-right: 8px;
@@ -112,7 +112,7 @@ $iconWhiteSpritePath: asset-path("/assets/images/glyphicons-halflings-white.png"
 }
 
 .navbar .nav > li > a:hover {
-    color: #EB008B;
+    color: #FFFFFF;//#EB008B;
     text-shadow: 0 0px 0 #8077B7;
 }
 
@@ -263,10 +263,17 @@ a.btn {
 }
 
 li.dropdown:hover {
-  background-color: #8077B7;
+  background-color: #333333;//#8077B7;
   a.dropdown-toggle {
     color: white;
   }
+}
+
+.dropdown-menu li > a:hover,
+.dropdown-menu li > a:focus,
+.dropdown-submenu:hover > a {
+  background-image: none;
+  background-color: #333333; 
 }
 
 .label {
@@ -287,3 +294,11 @@ li.dropdown:hover {
 .highlighted {
   background-color: #d6d6d6;
 }
+
+//.navbar-inner .container {width:$gridRowWidth;}
+
+ul.nav {
+  margin-left:auto;
+  margin-right:auto;
+}
+
