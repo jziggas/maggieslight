@@ -105,7 +105,6 @@ class CareReceiverProfilesController < ApplicationController
     def check_survey_status
       if user_signed_in?
         @employment_surveys = current_user.employment_surveys.sort_by(&:created_at)
-        last_survey = @employment_surveys.last
         if @employment_surveys.empty?
           if current_user.created_at < 4.weeks.ago
             redirect_to new_employment_survey_path
