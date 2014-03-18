@@ -5,99 +5,39 @@
         %li.dropdown
           %a.dropdown-toggle{:href => "http://www.maggieslight.org"}
             Home
+          %ul.dropdown-menu
+            %li= link_to "About", "http://www.maggieslight.org/about"
+            %li= link_to "Disclaimer", "http://www.maggieslight.org/disclaimer"
+            %li= link_to "Blog", "http://www.maggieslight.org/blog"
+            %li= link_to "Children We've Served", "http://www.maggieslight.org/#children"
         %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/respite-care"}
+          %a.dropdown-toggle{:href => "http://www.maggieslight.org/upcoming-events"}
+            Events
+        %li.dropdown
+          %a.dropdown-toggle{:href => "http://www.maggieslight.org/respite"}
             Respite
+          %ul.dropdown-menu
+            %li= link_to "What is Respite", "http://www.maggieslight.org/respite/#tab30a905cc"
+            %li= link_to "How to Apply", "http://www.maggieslight.org/respite/#tab1f9d0497"
         %li.dropdown
           %a.dropdown-toggle{:href => "http://www.maggieslight.org/community-works"}
             Community Works
           %ul.dropdown-menu
-            %li= link_to "Caregiver Registry", root_path
-            %li= link_to "More About Community Works", "http://www.maggieslight.org/community-works/community-works-in-depth"
+            %li= link_to "For Faculty", "http://www.maggieslight.org/community-works/#tab16fd0420"
+            %li= link_to "For Providers", "http://www.maggieslight.org/community-works/#tab21450506"
+            %li= link_to "For Families","http://www.maggieslight.org/community-works/#tab1b470472"
+        %li.dropdown
+          %a.dropdown-toggle{:href => "http://registry.maggieslight.org/"}
+            Caregiver Registry
         %li.dropdown
           %a.dropdown-toggle{:href => "http://www.maggieslight.org/resources"}
             Resources
         %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/about-us"}
-            About
-          %ul.dropdown-menu
-            %li= link_to "Board of Directors", "http://www.maggieslight.org/about-us/board-of-directors"
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/disclaimer"}
-            Disclaimer
-          %ul.dropdown-menu
-            %li= link_to "Maggie's Miles Waiver", "http://www.maggieslight.org/disclaimer/maggies-miles-waiver"
+          %a.dropdown-toggle{:href => "http://www.maggieslight.org/contact"}
+            Contact
         %li.dropdown
           %a.dropdown-toggle{:href => "http://www.maggieslight.org/donate"}
             Donate
         %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/sponsors"}
+          %a.dropdown-toggle{:href => "http://www.maggieslight.org/about/#tab0ee00368"}
             Sponsors
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/contact"}
-            Contact
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/blog"}
-            Blog
-          %ul.dropdown-menu
-            %li= link_to "Gallery", "http://www.maggieslight.org/blog/gallery"
--#
-  - if user_signed_in?
-    %li
-      %li.dropdown
-        %a.dropdown-toggle{:href => "#"}
-          = "#{current_user.name}"
-        %ul.dropdown-menu
-          %li= link_to "Create a New Care Receiver Profile", new_care_receiver_profile_path
-          %li= link_to "Create a New Care Provider Profile", new_care_provider_profile_path
-          %li= link_to "View Your Profiles", profiles_path
-          %li= link_to "Edit Account", edit_user_registration_path
-          %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
-      - if current_user.has_role? :admin
-        %li= link_to 'Admin', users_path
-  - else
-    %li= link_to 'Login', new_user_session_path
-    %li= link_to 'Sign up', new_user_registration_path
-
-
-  %ul#nav
-    %li
-      / <a href="http://www.maggieslight.org">Home</a></li>
-    %li.page_item.page-item-16.current_page_item
-      %a{:href => "http://www.maggieslight.org/"} Home
-    %li.page_item.page-item-6
-      %a{:href => "http://www.maggieslight.org/respite-care"} Respite
-    %li.page_item.page-item-19
-      %a{:href => "http://www.maggieslight.org/community-works"} Community Works
-      %ul.children
-        %li.page_item.page-item-442
-          %a{:href => "http://www.maggieslight.org/community-works/bulletin-board"} Bulletin Board
-        %li.page_item.page-item-528
-          %a{:href => "http://www.maggieslight.org/community-works/family-quality-of-life-survey"} Family Surveys
-        %li.page_item.page-item-538
-          %a{:href => "http://www.maggieslight.org/community-works/community-works-in-depth"} More About Community Works
-        %li.page_item.page-item-415
-          %a{:href => "http://www.maggieslight.org/community-works/internship-programs"} The Maggie’s Light Internship
-    %li.page_item.page-item-23
-      %a{:href => "http://www.maggieslight.org/resources"} Resources
-    %li.page_item.page-item-3
-      %a{:href => "http://www.maggieslight.org/about-us"} About
-      %ul.children
-        %li.page_item.page-item-405
-          %a{:href => "http://www.maggieslight.org/about-us/board-of-directors"} Board of Directors
-    %li.page_item.page-item-251
-      %a{:href => "http://www.maggieslight.org/disclaimer"} Disclaimer
-      %ul.children
-        %li.page_item.page-item-1058
-          %a{:href => "http://www.maggieslight.org/disclaimer/maggies-miles-waiver"} Maggie’s Miles Waiver
-    %li.page_item.page-item-13
-      %a{:href => "http://www.maggieslight.org/donate"} Donate
-    %li.page_item.page-item-314
-      %a{:href => "http://www.maggieslight.org/sponsors"} Sponsors
-    %li.page_item.page-item-29
-      %a{:href => "http://www.maggieslight.org/contact"} Contact
-    %li.page_item.page-item-418
-      %a{:href => "http://www.maggieslight.org/blog"} Blog
-      %ul.children
-        %li.page_item.page-item-2179
-          %a{:href => "http://www.maggieslight.org/blog/gallery"} Gallery
