@@ -11,14 +11,11 @@
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)
-  .box01
     %body#maggiebeige{:class => "#{controller_name} #{action_name}"}
-      /= image_tag "maggies_light_logo.png"
-      = render 'layouts/navigation'
-      .content
-        -#       #main{:role => "main"}
-        .container-fluid
-        .row-fluid
+      #main.container-fluid
+        = render 'layouts/navigation'
+        .row
           = render 'layouts/messages'
+        .row
           = yield
-= render 'layouts/footer'
+      = render 'layouts/footer'

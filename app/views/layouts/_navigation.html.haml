@@ -1,43 +1,45 @@
-.navbar
-  %nav.navbar-inner
-    .container
-      %ul.nav
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org"}
-            Home
-          %ul.dropdown-menu
-            %li= link_to "About", "http://www.maggieslight.org/about"
-            %li= link_to "Disclaimer", "http://www.maggieslight.org/disclaimer"
-            %li= link_to "Blog", "http://www.maggieslight.org/blog"
-            %li= link_to "Children We've Served", "http://www.maggieslight.org/#children"
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/upcoming-events"}
-            Events
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/respite"}
-            Respite
-          %ul.dropdown-menu
-            %li= link_to "What is Respite", "http://www.maggieslight.org/respite/#tab30a905cc"
-            %li= link_to "How to Apply", "http://www.maggieslight.org/respite/#tab1f9d0497"
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/community-works"}
-            Community Works
-          %ul.dropdown-menu
-            %li= link_to "For Faculty", "http://www.maggieslight.org/community-works/#tab16fd0420"
-            %li= link_to "For Providers", "http://www.maggieslight.org/community-works/#tab21450506"
-            %li= link_to "For Families","http://www.maggieslight.org/community-works/#tab1b470472"
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://registry.maggieslight.org/"}
-            Caregiver Registry
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/resources"}
-            Resources
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/contact"}
-            Contact
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/donate"}
-            Donate
-        %li.dropdown
-          %a.dropdown-toggle{:href => "http://www.maggieslight.org/about/#tab0ee00368"}
-            Sponsors
+%nav.navbar.navbar-default.navbar-fixed-top{role: "navigation"}
+  .container
+    %ul.nav.navbar-nav
+      %li.dropdown
+        %a{"data-toggle" => "dropdown", "data-target" => "http://www.maggieslight.org", role: "button", href: "http://www.maggieslight.org"}
+          Home
+          %span.caret
+        %ul.dropdown-menu{"aria-labelledby" => "dLabel", role: "menu"}
+          %li= link_to "About", "http://www.maggieslight.org/about"
+          %li= link_to "Disclaimer", "http://www.maggieslight.org/disclaimer"
+          %li= link_to "Blog", "http://www.maggieslight.org/blog"
+          %li= link_to "Children We've Served", "http://www.maggieslight.org/#children"
+      %li.dropdown
+        %a{"data-toggle" => "dropdown", "data-target" => "http://www.maggieslight.org/upcoming-events", role: "button", href: "http://www.maggieslight.org/upcoming-events"}
+          Events
+      %li.dropdown
+        %a{"data-toggle" => "dropdown", "data-target" => "http://www.maggieslight.org/respite", role: "button", href: "http://www.maggieslight.org/respite"}
+          Respite
+          %span.caret
+        %ul.dropdown-menu{"aria-labelledby" => "dLabel", role: "menu"}
+          %li= link_to "What is Respite", "http://www.maggieslight.org/respite/#tab30a905cc"
+          %li= link_to "How to Apply", "http://www.maggieslight.org/respite/#tab1f9d0497"
+      %li.dropdown
+        %a{"data-toggle" => "dropdown", "data-target" => "http://www.maggieslight.org/community-works", role: "button", href: "http://www.maggieslight.org/community-works"}
+          Community Works
+          %span.caret
+        %ul.dropdown-menu{"aria-labelledby" => "dLabel", role: "menu"}
+          %li= link_to "For Faculty", "http://www.maggieslight.org/community-works/#tab16fd0420"
+          %li= link_to "For Providers", "http://www.maggieslight.org/community-works/#tab21450506"
+          %li= link_to "For Families","http://www.maggieslight.org/community-works/#tab1b470472"
+      %li.dropdown
+        %a{"data-toggle" => "dropdown", "data-target" => "http://registry.maggieslight.org", role: "button", href: "http://registry.maggieslight.org"}
+          Caregiver Registry
+      %li.dropdown
+        %a{"data-toggle" => "dropdown", "data-target" => "http://www.maggieslight.org/resources", role: "button", href: "http://www.maggieslight.org/resources"}
+          Resources
+      %li.dropdown
+        %a{"data-toggle" => "dropdown", "data-target" => "http://www.maggieslight.org/contact", role: "button", href: "http://www.maggieslight.org/contact"}
+          Contact
+      %li.dropdown
+        %a{"data-toggle" => "dropdown", "data-target" => "http://www.maggieslight.org/donate", role: "button", href: "http://www.maggieslight.org/donate"}
+          Donate
+      %li.dropdown
+        %a{"data-toggle" => "dropdown", "data-target" => "http://www.maggieslight.org/about/#tab0ee00368", role: "button", href: "http://www.maggieslight.org/about/#tab0ee00368"}
+          Sponsors

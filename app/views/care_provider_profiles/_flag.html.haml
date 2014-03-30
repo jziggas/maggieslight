@@ -1,5 +1,0 @@
-- if user_signed_in?
-  - if !current_user.flagged?(profile)
-    = link_to raw("<i class=icon-flag></i>"), current_user.flag(profile, "inappropriate"), { remote: true }, { class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right" }
-  - else
-    = link_to raw("<i class=icon-flag icon-white></i>"), current_user.unflag(profile, "inappropriate"), { remote: true }, { class: "flag", title: "Unflag this content.", "data-placement" => "right" }

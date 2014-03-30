@@ -1,4 +1,4 @@
-.span3#sidebar
+.col-md-3#sidebar
   %ul.nav.nav-list.well
     %li
       %label.tree-toggle.nav-header= sidebar_welcome
@@ -33,10 +33,5 @@
         %li
           = link_to raw(direction_icon("Status", params[:sort],params[:direction])), care_provider_profiles_path(params.merge(sort: "status", direction: flip_direction(params[:direction])))
   = render "search"
+  %br
   = render "page_feedback"
--#
-  - if user_signed_in? && Time.now - current_user.created_at > 9.weeks
-    - if @employment_survey_id.nil?
-      = link_to "Please Answer Three Questions!", new_employment_survey_path
-    - else
-      = link_to "Update your survey.", edit_employment_survey_path(@employment_survey_id)

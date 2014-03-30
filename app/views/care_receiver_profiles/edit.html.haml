@@ -1,10 +1,9 @@
 = render "sidebar"
-.span8
-  %h1#header= "Editing the Family / Individual Ad of #{@care_receiver_profile.name}"
-  %hr
-  .well
-    = render 'form'
-
-    = link_to raw("<i class='icon-arrow-left'></i> Back"), care_receiver_profiles_path, class: "btn"
-    = link_to raw("View Profile <i class='icon-user icon-white'></i>"), @care_receiver_profile, class: "btn btn-info"
-    = link_to raw("Delete <i class='icon-trash icon-white'></i>"), care_receiver_profile_path(@care_receiver_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
+%h1#header= "Editing the Family / Individual Ad of #{@care_receiver_profile.name}"
+%hr
+.col-md-8.well
+  = render 'form'
+  %br
+  = link_to raw("<i class='glyphicon glyphicon-arrow-left'></i> Back"), care_receiver_profiles_path, class: "btn btn-default"
+  = link_to raw("<i class='glyphicon glyphicon-user'></i> View Profile"), @care_receiver_profile, class: "btn btn-info"
+  = link_to raw("<i class='glyphicon glyphicon-trash'></i> Delete"), care_receiver_profile_path(@care_receiver_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"

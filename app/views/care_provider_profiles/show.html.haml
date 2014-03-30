@@ -1,48 +1,45 @@
-= render "sidebar"
-.span8#hideOverflow
-  .well
-    %h1#header= "Student Caregiver Profile for #{@care_provider_profile.name}"
-    %hr
-    %p= image_tag @care_provider_profile.profile_picture.url(:large)
-    - if current_user == @care_provider_profile.user
-      %p
-        %b Status:
-        %span.label{:class => "label-#{status_label(@care_provider_profile.status)}"}= @care_provider_profile.status
+= render "sidebar"  
+%h1#header= "Student Caregiver Profile for #{@care_provider_profile.name}"
+%hr
+.col-md-8.well#hideOverflow
+  %p= image_tag @care_provider_profile.profile_picture.url(:large)
+  - if current_user == @care_provider_profile.user
     %p
-      %b Gender:
-      = @care_provider_profile.gender
-    %p
-      %b City:
-      = @care_provider_profile.city
-    %p
-      %b County:
-      = @care_provider_profile.county
-    %p
-      %b Field of study:
-      = @care_provider_profile.field_of_study
-    %p
-      %b School:
-      = @care_provider_profile.school
-    %p
-      %b Has Own Transportation:
-      = @care_provider_profile.transportation
-    %p
-      %b Skills:
-      = @care_provider_profile.skills
-    %p
-      %b Miscellaneous:
-      = @care_provider_profile.misc
-    %p
-      %b Contact Email:
-      %a{href: "mailto:#{@care_provider_profile.contact_email}"}= @care_provider_profile.contact_email
-    = link_to raw("<i class='icon-arrow-left'></i> Back"), care_provider_profiles_path, class: "btn"
-    -#if user_signed_in? && current_user != @care_provider_profile.user
-      =# link_to raw("Request Connection <i class='icon-envelope icon-white'></i>"), "#", class: "btn btn-primary"
-    - if can? :update, @care_provider_profile
-      = link_to raw("Edit <i class='icon-edit'></i>"), edit_care_provider_profile_path(@care_provider_profile), class: "btn btn-warning"
-      = link_to raw("Delete <i class='icon-trash icon-white'></i>"), care_provider_profile_path(@care_provider_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
-    - if user_signed_in? && @care_provider_profile.user != current_user
-      - if !current_user.flagged?(@care_provider_profile)
-        = link_to raw("<i class=icon-flag></i>"), flag_care_provider_profile_path(@care_provider_profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
-      -  else
-        = link_to raw("<i class='icon-remove-sign'></i>"), flag_care_provider_profile_path(@care_provider_profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"
+      %b Status:
+      %span.label{:class => "label-#{status_label(@care_provider_profile.status)}"}= @care_provider_profile.status
+  %p
+    %b Gender:
+    = @care_provider_profile.gender
+  %p
+    %b City:
+    = @care_provider_profile.city
+  %p
+    %b County:
+    = @care_provider_profile.county
+  %p
+    %b Field of study:
+    = @care_provider_profile.field_of_study
+  %p
+    %b School:
+    = @care_provider_profile.school
+  %p
+    %b Has Own Transportation:
+    = @care_provider_profile.transportation
+  %p
+    %b Skills:
+    = @care_provider_profile.skills
+  %p
+    %b Miscellaneous:
+    = @care_provider_profile.misc
+  %p
+    %b Contact Email:
+    %a{href: "mailto:#{@care_provider_profile.contact_email}"}= @care_provider_profile.contact_email
+  = link_to raw("<i class='glyphicon glyphicon-arrow-left'></i> Back"), care_provider_profiles_path, class: "btn btn-default"
+  - if can? :update, @care_provider_profile
+    = link_to raw("<i class='glyphicon glyphicon-edit'></i> Edit"), edit_care_provider_profile_path(@care_provider_profile), class: "btn btn-warning"
+    = link_to raw("<i class='glyphicon glyphicon-trash'></i> Delete"), care_provider_profile_path(@care_provider_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
+  - if user_signed_in? && @care_provider_profile.user != current_user
+    - if !current_user.flagged?(@care_provider_profile)
+      = link_to raw("<i class='glyphicon glyphicon-flag'></i>"), flag_care_provider_profile_path(@care_provider_profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
+    -  else
+      = link_to raw("<i class='glyphicon glyphicon-remove-sign'></i>"), flag_care_provider_profile_path(@care_provider_profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"

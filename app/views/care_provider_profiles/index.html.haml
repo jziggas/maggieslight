@@ -1,5 +1,5 @@
 = render "sidebar"
-.span8
+.col-md-8
   %h1#header Student Caregivers
   %hr
   %p.lead
@@ -11,28 +11,33 @@
     .well
       .container-fluid
         .row-fluid
-          .span8#hideOverflow
-            %h6.lead= "#{profile.name} studies #{profile.field_of_study} and lives in #{profile.county}"
-            %p
-              %em School:
-              = "#{profile.school}"
-            %p
-              %em Skills and Experience:
-              = "#{profile.skills}"
-            %p
-            %p
-              - if profile.user == current_user
-                %em You own this profile.
-          .span4
-            = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
-            #summary-button
-              - if user_signed_in?
-                = link_to raw("View Profile <i class='icon-user icon-white'></i>"), profile, class: "btn btn-info"
-              - else
-                %span.badge.badge-info Log in to view details.
-              - if user_signed_in? && profile.user != current_user
-                - if !current_user.flagged?(profile)
-                  = link_to raw("<i class=icon-flag></i>"), flag_care_provider_profile_path(profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
+          .col-md-8#hideOverflow
+            .row-fluid
+              %h6.lead= "#{profile.name} studies #{profile.field_of_study} and lives in #{profile.county}"
+              %p
+                %em School:
+                = "#{profile.school}"
+              %p
+                %em Skills and Experience:
+                = "#{profile.skills}"
+              %p
+              %p
+                - if profile.user == current_user
+                  %em You own this profile.
+            .row-fluid
+              #index-content-actions
+                - if user_signed_in?
+                  = link_to raw("View Profile <i class='icon-user icon-white'></i>"), profile, class: "btn btn-info"
                 - else
-                  = link_to raw("<i class='icon-remove-sign'></i>"), flag_care_provider_profile_path(profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"
+                  %span.badge.badge-info Log in to view details.
+                - if user_signed_in? && profile.user != current_user
+                  - if !current_user.flagged?(profile)
+                    = link_to raw("<i class='glyphicon glyphicon-flag'></i>"), flag_care_provider_profile_path(profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
+                  - else
+                    = link_to raw("<i class='glyphicon glyphicon-remove-sign'></i>"), flag_care_provider_profile_path(profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"
+          .col-md-4
+            - if user_signed_in?
+              = image_tag profile.profile_picture.url(:thumb), class: "img-responsive img-rounded"
+            - else
+              = image_tag "missing.jpg", class: "img-responsive img-rounded"
   = will_paginate @profiles

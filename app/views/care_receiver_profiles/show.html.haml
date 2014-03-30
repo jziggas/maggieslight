@@ -1,61 +1,58 @@
 = render "sidebar"
-.span8#hideOverflow
-  .well
-    %h1#header= "Family / Individiual Ad for #{@care_receiver_profile.name}"
-    %hr
-    %p= image_tag @care_receiver_profile.profile_picture.url(:thumb)
-    - if current_user == @care_receiver_profile.user
-      %p
-        %b Status:
-        %span.label{:class => "label-#{status_label(@care_receiver_profile.status)}"}= @care_receiver_profile.status
+%h1#header= "Family / Individiual Ad for #{@care_receiver_profile.name}"
+%hr
+.col-md-8.well#hideOverflow
+  %p= image_tag @care_receiver_profile.profile_picture.url(:thumb)
+  - if current_user == @care_receiver_profile.user
     %p
-      %b Birthday:
-      = @care_receiver_profile.birthdate.strftime('%B %-d, %Y')
-      = "(Age: #{@care_receiver_profile.age})"
-    %p
-      %b Gender:
-      = @care_receiver_profile.gender
-    %p
-      %b Disabilities and Diagnoses:
-      = @care_receiver_profile.disabilities
-    %p
-      %b Hobbies:
-      = @care_receiver_profile.hobbies
-    %p
-      %b Services needed:
-      = @care_receiver_profile.services_needed
-    %p
-      %b Misc:
-      = @care_receiver_profile.misc
-    %p
-      %b Hours needed:
-      = @care_receiver_profile.hours_needed
-    %p
-      %b Days needed:
-      = @care_receiver_profile.days_needed
-    %p
-      %b City:
-      = @care_receiver_profile.city
-    %p
-      %b County:
-      = @care_receiver_profile.county
-    %p
-      %b Student caregiver must have his or her own transportation?
-      = @care_receiver_profile.transportation
-    %p
-      %b Contact name:
-      = @care_receiver_profile.contact_name
-    %p
-      %b Contact Email:
-      %a{href: "mailto:#{@care_receiver_profile.contact_email}"}= @care_receiver_profile.contact_email
-    = link_to raw("<i class='icon-arrow-left'></i> Back"), care_receiver_profiles_path, class: "btn"
-    -# if user_signed_in? && current_user != @care_receiver_profile.user
-      =# link_to raw("Request Connection <i class='icon-envelope icon-white'></i>"), "#", class: "btn btn-primary"
-    - if can? :update, @care_receiver_profile
-      = link_to raw("Edit <i class='icon-edit'></i>"), edit_care_receiver_profile_path(@care_receiver_profile), class: "btn btn-warning"
-      = link_to raw("Delete <i class='icon-trash icon-white'></i>"), care_receiver_profile_path(@care_receiver_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
-    - if user_signed_in? && @care_receiver_profile.user != current_user
-      - if !current_user.flagged?(@care_receiver_profile)
-        = link_to raw("<i class=icon-flag></i>"), flag_care_receiver_profile_path(@care_receiver_profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
-      - else
-        = link_to raw("<i class='icon-remove-sign'></i>"), flag_care_receiver_profile_path(@care_receiver_profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"
+      %b Status:
+      %span.label{:class => "label-#{status_label(@care_receiver_profile.status)}"}= @care_receiver_profile.status
+  %p
+    %b Birthday:
+    = @care_receiver_profile.birthdate.strftime('%B %-d, %Y')
+    = "(Age: #{@care_receiver_profile.age})"
+  %p
+    %b Gender:
+    = @care_receiver_profile.gender
+  %p
+    %b Disabilities and Diagnoses:
+    = @care_receiver_profile.disabilities
+  %p
+    %b Hobbies:
+    = @care_receiver_profile.hobbies
+  %p
+    %b Services needed:
+    = @care_receiver_profile.services_needed
+  %p
+    %b Misc:
+    = @care_receiver_profile.misc
+  %p
+    %b Hours needed:
+    = @care_receiver_profile.hours_needed
+  %p
+    %b Days needed:
+    = @care_receiver_profile.days_needed
+  %p
+    %b City:
+    = @care_receiver_profile.city
+  %p
+    %b County:
+    = @care_receiver_profile.county
+  %p
+    %b Student caregiver must have his or her own transportation?
+    = @care_receiver_profile.transportation
+  %p
+    %b Contact name:
+    = @care_receiver_profile.contact_name
+  %p
+    %b Contact Email:
+    %a{href: "mailto:#{@care_receiver_profile.contact_email}"}= @care_receiver_profile.contact_email
+  = link_to raw("<i class='glyphicon glyphicon-arrow-left'></i> Back"), care_receiver_profiles_path, class: "btn btn-default"
+  - if can? :update, @care_receiver_profile
+    = link_to raw("<i class='glyphicon glyphicon-edit'></i> Edit"), edit_care_receiver_profile_path(@care_receiver_profile), class: "btn btn-warning"
+    = link_to raw("<i class='glyphicon glyphicon-trash'></i> Delete"), care_receiver_profile_path(@care_receiver_profile), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
+  - if user_signed_in? && @care_receiver_profile.user != current_user
+    - if !current_user.flagged?(@care_receiver_profile)
+      = link_to raw("<i class='glyphicon glyphicon-flag'></i>"), flag_care_receiver_profile_path(@care_receiver_profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
+    - else
+      = link_to raw("<i class='glyphicon glyphicon-remove-sign'></i>"), flag_care_receiver_profile_path(@care_receiver_profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"

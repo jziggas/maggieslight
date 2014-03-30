@@ -2,8 +2,7 @@
   %p
     Search Student Caregivers:
     = text_field_tag :search, params[:search], placeholder: "city, county, disability, skills, name"
-    = submit_tag "Search", :name => nil, class: "btn"
     - if params[:search]
-      = link_to "Clear Search", care_provider_profiles_path(params.merge(search: nil)), class: 'btn', style: 'font-weight: normal'
+      = link_to "Clear Search", care_provider_profiles_path(params.merge(search: nil)), class: 'btn btn-default', style: 'font-weight: normal'
     = hidden_field_tag :direction, params[:direction]
     = hidden_field_tag :sort, params[:sort]
