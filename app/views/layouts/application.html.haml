@@ -13,9 +13,11 @@
         = yield(:head)
     %body#maggiebeige{:class => "#{controller_name} #{action_name}"}
       #main.container-fluid
-        = render 'layouts/navigation'
         .row
-          = render 'layouts/messages'
+          = render 'layouts/navigation'
+        .row
+          .col-md-12
+            = render 'layouts/messages'
         .row
           = yield
       = render 'layouts/footer'
