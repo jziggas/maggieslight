@@ -102,7 +102,7 @@ class CareProviderProfilesController < ApplicationController
     end
 
     def check_survey_status
-      if user_signed_in?
+      if user_signed_in? && !current_user.is_admin?
         @employment_surveys = current_user.employment_surveys.sort_by(&:created_at)
         if @employment_surveys.empty?
           if current_user.created_at < 4.weeks.ago
