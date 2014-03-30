@@ -2,7 +2,7 @@
 %h1#header= "Family / Individiual Ad for #{@care_receiver_profile.name}"
 %hr
 .col-md-8.well#hideOverflow
-  %p= image_tag @care_receiver_profile.profile_picture.url(:thumb)
+  %p= image_tag @care_receiver_profile.profile_picture.url(:large)
   - if current_user == @care_receiver_profile.user
     %p
       %b Status:
