@@ -27,7 +27,7 @@
             .row-fluid
               #index-content-actions
                 - if user_signed_in?
-                  = link_to raw("View Profile <i class='icon-user icon-white'></i>"), profile, class: "btn btn-info"
+                  = link_to raw("View Full Ad <i class='icon-user icon-white'></i>"), profile, class: "btn btn-info"
                 - else
                   %span.badge.badge-info Log in to view details.
                 - if user_signed_in? && profile.user != current_user
