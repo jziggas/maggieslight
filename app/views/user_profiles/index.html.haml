@@ -1,13 +1,14 @@
 = render "sidebar"
-.span8
-  %h1#header Your Posted Profiles
-  %hr
+
+%h1#header Your Posted Profiles
+%hr
+.col-md-8
   = will_paginate @profiles
   - @profiles.each do |profile|
     .well
       .container-fluid
         .row-fluid
-          .span8#hideOverflow
+          .col-md-8#hideOverflow
             %h5= humanize_profile_class_name profile.class.name
             %p= "#{profile.name} from #{profile.city}"
             %p
@@ -19,9 +20,9 @@
             %p
               %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
             %p
-              =link_to raw("View <i class='icon-user icon-white'></i>"), { controller: profile.class.to_s.pluralize.underscore, action: :show, id: profile.id }, class: "btn btn-info"
-              =link_to raw("Edit <i class='icon-edit'></i>"), { controller: profile.class.to_s.pluralize.underscore, action: :edit, id: profile.id }, class: "btn btn-warning"
-              =link_to raw("Delete <i class='icon-trash icon-white'></i>"), { controller: profile.class.to_s.pluralize.underscore, action: :destroy, id: profile.id }, class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
-          .span4
-            = image_tag profile.profile_picture.url(:thumb), class: "img-circle"
+              =link_to raw("<i class='glyphicon glyphicon-user'></i> View"), { controller: profile.class.to_s.pluralize.underscore, action: :show, id: profile.id }, class: "btn btn-info"
+              =link_to raw("<i class='glyphicon glyphicon-edit'></i> Edit"), { controller: profile.class.to_s.pluralize.underscore, action: :edit, id: profile.id }, class: "btn btn-warning"
+              =link_to raw("<i class='glyphicon glyphicon-trash'></i> Delete"), { controller: profile.class.to_s.pluralize.underscore, action: :destroy, id: profile.id }, class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
+          .col-md-4
+            = image_tag profile.profile_picture.url(:thumb), class: "img-responsive img-rounded"
   =will_paginate @profiles

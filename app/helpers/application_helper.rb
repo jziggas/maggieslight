@@ -62,7 +62,7 @@ module ApplicationHelper
     if status == "Looking For Care" || status == "Looking To Care" || status == "Visible"
       "success"
     else
-      "inverse"
+      "default"
     end
   end
 
