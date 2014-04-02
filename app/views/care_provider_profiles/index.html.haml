@@ -36,8 +36,5 @@
                   - else
                     = link_to raw("<i class='glyphicon glyphicon-remove-sign'></i>"), flag_care_provider_profile_path(profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"
           .col-md-4
-            - if user_signed_in?
-              = image_tag profile.profile_picture.url(:medium), class: "img-responsive img-rounded"
-            - else
-              = image_tag "missing.jpg", class: "img-responsive img-rounded"
+            = image_tag profile.profile_picture.url(:medium), class: "img-responsive img-rounded"
   = will_paginate @profiles
