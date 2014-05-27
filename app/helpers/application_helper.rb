@@ -77,8 +77,10 @@ module ApplicationHelper
   def humanize_profile_class_name(class_name)
     if class_name == "CareReceiverProfile"
       "Family / Individiual Ad"
-    else
+    elsif class_name == "CareProviderProfile"
       "Student Caregiver"
+    else
+      "Volunteer Opportunity"
     end
   end
 

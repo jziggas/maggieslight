@@ -13,10 +13,10 @@
     = f.input :county, collection: BALTIMORE_COUNTIES
     = f.input :field_of_study, placeholder: "Social Work"
     = f.input :school, placeholder: "University of Maryland"
-    = f.input :skills, label: "Description of expertise or skills:", placeholder: "CPR certified, bilingual, and past experience in caregiving."
+    = f.input :skills, label: "Description of expertise or skills:", placeholder: "CPR certified, bilingual, and past experience in caregiving.", input_html: { :style => 'width: 450px; height: 200px' }
     = f.input :transportation, collection: ["Yes", "No"], label: "Can you provide your own transportation?"
-    = f.input :misc, placeholder: "Background check available upon request."
+    = f.input :misc, placeholder: "Background check available upon request.", input_html: { :style => 'width: 450px; height: 200px' }
     = f.input :contact_email, placeholder: "example@email.com", label: "Contact Email. This will be publicly available to registered users."
     = f.input :contact_phone, placeholder: "555-123-4567", label: "Contact Phone. This will not be publicly available."
-    = link_to raw("<i class='glyphicon glyphicon-arrow-left'></i> Back"), care_provider_profiles_path, class: "btn btn-default"
+    %br
     = f.button :submit, "Create New Profile", class: "btn btn-primary"

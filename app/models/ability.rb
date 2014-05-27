@@ -11,33 +11,54 @@ class Ability
          can :dashboard
        elsif user.is_user?
          can :read, :all
+
          can :update, CareProviderProfile do |p|
             p.try(:user) == user
          end
+
          can :update, CareReceiverProfile do |p|
             p.try(:user) == user
          end
+
          can :update, EmploymentSurvey do |p|
             p.try(:user) == user
          end
+
+         can :update, VolunteerOpportunity do |p|
+            p.try(:user) == user
+         end
+
+         can :destroy, VolunteerOpportunity do |p|
+            p.try(:user) == user
+         end
+
          can :destroy, CareProviderProfile do |p|
             p.try(:user) == user
          end
+
          can :destroy, CareReceiverProfile do |p|
             p.try(:user) == user
          end
+
          can :update, User do |p|
             p.try(:user) == user
          end
+
          can :flag, CareProviderProfile do |p|
             p.try(:user) != user
          end
+
          can :flag, CareReceiverProfile do |p|
             p.try(:user) != user
          end
-         can :create, [CareProviderProfile, CareReceiverProfile, EmploymentSurvey]
+
+         can :flag, VolunteerOpportunity do |p|
+            p.try(:user) == user
+         end
+
+         can :create, [CareProviderProfile, CareReceiverProfile, EmploymentSurvey, VolunteerOpportunity]
        else
-         can :index, [CareProviderProfile, CareReceiverProfile]
+         can :index, [CareProviderProfile, CareReceiverProfile, VolunteerOpportunity]
        end
     #
     # The first argument to `can` is the action you are giving the user

@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :flaggings, as: :flagger
   has_many :page_feedbacks
   has_many :employment_surveys
+  has_many :volunteer_opportunities
 
   self.per_page = 10
 

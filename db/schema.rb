@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130909204525) do
+ActiveRecord::Schema.define(version: 20140524193449) do
 
   create_table "care_provider_profiles", force: true do |t|
     t.string   "name"
@@ -151,5 +151,32 @@ ActiveRecord::Schema.define(version: 20130909204525) do
   end
 
   add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
+
+  create_table "volunteer_opportunities", force: true do |t|
+    t.string   "org_name"
+    t.string   "event_type"
+    t.string   "description"
+    t.string   "contact_phone"
+    t.string   "contact_name"
+    t.string   "contact_email"
+    t.datetime "event_start"
+    t.datetime "event_end"
+    t.integer  "user_id"
+    t.boolean  "agree_terms"
+    t.string   "ein"
+    t.string   "type_of_org"
+    t.string   "title"
+    t.string   "location"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "profile_picture_file_name"
+    t.string   "profile_picture_content_type"
+    t.integer  "profile_picture_file_size"
+    t.datetime "profile_picture_updated_at"
+    t.string   "required_documents_file_name"
+    t.string   "required_documents_content_type"
+    t.integer  "required_documents_file_size"
+    t.datetime "required_documents_updated_at"
+  end
 
 end

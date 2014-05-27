@@ -1,0 +1,10 @@
+= render "sidebar"
+%h1#header= "Editing the Volunteer Opportunity for '#{@volunteer_opportunity.title}'"
+%hr
+.col-md-8.well
+  = render 'form'
+  %p
+    %br
+    = link_to raw("<i class='glyphicon glyphicon-arrow-left'></i> Back"), volunteer_opportunities_path, class: "btn btn-default"
+    = link_to raw("<i class='glyphicon glyphicon-user'></i> View Ad"), @volunteer_opportunity, class: "btn btn-info"
+    = link_to raw("<i class='glyphicon glyphicon-trash'></i> Delete"), volunteer_opportunity_path(@volunteer_opportunity), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"

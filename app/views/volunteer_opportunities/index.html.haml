@@ -1,0 +1,40 @@
+= render "sidebar"
+.col-md-8.profiles
+  %h1#header Family and Individual Ads
+  %hr
+  %p.lead
+    = "Searching for '#{params[:search]}'. " if params[:search]
+    = "Sorted by '#{humanize_sort_type(@sort_column)}' in #{humanize_sort_direction(@sort_direction)} order."
+  = will_paginate @profiles
+  %h6.lead= "Nothing Found" if @profiles[0].nil?
+  - @profiles.each do |profile|
+    .well
+      .container-fluid
+        .row-fluid
+          .col-md-8#hideOverflow
+            .row-fluid
+              %h6.lead= "#{profile.title}"
+              %p
+                %em Time:
+                = "#{profile.event_start} - #{profile.event_end}"
+              %p
+                %em Location:
+                = "#{profile.location}"
+              %p
+              %p
+                - if profile.user == current_user
+                  %em You own this profile.
+            .row-fluid
+              #index-content-actions
+                - if user_signed_in?
+                  = link_to raw("View Full Ad <i class='icon-user icon-white'></i>"), profile, class: "btn btn-info"
+                - else
+                  %span.badge.badge-info Log in to view details.
+                - if user_signed_in? && profile.user != current_user
+                  - if !current_user.flagged?(profile)
+                    = link_to raw("<i class='glyphicon glyphicon-flag'></i>"), flag_volunteer_opportunity_path(profile), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
+                  - else
+                    = link_to raw("<i class='glyphicon glyphicon-remove-sign'></i>"), flag_volunteer_opportunity_path(profile), class: "flag", title: "Unflag this content.", "data-placement" => "right"
+          .col-md-4
+            = image_tag profile.profile_picture.url(:medium), class: "img-responsive img-rounded"
+  = will_paginate @profiles

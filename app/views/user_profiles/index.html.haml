@@ -10,7 +10,7 @@
         .row-fluid
           .col-md-8#hideOverflow
             %h5= humanize_profile_class_name profile.class.name
-            %p= "#{profile.name} from #{profile.city}"
+            %p= "#{profile.try(:name) || profile.try(:title)} from #{profile.try(:city) || profile.try(:org_name)}"
             %p
               Contact Email:
               %a{href: "mailto:#{profile.contact_email}"}= profile.contact_email
@@ -18,7 +18,7 @@
               Contact Phone:
               %a{href: "tel:#{profile.contact_phone}"}= profile.contact_phone.phony_formatted(:spaces => '-')
             %p
-              %span.label{:class => "label-#{status_label(profile.status)}"}= profile.status
+              %span.label{:class => "label-#{status_label(profile.try(:status))}"}= profile.try(:status)
             %p
               =link_to raw("<i class='glyphicon glyphicon-user'></i> View"), { controller: profile.class.to_s.pluralize.underscore, action: :show, id: profile.id }, class: "btn btn-info"
               =link_to raw("<i class='glyphicon glyphicon-edit'></i> Edit"), { controller: profile.class.to_s.pluralize.underscore, action: :edit, id: profile.id }, class: "btn btn-warning"

@@ -6,7 +6,8 @@
         - if user_signed_in?
           %li= link_to "New Family / Individual Ad", new_care_receiver_profile_path, class: ( "highlighted" if controller?("care_receiver_profiles") && action?("new") )
           %li= link_to "New Student Caregiver Ad", new_care_provider_profile_path, id: "header", class: ( "highlighted" if controller?("care_provider_profiles") && action?("new") )
-          %li= link_to "View My Ads", profiles_path, id: "header", class: ( "highlighted" if controller?("user_profiles") && action?("index") )
+          %li= link_to "New Volunteer Opportunity", new_volunteer_opportunity_path, id: "header", class: ( "highlighted" if controller?("volunteer_opportunities") && action?("new") )
+          %li= link_to "View My Listings", profiles_path, id: "header", class: ( "highlighted" if controller?("user_profiles") && action?("index") )
           %li= link_to "Account Settings", edit_user_registration_path
           %li= link_to 'Logout', destroy_user_session_path, :method=>'delete'
         - else
@@ -14,12 +15,14 @@
           %li= link_to "Login", new_user_session_path
     %li.divider
     %li
-      %label.tree-toggle.nav-header Ads
+      %label.tree-toggle.nav-header View Listings
       %ul.nav.nav-list.tree
         %li
           = link_to "All Families & Individiuals", care_receiver_profiles_path, class: ( "highlighted" if controller?("care_receiver_profiles") && action?("index") )
         %li
           = link_to "All Student Caregivers", care_provider_profiles_path, class: ( "highlighted" if controller?("care_provider_profiles") && action?("index") )
+        %li
+          = link_to "Volunteer Opportunities", volunteer_opportunities_path, class: ( "highlighted" if controller?("volunteer_opportunities") && action?("index") )
     %li.divider
     %li
       %label.tree-toggle.nav-header Sort By

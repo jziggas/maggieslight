@@ -10,17 +10,17 @@
       = f.input :name, placeholder: "Maggie"
       = f.input :birthdate, start_year: 1915, end_year: Time.now.year, order: [:month, :day, :year]
       = f.input :gender, collection: ["Male", "Female"]
-      = f.input :disabilities, as: :text, label: "Disabilities and Diagnoses", placeholder: "Cerebral Palsy, Cognitive Delay, G-Tube Fed, Seizures (1 or 2 per yr.) Non-verbal, but uses signs, gestures and the Dynavox / iPad (augmentative communication device) to communicate."
-      = f.input :hobbies, label: "Hobbies, Likes, Fun", as: :text, placeholder: "Hanging out with friends, arts & crafts, visiting the horse farm, reading, going to the mall, camp, parties, listening to music."
-      = f.input :services_needed, as: :text, placeholder: "Respite, 1 on 1 supervision, Companionship"
-      = f.input :misc, label: "Miscellaneous", as: :text, placeholder: "Competitive Pay, Field Related Experience for Students, Great Opportunity."
-      = f.input :hours_needed, placeholder: "2 to 3 students to work 6 to 10 hrs per week."
-      = f.input :days_needed, placeholder: "Various shifts every day of the week."
+      = f.input :disabilities, as: :text, label: "Disabilities and Diagnoses", placeholder: "Cerebral Palsy, Cognitive Delay, G-Tube Fed, Seizures (1 or 2 per yr.) Non-verbal, but uses signs, gestures and the Dynavox / iPad (augmentative communication device) to communicate.", input_html: { :style => 'width: 450px; height: 200px' }
+      = f.input :hobbies, label: "Hobbies, Likes, Fun", as: :text, placeholder: "Hanging out with friends, arts & crafts, visiting the horse farm, reading, going to the mall, camp, parties, listening to music.", input_html: { :style => 'width: 450px; height: 200px' }
+      = f.input :services_needed, as: :text, placeholder: "Respite, 1 on 1 supervision, Companionship", input_html: { :style => 'width: 450px; height: 50px' }
+      = f.input :misc, label: "Miscellaneous", as: :text, placeholder: "Competitive Pay, Field Related Experience for Students, Great Opportunity.", input_html: { :style => 'width: 450px; height: 200px' }
+      = f.input :hours_needed, placeholder: "2 to 3 students to work 6 to 10 hrs per week.", input_html: { :style => 'width: 300px'}
+      = f.input :days_needed, placeholder: "Various shifts every day of the week.", input_html: { :style => 'width: 300px'}
       = f.input :city, placeholder: "Baltimore"
       = f.input :county, collection: BALTIMORE_COUNTIES
-      = f.input :transportation, collection: %w(Yes No), label: "Student caregiver must have his or her own transportation?"
+      = f.input :transportation, collection: %w(Yes No), label: "Student caregiver must have his or her own transportation?", include_blank: false
       = f.input :contact_name, placeholder: "Mary"
       = f.input :contact_email, as: :email, placeholder: "#{current_user.email}", label: "Contact Email. This will be publicly available to registered users."
       = f.input :contact_phone, as: :tel, placeholder: "555-123-4567", label: "This will not be publicly available."
-      = link_to raw("<i class='glyphicon glyphicon-arrow-left'></i> Back"), care_receiver_profiles_path, class: "btn btn-default"
+      %br
       = f.button :submit, "Create New Profile", class: "btn btn-primary"

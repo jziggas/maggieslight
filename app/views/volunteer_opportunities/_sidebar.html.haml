@@ -5,7 +5,7 @@
       %ul.nav.nav-list.tree
         - if user_signed_in?
           %li= link_to "New Family / Individual Ad", new_care_receiver_profile_path, class: ( "highlighted" if controller?("care_receiver_profiles") && action?("new") )
-          %li= link_to "New Student Caregiver Ad", new_care_provider_profile_path, id: "header", class: ( "highlighted" if controller?("care_provider_profiles") && action?("new") )
+          %li= link_to "New Student Caregiver Ad", new_care_provider_profile_path, class: ( "highlighted" if controller?("care_provider_profiles") && action?("new") )
           %li= link_to "New Volunteer Opportunity", new_volunteer_opportunity_path, id: "header", class: ( "highlighted" if controller?("volunteer_opportunities") && action?("new") )
           %li= link_to "View My Listings", profiles_path, id: "header", class: ( "highlighted" if controller?("user_profiles") && action?("index") )
           %li= link_to "Account Settings", edit_user_registration_path

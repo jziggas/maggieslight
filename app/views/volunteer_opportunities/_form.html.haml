@@ -1,0 +1,41 @@
+= simple_form_for @volunteer_opportunity, :html => {:multipart => true, class: 'form-horizontal' } do |f|
+  .col-md-12
+    = f.error_notification
+    %p
+      = image_tag @volunteer_opportunity.profile_picture.url(:medium)
+    %p
+      = f.label "Upload a picture (Only JPEG and PNG files accepted):"
+    %p
+      = f.file_field :profile_picture
+      = f.error :profile_picture
+    %p
+      = f.label "Upload any required documents as an archived file"
+      %b
+        (For example .zip or .rar):
+    - if @volunteer_opportunity.required_documents.exists?
+      %p
+        %em
+          You currently have "
+          = @volunteer_opportunity.required_documents_file_name
+          " attached. Uploading a new document will overwrite it.
+    %p
+      = f.file_field :required_documents
+      = f.error :required_documents
+
+    %p
+      = f.input :org_name, label: "Organization Name", placeholder: "Wilmot Modular Structures", input_html: { :style => 'width: 200px'}
+      = f.input :ein, label: "Organization EIN / Tax ID", placeholder: "12-3456789"
+      = f.input :type_of_org, label: "Type of Organization", placeholder: "For-Profit", include_blank: false, collection: VolunteerOpportunity.org_types
+      = f.input :event_type, label: "Type of Event", placeholder: "Fundraiser"
+      = f.input :title, placeholder: "Hoedown"
+      = f.input :location, placeholder: "Baltimore, MD"
+      = f.input :description, label: "Description (250 chararacters max):", placeholder: "Suscipit posidonium vix ut, sit agam pertinax te, duo solum persius ex. Ei vix posse principes, solum scriptorem eum ad. No tamquam periculis sit, tamquam tibique ex ius. Eos te fuisset euripidis conclusionemque, maiorum invenire voluptaria nam cu, duo essent deseruisse an. Nam maluisset efficiendi te.", as: :text, input_html: { :style => 'width: 450px; height: 200px' }
+      = f.input :contact_name, label: "Contact Name:", placeholder: "Kathy"
+      = f.input :contact_phone, label: "Contact Phone:", placeholder: "555-123-4567"
+      = f.input :contact_email, label: "Contact Email:", placeholder: "example@email.com"
+      = f.input :event_start, label: "Event Start Time", start_year: Date.today.year, end_year: (Date.today.year + 1), order: [:month, :day, :year], ampm: true
+      = f.input :event_end, label: "Event End Time", start_year: Date.today.year, end_year: (Date.today.year + 1), order: [:month, :day, :year], ampm: true
+    %p
+      = f.input :agree_terms, label: "Terms and Conditions", inline_label: "Do you agree to the Maggie's Light <a href=\"http://www.maggieslight.org/disclaimer\"  target=\"_blank\">Terms of Use</a>?".html_safe
+    = f.button :submit, "Submit Volunteer Opportunity", class: "btn btn-primary"
+    %p

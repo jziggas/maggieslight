@@ -17,6 +17,13 @@ Maggieslight::Application.routes.draw do
       end
     end
 
+  resources 'volunteer-opportunities', as: :volunteer_opportunities,
+    controller: :volunteer_opportunities do
+      member do
+        get 'flag'
+      end
+    end
+
   resources :employment_surveys, only: [:new, :create, :edit, :update]
 
   get "/profiles/", to: "user_profiles#index"

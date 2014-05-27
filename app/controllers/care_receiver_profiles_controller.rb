@@ -42,7 +42,7 @@ class CareReceiverProfilesController < ApplicationController
 
     respond_to do |format|
       if @care_receiver_profile.save
-        format.html { redirect_to @care_receiver_profile, notice: 'Care receiver profile was successfully created.' }
+        format.html { redirect_to @care_receiver_profile, notice: 'Family \\ Individual Ad was successfully created.' }
         format.json { render action: 'show', status: :created, location: @care_receiver_profile }
       else
         format.html { render action: 'new' }
@@ -54,7 +54,7 @@ class CareReceiverProfilesController < ApplicationController
   def update
     respond_to do |format|
       if @care_receiver_profile.update(care_receiver_profile_params)
-        format.html { redirect_to @care_receiver_profile, notice: 'Care receiver profile was successfully updated.' }
+        format.html { redirect_to @care_receiver_profile, notice: 'Family \\ Individual Ad was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

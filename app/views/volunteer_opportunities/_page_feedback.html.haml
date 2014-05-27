@@ -1,0 +1,7 @@
+- if user_signed_in?
+  = simple_form_for @page_feedback, class: 'search' do |f|
+    = f.label "This page would be better if:", style: "font-weight: normal"
+    = f.input :feedback, label: false, placeholder: FEEDBACK[rand(0..6)], :input_html => {:style => 'id: search'}
+    = f.hidden_field :controller, value: params[:controller]
+    = f.hidden_field :action, value: params[:action]
+    -# = f.button :submit, "Submit!"

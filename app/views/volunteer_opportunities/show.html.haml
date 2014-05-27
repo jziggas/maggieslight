@@ -1,0 +1,41 @@
+= render "sidebar"
+%h1#header= "Volunteer Opportunity - #{@volunteer_opportunity.title}"
+%hr
+.col-md-8.well#hideOverflow
+  %p= image_tag @volunteer_opportunity.profile_picture.url(:large)
+  %p
+    %b Organization:
+    = @volunteer_opportunity.org_name
+  %p
+    %b Type of Event:
+    = @volunteer_opportunity.event_type
+  %p
+    %b Start Time:
+    = @volunteer_opportunity.event_start.strftime('%B %-d, %Y at %l:%M%p')
+  %p
+    %b End Time:
+    = @volunteer_opportunity.event_end.strftime('%B %-d, %Y at %l:%M%p')
+  %p
+    %b Description:
+    = @volunteer_opportunity.description
+  %p
+    %b Location:
+    = @volunteer_opportunity.location
+  %p
+    %b Contact name:
+    = @volunteer_opportunity.contact_name
+  %p
+    %b Contact Email:
+    %a{href: "mailto:#{@volunteer_opportunity.contact_email}"}= @volunteer_opportunity.contact_email
+  %p
+    %b Contact Phone:
+    %a{href: "tel:#{@volunteer_opportunity.contact_phone}"}= @volunteer_opportunity.contact_phone
+  = link_to raw("<i class='glyphicon glyphicon-arrow-left'></i> Back"), volunteer_opportunities_path, class: "btn btn-default"
+  - if can? :update, @volunteer_opportunity
+    = link_to raw("<i class='glyphicon glyphicon-edit'></i> Edit"), edit_volunteer_opportunity_path(@volunteer_opportunity), class: "btn btn-warning"
+    = link_to raw("<i class='glyphicon glyphicon-trash'></i> Delete"), volunteer_opportunity_path(@volunteer_opportunity), class: "btn btn-danger", method: :delete, confirm: "Are you sure?"
+  - if user_signed_in? && @volunteer_opportunity.user != current_user
+    - if !current_user.flagged?(@volunteer_opportunity)
+      = link_to raw("<i class='glyphicon glyphicon-flag'></i>"), flag_volunteer_opportunity_path(@volunteer_opportunity), class: "flag", title: "Flag this content as inappropriate.", "data-placement" => "right"
+    - else
+      = link_to raw("<i class='glyphicon glyphicon-remove-sign'></i>"), flag_volunteer_opportunity_path(@volunteer_opportunity), class: "flag", title: "Unflag this content.", "data-placement" => "right"
