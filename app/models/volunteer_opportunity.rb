@@ -12,7 +12,7 @@ class VolunteerOpportunity < ActiveRecord::Base
   before_save { self.location = self.location }
   before_save { self.title = self.title.titleize }
 
-  scope :not_expired, -> { where('event_end < ?', DateTime.now) }
+  scope :not_expired, -> { where('event_end > ?', DateTime.now) }
 
   has_attached_file :profile_picture, :styles => { :large => "450x450", :medium => "350x350>", :thumb => "150x150>" }, :default_url => "missing.jpg"
 
