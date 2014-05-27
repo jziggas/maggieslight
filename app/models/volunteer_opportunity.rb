@@ -38,14 +38,14 @@ class VolunteerOpportunity < ActiveRecord::Base
 
   validates :agree_terms, inclusion: { in: [ true ] }
 
-  validates :org_name, length: { in: 2..15 }
+  validates :org_name, length: { in: 2..30 }
   validates :event_type, length: { in: 2..15 }
-  validates :description, length: { in: 5..250 }
+  validates :description, length: { in: 5..500 }
   validates :contact_phone, length: { in: 1..20 }
   validates :contact_name, length: { in: 3..50 }
   validates :contact_email, length: { in: 3..50 }
-  validates :event_start, length: { in: 3..25 }
-  validates :event_end, length: { in: 3..25 }
+  validates :event_start, length: { in: 3..30 }
+  validates :event_end, length: { in: 3..30 }
   validates :user_id, length: { in: 1..5 }
   validates :ein, length: { in: 1..15}
   validates :title, length: { in: 3..20 }
