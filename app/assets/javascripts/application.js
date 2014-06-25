@@ -15,10 +15,20 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
+//= require datetimepicker
 //= require_tree .
+
 
 $(document).ready(function() {
     $('.flag').tooltip();
+    $('#start-time').datetimepicker({
+        format: 'm/dd/Y g:iA',
+        step: 15
+    });
+    $('#end-time').datetimepicker({
+        format: 'm/dd/Y g:iA',
+        step: 15
+    });
 });
 
 /*
