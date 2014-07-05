@@ -53,8 +53,7 @@ CSV.foreach("#{Rails.root}/active.csv", :encoding => 'windows-1251:utf-8') do |r
     :contact_name =>     row[12],
     :contact_email =>    row[13],
     :contact_phone =>    row[14],
-    :status =>           row[15],
-    :visibility =>       row[16],
+    :status =>           row[15]
     )
   end
 end
