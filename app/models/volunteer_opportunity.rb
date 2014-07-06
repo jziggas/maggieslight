@@ -62,4 +62,20 @@ class VolunteerOpportunity < ActiveRecord::Base
   def self.org_types
     @@org_types
   end
+
+  # gives us output formatted that the date picker expects to find
+  def event_start_for_picker
+    return "" if self.new_record?
+
+    self.event_start.strftime('%m/%d/%Y %I:%M %p')
+  end
+
+
+  # gives us output formatted that the date picker expects to find
+  def event_end_for_picker
+    return "" if self.new_record?
+
+    self.event_end.strftime('%m/%d/%Y %I:%M %p')
+  end
+
 end

@@ -33,8 +33,9 @@
       = f.input :contact_name, label: "Contact Name:", placeholder: "Kathy"
       = f.input :contact_phone, label: "Contact Phone:", placeholder: "555-123-4567"
       = f.input :contact_email, label: "Contact Email:", placeholder: "example@email.com"
-      = f.input :event_start, label: "Event Start:", as: "string", input_html: {class: 'datetimepicker'}
-      = f.input :event_end, label: "Event End:", as: "string", input_html: {class: 'datetimepicker'}
+      = f.input :event_start, label: "Event Start:", as: "string", input_html: {class: 'datetimepicker', value: @volunteer_opportunity.event_start_for_picker}
+      = f.input :event_end, label: "Event End:", as: "string", input_html: {class: 'datetimepicker', value: @volunteer_opportunity.event_end_for_picker}
+
     %p
       = f.input :agree_terms, label: "Terms and Conditions", inline_label: "Do you agree to the Maggie's Light <a href=\"http://www.maggieslight.org/disclaimer\"  target=\"_blank\">Terms of Use</a>?".html_safe
     = f.button :submit, "Submit Volunteer Opportunity", class: "btn btn-primary"
