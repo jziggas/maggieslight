@@ -20,15 +20,18 @@
 
 
 $(document).ready(function() {
+  // NOTE: we pull in jquery-turbolinks (https://github.com/kossnocorp/jquery.turbolinks)
+  // which makes $(document).ready work like it always used to, even in land
+  // of turbolinks
+
+    var dateTimePickerOptions = {
+        format: 'm/d/Y h:i A',   /* See: http://php.net/manual/en/function.date.php for format strings */
+        step: 15,
+        formatTime: "h:i A"      /* see above */
+    };
+
     $('.flag').tooltip();
-    $('#start-time').datetimepicker({
-        format: 'm/dd/Y g:iA',
-        step: 15
-    });
-    $('#end-time').datetimepicker({
-        format: 'm/dd/Y g:iA',
-        step: 15
-    });
+    $('.datetimepicker').datetimepicker(dateTimePickerOptions);
 });
 
 /*
