@@ -1,5 +1,7 @@
 class VolunteerOpportunitiesController < ApplicationController
   load_and_authorize_resource
+  skip_load_and_authorize_resource only: [:create]
+
   before_action :set_page_feedback
   before_action :check_survey_status
 
@@ -34,8 +36,18 @@ class VolunteerOpportunitiesController < ApplicationController
   end
 
   def create
+    op_params    = volunteer_opportunity_params
+    event_start  = op_params.delete("event_start")  # see below as to why we extract these now
+    event_end    = op_params.delete("event_end")
 
-    @volunteer_opportunity = current_user.volunteer_opportunities.build(volunteer_opportunity_params)
+    @volunteer_opportunity = current_user.volunteer_opportunities.build(op_params)
+
+    # don't trust Date.parse to make the right decisions, as it didn't seem to
+    # in this case. Instead we know the format - even though it's specified with
+    # a different style format string - and set the start and end times to DateTimes
+    # ourselves.
+    @volunteer_opportunity.event_start = DateTime.strptime(event_start, '%m/%d/%Y %I:%M %p')
+    @volunteer_opportunity.event_end   = DateTime.strptime(event_end, '%m/%d/%Y %I:%M %p')
 
     respond_to do |format|
       if @volunteer_opportunity.save
