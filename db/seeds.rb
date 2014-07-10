@@ -25,18 +25,19 @@ require 'csv'
 
 CSV.foreach("#{Rails.root}/active.csv", :encoding => 'windows-1251:utf-8') do |row|
   unless row[13] == "contact_email"
-    user = User.create(
-    :name => row[13].split('@')[0].split('.').join(' ').titleize,
-    :email => row[13],
-    :password => row[17]
-    )
+    user = User.find_or_create_by(
+        :name => row[13].split('@')[0].split('.').join(' ').titleize,
+        :email => row[13]
+        ) do |created_user|
+      created_user.password = row[17]
+    end
   end
 end
 
 CSV.foreach("#{Rails.root}/active.csv", :encoding => 'windows-1251:utf-8') do |row|
   unless row[13] == "contact_email"
     user = User.find_by_email(row[13].downcase)
-    user.care_receiver_profiles.create(
+    user.care_receiver_profiles.find_or_create_by(
     :name =>            row[0],
     :birthdate =>        row[1],
     :gender =>           row[2],
@@ -52,8 +53,7 @@ CSV.foreach("#{Rails.root}/active.csv", :encoding => 'windows-1251:utf-8') do |r
     :contact_name =>     row[12],
     :contact_email =>    row[13],
     :contact_phone =>    row[14],
-    :status =>           row[15],
-    :visibility =>       row[16],
+    :status =>           row[15]
     )
   end
 end

@@ -1,5 +1,7 @@
 class VolunteerOpportunitiesController < ApplicationController
   load_and_authorize_resource
+  skip_load_and_authorize_resource only: [:create]
+
   before_action :set_page_feedback
   before_action :check_survey_status
 
@@ -34,8 +36,8 @@ class VolunteerOpportunitiesController < ApplicationController
   end
 
   def create
-
-    @volunteer_opportunity = current_user.volunteer_opportunities.build(volunteer_opportunity_params)
+    op_params    = post_process_params
+    @volunteer_opportunity = current_user.volunteer_opportunities.build(op_params)
 
     respond_to do |format|
       if @volunteer_opportunity.save
@@ -49,8 +51,10 @@ class VolunteerOpportunitiesController < ApplicationController
   end
 
   def update
+    op_params = post_process_params
+
     respond_to do |format|
-      if @volunteer_opportunity.update(volunteer_opportunity_params)
+      if @volunteer_opportunity.update(op_params)
         format.html { redirect_to @volunteer_opportunity, notice: 'Volunteer Opportunity was successfully updated.' }
         format.json { head :no_content }
       else
@@ -69,6 +73,32 @@ class VolunteerOpportunitiesController < ApplicationController
   end
 
   private
+
+    # Call me instead of volunteer_opportunity_params to do post processing on
+    # params that may be required
+    def post_process_params
+      op_params = volunteer_opportunity_params
+
+      # FIRST: get event start and event end working correctly
+      # These values are passed in as strings from our date picker.
+      # We also can't trust Date.parse to make the right decisions, as it didn't seem to
+      # in this formatted case. Instead we know the format - even though it's
+      # specified with a different style format string - and set the start and
+      # end times to DateTimes ourselves.
+      if op_params[:event_start].present?
+        event_start  = op_params.delete("event_start")  # see below as to why we extract these now
+        op_params[:event_start] =  DateTime.strptime(event_start, '%m/%d/%Y %I:%M %p')
+      end
+
+      if op_params[:event_end].present?
+        event_end    = op_params.delete("event_end")
+        op_params[:event_end]   = DateTime.strptime(event_end, '%m/%d/%Y %I:%M %p')
+      end
+
+      op_params
+    end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_volunteer_opportunity
       @volunteer_opportunity = VolunteerOpportunity.find(params[:id])
@@ -76,7 +106,10 @@ class VolunteerOpportunitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def volunteer_opportunity_params
-      params.require(:volunteer_opportunity).permit(:org_name, :event_type, :description, :contact_phone, :contact_name, :contact_email, :event_start, :event_end, :user_id, :agree_terms, :ein, :type_of_org, :title, :location, :required_documents, :profile_picture)
+      params.require(:volunteer_opportunity).permit(:org_name, :event_type,
+          :description, :contact_phone, :contact_name, :contact_email,
+          :event_start, :event_end, :user_id, :agree_terms, :ein, :type_of_org,
+          :title, :location, :required_documents, :profile_picture)
     end
 
     def sort_column
