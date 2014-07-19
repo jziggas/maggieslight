@@ -25,14 +25,10 @@ BALTIMORE_COUNTIES = [
   "Worcester County"]
 
 FEEDBACK = [
-  "It had unicorns.",
   "If you added XYZ feature.",
-  "It did my laundry.",
-  "It sorted by cuteness.",
   "Helped me with XYZ.",
   "It showed me how to ...",
   "It did my taxes.",
-  "It was calorie-free.",
   "It had XYZ button.",
   "There was an XYZ form.",
   "It displayed a ..."]

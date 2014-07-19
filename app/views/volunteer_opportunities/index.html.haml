@@ -6,7 +6,7 @@
     = "Searching for '#{params[:search]}'. " if params[:search]
     = "Sorted by '#{humanize_sort_type(@sort_column)}' in #{humanize_sort_direction(@sort_direction)} order."
   = will_paginate @profiles
-  %h6.lead= "Nothing Found" if @profiles[0].nil?
+  %h6.lead= "Coming Soon . . ." if @profiles[0].nil?
   - @profiles.each do |profile|
     .well
       .container-fluid
